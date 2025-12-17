@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC KEKE - Kenya's Premier Event & Entertainment Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#FF6B35;--secondary:#004E89;--accent:#FFD23F;--dark:#1A1A2E;--light:#F8F9FA;--white:#FFF;--gradient:linear-gradient(135deg,#FF6B35 0%,#FF8C42 100%);--gradient-dark:linear-gradient(135deg,#004E89 0%,#00152E 100%)}body{font-family:'Inter',sans-serif;color:var(--dark);line-height:1.6;overflow-x:hidden;background:var(--white)}html{scroll-behavior:smooth}.header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.05);transition:all .4s cubic-bezier(.4,0,.2,1)}.header.scrolled{box-shadow:0 10px 40px rgba(0,0,0,.08)}.nav-container{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;position:relative}.logo::after{content:'';position:absolute;bottom:-5px;left:0;width:40px;height:3px;background:var(--accent);border-radius:2px}.nav-menu{display:flex;list-style:none;gap:3rem;align-items:center}.nav-menu a{text-decoration:none;color:var(--dark);font-weight:500;font-size:.95rem;letter-spacing:.3px;transition:all .3s ease;position:relative}.nav-menu a::before{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%) scaleX(0);width:100%;height:2px;background:var(--primary);transition:transform .3s ease}.nav-menu a:hover::before{transform:translateX(-50%) scaleX(1)}.cta-button{background:var(--gradient);color:white;padding:.9rem 2rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 25px rgba(255,107,53,.3);position:relative;overflow:hidden}.cta-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .6s ease}.cta-button:hover::before{left:100%}.cta-button:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,107,53,.4)}.mobile-menu-btn{display:none;background:0 0;border:none;font-size:1.8rem;cursor:pointer;color:var(--primary);transition:transform .3s ease}.mobile-menu-btn:active{transform:scale(.9)}.hero{margin-top:90px;min-height:calc(100vh - 90px);position:relative;overflow:hidden;background:var(--gradient-dark)}.hero::before{content:'';position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(255,107,53,.15) 0%,transparent 70%);top:-200px;right:-200px;animation:pulse-glow 8s ease-in-out infinite}.hero::after{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,210,63,.1) 0%,transparent 70%);bottom:-150px;left:-150px;animation:pulse-glow 8s ease-in-out infinite 4s}@keyframes pulse-glow{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}.hero-content{max-width:1400px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}.hero-text h1{font-family:'Playfair Display',serif;font-size:6rem;font-weight:900;color:white;line-height:1;margin-bottom:1.5rem;animation:fadeInUp 1s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}.hero-text .tagline{font-size:1.4rem;color:rgba(255,255,255,.85);font-weight:300;margin-bottom:2rem;letter-spacing:.5px;animation:fadeInUp 1s ease-out .2s both}.hero-text .description{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:3rem;line-height:1.9;animation:fadeInUp 1s ease-out .4s both}.hero-buttons{display:flex;gap:1.5rem;flex-wrap:wrap;animation:fadeInUp 1s ease-out .6s both}.btn-primary{background:var(--gradient);color:white;padding:1.3rem 3rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.05rem;transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 40px rgba(255,107,53,.4);position:relative;overflow:hidden}.btn-primary::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .6s ease,height .6s ease}.btn-primary:hover::before{width:300px;height:300px}.btn-primary:hover{transform:translateY(-5px);box-shadow:0 15px 50px rgba(255,107,53,.5)}.btn-secondary{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);color:white;padding:1.3rem 3rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:1.05rem;border:2px solid rgba(255,255,255,.2);transition:all .4s cubic-bezier(.4,0,.2,1)}.btn-secondary:hover{background:white;color:var(--primary);border-color:white;transform:translateY(-5px)}.hero-image{position:relative;animation:fadeInRight 1.2s ease-out}@keyframes fadeInRight{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}.hero-profile-wrapper{position:relative;width:100%;max-width:550px;margin:0 auto}.hero-profile-wrapper::before{content:'';position:absolute;top:-20px;left:-20px;right:20px;bottom:20px;background:var(--gradient);border-radius:50%;filter:blur(40px);opacity:.4;animation:float 6s ease-in-out infinite}.hero-profile{width:100%;height:550px;border-radius:50%;object-fit:cover;border:10px solid rgba(255,255,255,.1);box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative;z-index:1;animation:float 6s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}.social-proof{display:flex;gap:3rem;margin-top:3rem;animation:fadeInUp 1s ease-out .8s both}.stat{text-align:left}.stat-number{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;display:block;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.stat-label{font-size:.95rem;color:rgba(255,255,255,.7);font-weight:400}.services{padding:8rem 2rem;background:var(--light);position:relative}.services::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(to bottom,var(--secondary),transparent);opacity:.03}.container{max-width:1400px;margin:0 auto}.section-header{text-align:center;margin-bottom:5rem}.section-label{font-size:.85rem;text-transform:uppercase;letter-spacing:3px;color:var(--primary);font-weight:700;margin-bottom:1rem}.section-title{font-family:'Playfair Display',serif;font-size:4rem;color:var(--dark);margin-bottom:1.5rem;font-weight:900}.section-subtitle{font-size:1.2rem;color:#666;font-weight:300;max-width:600px;margin:0 auto}.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2.5rem}.service-card{background:white;padding:3rem;border-radius:30px;box-shadow:0 15px 50px rgba(0,0,0,.06);transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:var(--gradient);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}.service-card:hover{transform:translateY(-15px);box-shadow:0 25px 70px rgba(0,0,0,.12)}.service-card:hover::before{transform:scaleX(1)}.service-icon{font-size:3.5rem;margin-bottom:1.5rem;display:inline-block;transition:transform .5s ease}.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}.service-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--dark);margin-bottom:1rem}.service-description{color:#666;line-height:1.9;margin-bottom:2rem;font-size:1.05rem}.service-features{list-style:none;padding:0}.service-features li{padding:.7rem 0;color:#555;position:relative;padding-left:2rem;font-size:.95rem;transition:color .3s ease}.service-features li::before{content:'✓';position:absolute;left:0;color:var(--primary);font-weight:bold;font-size:1.2rem}.service-card:hover .service-features li{color:var(--dark)}.video-showcase{padding:8rem 2rem;background:var(--dark);color:white;position:relative;overflow:hidden}.video-showcase::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,53,.1) 0%,transparent 70%);top:-200px;left:-200px;animation:pulse-glow 10s ease-in-out infinite}.video-container{max-width:1100px;margin:4rem auto 0;border-radius:30px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1);position:relative;z-index:1}.video-container iframe{width:100%;height:650px;border:none}.portfolio{padding:8rem 2rem;background:white}.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2.5rem}.portfolio-item{position:relative;overflow:hidden;border-radius:25px;aspect-ratio:16/10;cursor:pointer;transition:all .5s cubic-bezier(.4,0,.2,1);box-shadow:0 15px 50px rgba(0,0,0,.08)}.portfolio-item:hover{transform:scale(1.03);box-shadow:0 25px 70px rgba(0,0,0,.15)}.portfolio-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}.portfolio-item:hover img{transform:scale(1.1)}.portfolio-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);padding:2.5rem;transform:translateY(100%);transition:transform .5s cubic-bezier(.4,0,.2,1)}.portfolio-item:hover .portfolio-overlay{transform:translateY(0)}.portfolio-title{color:white;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem}.portfolio-category{color:var(--accent);font-size:.9rem;font-weight:500}.testimonials{padding:8rem 2rem;background:var(--light)}.testimonial{background:white;padding:4rem;border-radius:30px;text-align:center;max-width:900px;margin:4rem auto 0;box-shadow:0 20px 60px rgba(0,0,0,.08);position:relative}.testimonial::before{content:'"';position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-size:120px;font-family:'Playfair Display',serif;color:var(--primary);opacity:.2;line-height:1}.testimonial-text{font-size:1.3rem;font-style:italic;color:var(--dark);margin-bottom:2.5rem;line-height:2;font-weight:300}.testimonial-author{font-family:'Playfair Display',serif;font-weight:700;color:var(--primary);font-size:1.2rem;margin-bottom:.3rem}.testimonial-role{color:#666;font-size:.95rem}.contact{padding:8rem 2rem;background:var(--gradient-dark);color:white;position:relative;overflow:hidden}.contact::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(255,210,63,.1) 0%,transparent 70%);bottom:-300px;right:-300px;animation:pulse-glow 12s ease-in-out infinite}.contact-content{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1300px;margin:4rem auto 0;position:relative;z-index:1}.contact-info h3{font-family:'Playfair Display',serif;font-size:2.5rem;margin-bottom:2rem;font-weight:700}.contact-item{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;font-size:1.1rem}.contact-icon{font-size:2rem;color:var(--accent);min-width:40px}.social-links{display:flex;gap:1.2rem;margin-top:2.5rem}.social-link{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:white;text-decoration:none;font-size:1.6rem;transition:all .4s cubic-bezier(.4,0,.2,1);border:2px solid rgba(255,255,255,.1)}.social-link:hover{background:var(--gradient);border-color:var(--primary);transform:translateY(-8px) rotate(5deg);box-shadow:0 15px 40px rgba(255,107,53,.4)}.booking-form{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);padding:3rem;border-radius:30px;border:1px solid rgba(255,255,255,.1)}.form-group{margin-bottom:1.8rem}.form-group label{display:block;margin-bottom:.7rem;font-weight:500;font-size:.95rem;letter-spacing:.3px}.form-group input,.form-group select,.form-group textarea{width:100%;padding:1.2rem 1.5rem;border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);border-radius:15px;color:white;font-family:'Inter',sans-serif;font-size:1rem;transition:all .3s ease}.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.5)}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:0;border-color:var(--primary);background:rgba(255,255,255,.12);box-shadow:0 0 0 4px rgba(255,107,53,.1)}.form-group textarea{resize:vertical;min-height:140px}.form-group select{cursor:pointer}.form-group select option{background:var(--dark);color:white}.submit-btn{width:100%;padding:1.4rem;background:var(--gradient);color:white;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 40px rgba(255,107,53,.4);position:relative;overflow:hidden}.submit-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .6s ease,height .6s ease}.submit-btn:hover::before{width:400px;height:400px}.submit-btn:hover{transform:translateY(-4px);box-shadow:0 15px 50px rgba(255,107,53,.5)}.footer{background:#0A0A0A;color:white;text-align:center;padding:3rem 2rem}.footer p{margin:.5rem 0;color:rgba(255,255,255,.6);font-size:.95rem}@media (max-width:1024px){.hero-content{grid-template-columns:1fr;gap:3rem}.hero-text h1{font-size:4.5rem}.contact-content{grid-template-columns:1fr;gap:4rem}}@media (max-width:968px){.nav-menu{position:fixed;left:-100%;top:90px;flex-direction:column;background:white;width:100%;text-align:center;transition:.4s;box-shadow:0 20px 40px rgba(0,0,0,.1);padding:3rem 0;gap:2rem}.nav-menu.active{left:0}.mobile-menu-btn{display:block}.hero{padding:3rem 0}.hero-content{grid-template-columns:1fr;text-align:center;padding:2rem 1.5rem}.hero-image{order:-1}.hero-text{order:1}.hero-text h1{font-size:3.5rem}.hero-profile{max-width:400px;height:400px}.hero-buttons{justify-content:center}.social-proof{justify-content:center}.section-title{font-size:3rem}.services-grid,.portfolio-grid{grid-template-columns:1fr}.video-container iframe{height:400px}}@media (max-width:600px){.logo{font-size:1.7rem}.hero-text h1{font-size:2.8rem}.hero-text .tagline{font-size:1.1rem}.hero-profile{max-width:300px;height:300px}.stat-number{font-size:2.2rem}.section-title{font-size:2.5rem}.service-card{padding:2rem}.testimonial{padding:3rem 2rem}.btn-primary,.btn-secondary{padding:1.1rem 2.5rem;font-size:1rem}.video-container iframe{height:300px}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">MC KEKE</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="cta-button">Book Now</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-image">
+                <div class="hero-profile-wrapper">
+                    <img src="image.jpeg" alt="MC Keke" class="hero-profile">
+
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>MC <span class="highlight">KEKE</span></h1>
+                <p class="tagline">Kenya's Full-Service Event & Entertainment Specialist</p>
+                <p class="description">Bringing unforgettable energy to your special moments. From weddings to corporate events, we deliver professional MC services, PA systems, videography, and complete event solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Check Availability</a>
+                    <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+                </div>
+                <div class="social-proof">
+                    <div class="stat">
+                        <span class="stat-number">292.8K</span>
+                        <span class="stat-label">Followers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3M+</span>
+                        <span class="stat-label">Likes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Events</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">WHAT WE OFFER</div>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Complete event solutions tailored to your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎤</div>
+                    <h3 class="service-title">Master of Ceremonies</h3>
+                    <p class="service-description">Professional, energetic, and engaging MC services for all your events.</p>
+                    <ul class="service-features">
+                        <li>Weddings & Receptions</li>
+                        <li>Dowry Ceremonies</li>
+                        <li>Corporate Events</li>
+                        <li>Social Gatherings</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔊</div>
+                    <h3 class="service-title">PA Systems & DJ Services</h3>
+                    <p class="service-description">High-quality sound equipment and professional DJ services.</p>
+                    <ul class="service-features">
+                        <li>Professional PA Systems</li>
+                        <li>DJ Services (All Genres)</li>
+                        <li>Lighting Setup</li>
+                        <li>Equipment Transport</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📹</div>
+                    <h3 class="service-title">Videography & Photography</h3>
+                    <p class="service-description">Capture your special moments with Keke Films' professional team.</p>
+                    <ul class="service-features">
+                        <li>4K Videography</li>
+                        <li>Professional Photography</li>
+                        <li>Drone Coverage</li>
+                        <li>Highlight Reels & Albums</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3 class="service-title">Full Event Solutions</h3>
+                    <p class="service-description">Complete event planning and logistics management.</p>
+                    <ul class="service-features">
+                        <li>Tents & Decorations</li>
+                        <li>Catering Services</li>
+                        <li>Event Planning</li>
+                        <li>Complete Setup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-showcase" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color:white">Featured Work</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.8)">Watch our highlight reel showcasing the energy and professionalism we bring to every event</p>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/videoseries?list=PLmWeuiGl8awNoCRpZ3CBUZqyFqRDO8X74" title="MC KEKE Portfolio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">OUR WORK</div>
+                <h2 class="section-title">Event Gallery</h2>
+                <p class="section-subtitle">Moments we've helped create</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/600x400/0066ff/ffffff?text=Wedding+Reception" alt="Wedding Reception">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Elegant Wedding Reception</h3>
+                        <p class="portfolio-category">Wedding | Nairobi</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/600x400/ff9500/ffffff?text=Dowry+Ceremony" alt="Dowry Ceremony">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Traditional Dowry Ceremony</h3>
+                        <p class="portfolio-category">Cultural | Machakos</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/600x400/0066ff/ffffff?text=Corporate+Event" alt="Corporate Event">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Corporate Gala Dinner</h3>
+                        <p class="portfolio-category">Corporate | Karen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">CLIENT REVIEWS</div>
+                <h2 class="section-title">What Clients Say</h2>
+                <p class="section-subtitle">Real experiences from real events</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">MC Keke made our wedding reception absolutely unforgettable! His energy, professionalism, and ability to engage our guests was beyond exceptional. The sound system was crystal clear and the photography captured every precious moment.</p>
+                <p class="testimonial-author">Mary & Dennis</p>
+                <p class="testimonial-role">Wedding Clients</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color:white">Get In Touch</h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.8)">Let's make your event unforgettable</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <p><strong>Primary:</strong> 0728990478</p>
+                            <p><strong>WhatsApp:</strong> 0738720478</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <p>Nairobi, Kenya</p>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <p>Available 24/7 for Bookings</p>
+                    </div>
+                    <h3 style="margin-top:2rem">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@keke_mc" class="social-link" target="_blank">📱</a>
+                        <a href="https://www.instagram.com/keke_mc" class="social-link" target="_blank">📷</a>
+                        <a href="https://www.youtube.com/@mckeke" class="social-link" target="_blank">▶️</a>
+                        <a href="https://wa.me/254738720478" class="social-link" target="_blank">💬</a>
+                    </div>
+                </div>
+                <div class="booking-form">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="07XXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-date">Event Date *</label>
+                            <input type="date" id="event-date" name="event-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-type">Event Type *</label>
+                            <select id="event-type" name="event-type" required>
+                                <option value="">Select event type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="dowry">Dowry Ceremony</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="social">Social Gathering</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="services">Services Needed *</label>
+                            <select id="services" name="services" required>
+                                <option value="">Select services</option>
+                                <option value="mc-only">MC Only</option>
+                                <option value="mc-sound">MC + PA System</option>
+                                <option value="mc-sound-photo">MC + Sound + Photography</option>
+                                <option value="full-package">Full Event Package</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Event Location *</label>
+                            <input type="text" id="location" name="location" required placeholder="City/Town">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" placeholder="Tell us more about your event..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Check Availability & Book</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 MC KEKE | Kenya's Premier Event Entertainment Specialist</p>
+        <p>📞 0728990478 | 💬 0738720478</p>
+    </footer>
+
+    <script>
+        const btn=document.getElementById('mobileMenuBtn'),menu=document.getElementById('navMenu'),header=document.querySelector('.header');btn.addEventListener('click',()=>menu.classList.toggle('active'));document.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('active')));window.addEventListener('scroll',()=>{window.pageYOffset>100?header.classList.add('scrolled'):header.classList.remove('scrolled')});document.getElementById('bookingForm').addEventListener('submit',e=>{e.preventDefault();const d=new FormData(e.target),msg=`*New Booking Inquiry*\n\n👤 Name: ${d.get('name')}\n📞 Phone: ${d.get('phone')}\n📅 Date: ${d.get('event-date')}\n🎉 Event Type: ${d.get('event-type')}\n🎯 Services: ${d.get('services')}\n📍 Location: ${d.get('location')}\n\nAdditional Details:\n${d.get('message')||'None'}`;window.open(`https://wa.me/254738720478?text=${encodeURIComponent(msg)}`,'_blank');e.target.reset();alert('Thank you! Redirecting you to WhatsApp to complete your booking...')});document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));t&&window.scrollTo({top:t.offsetTop-80,behavior:'smooth'})}));
+    </script>
+</body>
+</html>
