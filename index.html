@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KEKE Events | Beyond Entertainment</title>
-<meta name="description" content="KEKE – Comedy, Money Raising, Dancing, Instrument Performances & Brand Promotions">
+<meta name="description" content="MC KEKE – Comedy, Money Raising, Dancing, Instrument Performances & Brand Promotions">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
 :root {
     --blue: #233B8B;
@@ -24,25 +25,51 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* ANIMATIONS */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
-.fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* HEADER - RESPONSIVE */
 header {
     position: fixed;
     top: 0;
@@ -54,7 +81,9 @@ header {
     transition: all 0.3s ease;
 }
 
-header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
+header.scrolled {
+    box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2);
+}
 
 .nav {
     max-width: 1400px;
@@ -71,7 +100,9 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     transition: transform 0.3s ease;
 }
 
-.logo img:hover { transform: scale(1.05); }
+.logo img:hover {
+    transform: scale(1.05);
+}
 
 .nav-links {
     display: flex;
@@ -89,7 +120,9 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     white-space: nowrap;
 }
 
-.nav a:not(.btn):hover { color: var(--orange); }
+.nav a:not(.btn):hover {
+    color: var(--orange);
+}
 
 .nav a:not(.btn)::after {
     content: '';
@@ -102,7 +135,9 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     transition: width 0.3s ease;
 }
 
-.nav a:not(.btn):hover::after { width: 100%; }
+.nav a:not(.btn):hover::after {
+    width: 100%;
+}
 
 .nav .btn {
     background: linear-gradient(135deg, var(--orange), #ffb347);
@@ -118,6 +153,7 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     box-shadow: 0 6px 18px rgba(247, 147, 30, 0.4);
 }
 
+/* MOBILE MENU */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -134,10 +170,19 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     border-radius: 2px;
 }
 
-.menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-.menu-toggle.active span:nth-child(2) { opacity: 0; }
-.menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
 
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* HERO SECTION - OPTIMIZED FOR FULL IMAGE DISPLAY */
 .hero {
     margin-top: 70px;
     width: 100%;
@@ -152,8 +197,11 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     transition: opacity 1.2s ease;
 }
 
-.slide.active { opacity: 1; }
+.slide.active {
+    opacity: 1;
+}
 
+/* DESKTOP: Show full image naturally */
 .slide img {
     width: 100%;
     height: auto;
@@ -178,7 +226,7 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     font-size: clamp(2.2rem, 6vw, 4rem);
     font-weight: 900;
     margin-bottom: clamp(1rem, 3vw, 1.5rem);
-    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.9), 0 2px 10px rgba(0, 0, 0, 0.8);
     animation: fadeInUp 1s ease-out;
     line-height: 1.2;
 }
@@ -186,7 +234,7 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
 .hero-content p {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.85);
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.85), 0 1px 5px rgba(0, 0, 0, 0.7);
     animation: fadeInUp 1s ease-out 0.3s backwards;
     max-width: 800px;
 }
@@ -232,6 +280,7 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     color: var(--blue);
 }
 
+/* STATS SECTION - RESPONSIVE GRID */
 .stats {
     background: linear-gradient(135deg, var(--blue), #1a2d6f);
     color: var(--white);
@@ -255,7 +304,9 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     transition: transform 0.3s ease;
 }
 
-.stat-item:hover { transform: translateY(-10px); }
+.stat-item:hover {
+    transform: translateY(-10px);
+}
 
 .stat-number {
     font-size: clamp(2rem, 6vw, 3rem);
@@ -265,11 +316,20 @@ header.scrolled { box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2); }
     margin-bottom: 0.5rem;
 }
 
-.stat-label { font-size: clamp(0.9rem, 2vw, 1.1rem); opacity: 0.9; }
+.stat-label {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.9;
+}
 
-section { padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 4vw, 2rem); }
+/* SECTIONS - RESPONSIVE SPACING */
+section {
+    padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 4vw, 2rem);
+}
 
-.container { max-width: 1400px; margin: 0 auto; }
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
 h2 {
     text-align: center;
@@ -303,7 +363,10 @@ h2::after {
     line-height: 1.8;
 }
 
-.features { background: var(--light); }
+/* FEATURES - RESPONSIVE GRID */
+.features {
+    background: var(--light);
+}
 
 .features-grid {
     display: grid;
@@ -334,8 +397,14 @@ h2::after {
     transition: transform 0.3s ease;
 }
 
-.feature-card:hover::before { transform: scaleX(1); }
-.feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(35, 59, 139, 0.15); }
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(35, 59, 139, 0.15);
+}
 
 .feature-icon {
     font-size: clamp(2.5rem, 6vw, 3.5rem);
@@ -356,8 +425,15 @@ h2::after {
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
-.category { margin-bottom: clamp(4rem, 8vw, 6rem); opacity: 0; }
-.category.visible { animation: fadeInUp 0.8s ease-out forwards; }
+/* CATEGORY SECTIONS - RESPONSIVE */
+.category {
+    margin-bottom: clamp(4rem, 8vw, 6rem);
+    opacity: 0;
+}
+
+.category.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
 
 .category-header {
     display: flex;
@@ -393,6 +469,7 @@ h2::after {
     line-height: 1.8;
 }
 
+/* VIDEO GRID - RESPONSIVE */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -408,7 +485,10 @@ h2::after {
     cursor: pointer;
 }
 
-.video-item:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); }
+.video-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
 
 .video-item img {
     width: 100%;
@@ -418,7 +498,9 @@ h2::after {
     transition: transform 0.3s ease;
 }
 
-.video-item:hover img { transform: scale(1.1); }
+.video-item:hover img {
+    transform: scale(1.1);
+}
 
 .video-overlay {
     position: absolute;
@@ -432,7 +514,9 @@ h2::after {
     transition: opacity 0.3s ease;
 }
 
-.video-item:hover .video-overlay { opacity: 1; }
+.video-item:hover .video-overlay {
+    opacity: 1;
+}
 
 .play-icon {
     position: absolute;
@@ -469,9 +553,14 @@ h2::after {
     transition: gap 0.3s ease;
 }
 
-.view-more:hover { gap: 1rem; }
+.view-more:hover {
+    gap: 1rem;
+}
 
-.events { background: linear-gradient(135deg, #f7f7f7, var(--white)); }
+/* EVENTS - RESPONSIVE GRID */
+.events {
+    background: linear-gradient(135deg, #f7f7f7, var(--white));
+}
 
 .events-grid {
     max-width: 1200px;
@@ -506,8 +595,15 @@ h2::after {
     transition: left 0.5s ease;
 }
 
-.event-card:hover::before { left: 100%; }
-.event-card:hover { border-color: var(--orange); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(35, 59, 139, 0.15); }
+.event-card:hover::before {
+    left: 100%;
+}
+
+.event-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(35, 59, 139, 0.15);
+}
 
 .event-icon {
     font-size: clamp(2rem, 4vw, 2.5rem);
@@ -515,7 +611,14 @@ h2::after {
     display: block;
 }
 
-.event-card div { font-size: clamp(0.9rem, 1.8vw, 1rem); }
+.event-card div {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+
+/* GALLERY - RESPONSIVE GRID */
+.gallery {
+    background: var(--white);
+}
 
 .gallery-grid {
     display: grid;
@@ -534,7 +637,10 @@ h2::after {
     aspect-ratio: 4/3;
 }
 
-.gallery-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(35, 59, 139, 0.2); }
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(35, 59, 139, 0.2);
+}
 
 .gallery-item img {
     width: 100%;
@@ -543,7 +649,9 @@ h2::after {
     transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img { transform: scale(1.15); }
+.gallery-item:hover img {
+    transform: scale(1.15);
+}
 
 .gallery-overlay {
     position: absolute;
@@ -556,9 +664,15 @@ h2::after {
     transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
 
-.gallery-caption { color: var(--white); font-weight: 600; font-size: clamp(0.95rem, 2vw, 1.1rem); }
+.gallery-caption {
+    color: var(--white);
+    font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
 
 .gallery-zoom {
     position: absolute;
@@ -577,15 +691,23 @@ h2::after {
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover .gallery-zoom { transform: translate(-50%, -50%) scale(1); }
+.gallery-item:hover .gallery-zoom {
+    transform: translate(-50%, -50%) scale(1);
+}
 
+/* TESTIMONIALS - RESPONSIVE */
 .testimonials {
     background: linear-gradient(135deg, var(--blue), #1a2d6f);
     color: var(--white);
 }
 
-.testimonials h2 { color: var(--white); }
-.testimonials h2::after { background: var(--orange); }
+.testimonials h2 {
+    color: var(--white);
+}
+
+.testimonials h2::after {
+    background: var(--orange);
+}
 
 .testimonial-grid {
     display: grid;
@@ -603,9 +725,15 @@ h2::after {
     transition: transform 0.3s ease;
 }
 
-.testimonial-card:hover { transform: translateY(-10px); }
+.testimonial-card:hover {
+    transform: translateY(-10px);
+}
 
-.quote-icon { font-size: clamp(2.5rem, 5vw, 3rem); color: var(--orange); margin-bottom: 1rem; }
+.quote-icon {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    color: var(--orange);
+    margin-bottom: 1rem;
+}
 
 .testimonial-text {
     font-size: clamp(0.95rem, 2vw, 1.1rem);
@@ -614,7 +742,11 @@ h2::after {
     font-style: italic;
 }
 
-.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 .author-img {
     width: clamp(45px, 8vw, 50px);
@@ -635,16 +767,25 @@ h2::after {
     font-size: clamp(0.95rem, 1.8vw, 1rem);
 }
 
-.author-info span { opacity: 0.8; font-size: clamp(0.8rem, 1.5vw, 0.9rem); }
+.author-info span {
+    opacity: 0.8;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
 
+/* PROMO SECTION - RESPONSIVE */
 .promo {
     background: linear-gradient(135deg, var(--orange), #ffb347);
     color: var(--white);
     text-align: center;
 }
 
-.promo h2 { color: var(--white); }
-.promo h2::after { background: var(--white); }
+.promo h2 {
+    color: var(--white);
+}
+
+.promo h2::after {
+    background: var(--white);
+}
 
 .promo-content {
     max-width: 900px;
@@ -667,10 +808,20 @@ h2::after {
     backdrop-filter: blur(10px);
 }
 
-.promo-feature h4 { font-size: clamp(1.1rem, 2.2vw, 1.3rem); margin-bottom: 0.8rem; }
-.promo-feature p { font-size: clamp(0.9rem, 1.8vw, 1rem); line-height: 1.7; }
+.promo-feature h4 {
+    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    margin-bottom: 0.8rem;
+}
 
-.contact { background: var(--light); }
+.promo-feature p {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    line-height: 1.7;
+}
+
+/* CONTACT FORM - RESPONSIVE */
+.contact {
+    background: var(--light);
+}
 
 form {
     max-width: 700px;
@@ -693,7 +844,9 @@ form::before {
     border-radius: 30px 30px 0 0;
 }
 
-.form-group { margin-bottom: 1.5rem; }
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
 label {
     display: block;
@@ -703,7 +856,9 @@ label {
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: clamp(1rem, 2vw, 1.2rem);
     border-radius: 15px;
@@ -713,9 +868,17 @@ input, select, textarea {
     transition: border-color 0.3s ease;
 }
 
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); }
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+}
 
-textarea { resize: vertical; min-height: 120px; }
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
 
 button {
     width: 100%;
@@ -746,9 +909,17 @@ button::before {
     transition: width 0.6s, height 0.6s;
 }
 
-button:hover::before { width: 400px; height: 400px; }
-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(247, 147, 30, 0.4); }
+button:hover::before {
+    width: 400px;
+    height: 400px;
+}
 
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(247, 147, 30, 0.4);
+}
+
+/* FOOTER - RESPONSIVE */
 footer {
     background: var(--blue);
     color: var(--white);
@@ -763,10 +934,27 @@ footer {
     gap: clamp(2rem, 4vw, 3rem);
 }
 
-.footer-section h3 { color: var(--orange); margin-bottom: 1.5rem; font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
-.footer-section p { line-height: 1.8; opacity: 0.9; font-size: clamp(0.9rem, 1.8vw, 1rem); }
-.footer-section a { color: var(--white); text-decoration: none; transition: color 0.3s ease; }
-.footer-section a:hover { color: var(--orange); }
+.footer-section h3 {
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+
+.footer-section p {
+    line-height: 1.8;
+    opacity: 0.9;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+}
+
+.footer-section a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--orange);
+}
 
 .social-links {
     display: flex;
@@ -789,7 +977,10 @@ footer {
     transition: all 0.3s ease;
 }
 
-.social-links a:hover { background: var(--orange); transform: translateY(-5px); }
+.social-links a:hover {
+    background: var(--orange);
+    transform: translateY(-5px);
+}
 
 .footer-bottom {
     text-align: center;
@@ -800,16 +991,23 @@ footer {
     font-size: clamp(0.85rem, 1.6vw, 0.95rem);
 }
 
+/* REVEAL ANIMATION */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.6s ease;
 }
 
-.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
+/* MOBILE OPTIMIZATIONS */
 @media (max-width: 768px) {
-    .menu-toggle { display: flex; }
+    .menu-toggle {
+        display: flex;
+    }
     
     .nav-links {
         position: fixed;
@@ -825,10 +1023,21 @@ footer {
         gap: 0;
     }
     
-    .nav-links.active { transform: translateY(0); }
-    .nav-links a { margin: 1rem 0; width: 100%; text-align: center; }
-    .nav .btn { width: 100%; }
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .nav-links a {
+        margin: 1rem 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav .btn {
+        width: 100%;
+    }
 
+    /* MOBILE HERO FIX - FULL COVERAGE WITHOUT GAPS */
     .hero {
         height: 65vh;
         min-height: 480px;
@@ -850,6 +1059,7 @@ footer {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center center;
     }
     
     .hero-cta {
@@ -859,9 +1069,19 @@ footer {
         margin: 0 auto;
     }
     
-    .hero-cta a { width: 100%; text-align: center; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-    .category-header { flex-direction: column; align-items: flex-start; }
+    .hero-cta a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 480px) {
@@ -877,13 +1097,32 @@ footer {
         object-fit: cover;
     }
 
-    .stats-grid { grid-template-columns: 1fr; }
-    .video-grid, .gallery-grid, .events-grid { grid-template-columns: 1fr; }
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
+/* PRINT STYLES */
 @media print {
-    header { position: static; }
-    .menu-toggle, .hero-cta, form, .social-links { display: none; }
+    header {
+        position: static;
+    }
+    
+    .menu-toggle,
+    .hero-cta,
+    form,
+    .social-links {
+        display: none;
+    }
 }
 </style>
 </head>
@@ -898,6 +1137,7 @@ footer {
 <a href="#content">Portfolio</a>
 <a href="#events">Events</a>
 <a href="#promotions">Promotions</a>
+
 <a href="#gallery">Gallery</a>
 <a href="#testimonials">Testimonials</a>
 <a href="#contact" class="btn">Book Now</a>
@@ -906,10 +1146,19 @@ footer {
 </header>
 
 <section class="hero" id="hero">
-<div class="slide active"><img src="slide-1.jpg" alt="MC KEKE Event" loading="lazy"></div>
-<div class="slide"><img src="slide-2.jpg" alt="MC KEKE Performance" loading="lazy"></div>
-<div class="slide"><img src="test.jpg" alt="MC KEKE Show" loading="lazy"></div>
-<div class="slide"><img src="event.jpg" alt="MC KEKE Entertainment" loading="lazy"></div>
+<div class="slide active">
+<img src="slide-1.jpg" alt="MC KEKE Event" loading="lazy">
+</div>
+<div class="slide">
+<img src="slide-2.jpg" alt="MC KEKE Performance" loading="lazy">
+</div>
+<div class="slide">
+<img src="test.jpg" alt="MC KEKE Show" loading="lazy">
+</div>
+<div class="slide">
+<img src="event.jpg" alt="MC KEKE Entertainment" loading="lazy">
+</div>
+
 <div class="hero-content">
 <div>
 <h1>KEKE EVENTS</h1>
@@ -927,6 +1176,7 @@ footer {
 <div class="stat-item reveal"><span class="stat-number">500+</span><span class="stat-label">Events Hosted</span></div>
 <div class="stat-item reveal"><span class="stat-number">100%</span><span class="stat-label">Client Satisfaction</span></div>
 <div class="stat-item reveal"><span class="stat-number">10+</span><span class="stat-label">Years Experience</span></div>
+
 </div>
 </section>
 
@@ -935,11 +1185,32 @@ footer {
 <h2>Why Choose KEKE EVENTS?</h2>
 <p class="subtitle">Professional entertainment services that transform ordinary events into unforgettable experiences</p>
 <div class="features-grid">
-<div class="feature-card reveal"><div class="feature-icon">🎭</div><h3>Professional MC Services</h3><p>Expert event hosting with seamless flow control, engaging audience interaction, and perfect timing for every moment of your special occasion.</p></div>
-<div class="feature-card reveal"><div class="feature-icon">⚡</div><h3>High Energy Performance</h3><p>Dynamic stage presence that keeps guests entertained from start to finish with comedy, dancing, and crowd engagement techniques.</p></div>
-<div class="feature-card reveal"><div class="feature-icon">🎯</div><h3>Custom Event Planning</h3><p>Tailored entertainment packages designed specifically for your event type, audience demographics, and cultural preferences.</p></div>
-<div class="feature-card reveal"><div class="feature-icon">🏆</div><h3>Proven Track Record</h3><p>Hundreds of successful events across Kenya with glowing testimonials from satisfied clients and repeat bookings.</p></div>
-<div class="feature-card reveal"><div class="feature-icon">🎵</div><h3>Multi-Talented Performer</h3><p>Versatile skills including live instrument performances, comedy skits, dance routines, and professional fundraising coordination.</p></div>
+<div class="feature-card reveal">
+<div class="feature-icon">🎭</div>
+<h3>Professional MC Services</h3>
+<p>Expert event hosting with seamless flow control, engaging audience interaction, and perfect timing for every moment of your special occasion.</p>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon">⚡</div>
+<h3>High Energy Performance</h3>
+<p>Dynamic stage presence that keeps guests entertained from start to finish with comedy, dancing, and crowd engagement techniques.</p>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon">🎯</div>
+<h3>Custom Event Planning</h3>
+<p>Tailored entertainment packages designed specifically for your event type, audience demographics, and cultural preferences.</p>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon">🏆</div>
+<h3>Proven Track Record</h3>
+<p>Hundreds of successful events across Kenya with glowing testimonials from satisfied clients and repeat bookings.</p>
+</div>
+
+<div class="feature-card reveal">
+<div class="feature-icon">🎵</div>
+<h3>Multi-Talented Performer</h3>
+<p>Versatile skills including live instrument performances, comedy skits, dance routines, and professional fundraising coordination.</p>
+</div>
 </div>
 </div>
 </section>
@@ -948,46 +1219,111 @@ footer {
 <div class="container">
 <h2>Event Capabilities</h2>
 <p class="subtitle">Explore my diverse portfolio of entertainment services</p>
+
 <div class="category">
-<div class="category-header"><h3>😂 Comedy & Entertainment</h3><span class="category-badge">Most Popular</span></div>
+<div class="category-header">
+<h3>😂 Comedy & Entertainment</h3>
+<span class="category-badge">Most Popular</span>
+</div>
 <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work that keeps everyone laughing throughout your event.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="comedy1.jpg" alt="Comedy Performance" loading="lazy"><div class="video-overlay"><p>Wedding Comedy Special</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="comedy2.jpg" alt="Comedy Show" loading="lazy"><div class="video-overlay"><p>Event Highlights</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="comedy3.jpg" alt="Stand Up" loading="lazy"><div class="video-overlay"><p>Birthday Party Roast</p></div><div class="play-icon">▶</div></a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="comedy1.jpg" alt="Comedy Performance" loading="lazy">
+<div class="video-overlay"><p>Wedding Comedy Special</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="comedy2.jpg" alt="Comedy Show" loading="lazy">
+<div class="video-overlay"><p>Event Highlights</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="comedy3.jpg" alt="Stand Up" loading="lazy">
+<div class="video-overlay"><p>Birthday Party Roast</p></div>
+<div class="play-icon">▶</div>
+</a>
 </div>
 <a class="view-more" href="https://youtube.com/@mckeke" target="_blank">Watch Full Comedy Playlist →</a>
 </div>
+
 <div class="category">
-<div class="category-header"><h3>💰 Fundraising Excellence</h3><span class="category-badge">Highest Returns</span></div>
+<div class="category-header">
+<h3>💰 Fundraising Excellence</h3>
+<span class="category-badge">Highest Returns</span>
+</div>
 <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement, encouraging generosity, and ensuring your fundraising targets are not just met but exceeded.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="money1.jpg" alt="Fundraising" loading="lazy"><div class="video-overlay"><p>Harambee Success Story</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="money2.jpg" alt="Money Raising" loading="lazy"><div class="video-overlay"><p>Wedding Fundraising</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="money3.jpg" alt="Contributions" loading="lazy"><div class="video-overlay"><p>Community Project Launch</p></div><div class="play-icon">▶</div></a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="money1.jpg" alt="Fundraising" loading="lazy">
+<div class="video-overlay"><p>Harambee Success Story</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="money2.jpg" alt="Money Raising" loading="lazy">
+<div class="video-overlay"><p>Wedding Fundraising</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="money3.jpg" alt="Contributions" loading="lazy">
+<div class="video-overlay"><p>Community Project Launch</p></div>
+<div class="play-icon">▶</div>
+</a>
 </div>
 <a class="view-more" href="https://youtube.com/@mckeke" target="_blank">See Fundraising Portfolio →</a>
 </div>
+
 <div class="category">
-<div class="category-header"><h3>🎷 Live Music Performances</h3><span class="category-badge">Premium</span></div>
+<div class="category-header">
+<h3>🎷 Live Music Performances</h3>
+<span class="category-badge">Premium</span>
+</div>
 <p>Saxophone and percussion performances that add sophisticated ambiance. Perfect for cocktail hours, dinner sessions, and creating memorable musical moments.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="instrument1.jpg" alt="Saxophone" loading="lazy"><div class="video-overlay"><p>Saxophone Performance</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="instrument2.jpg" alt="Live Music" loading="lazy"><div class="video-overlay"><p>Live Collaboration</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="instrument3.jpg" alt="Musical" loading="lazy"><div class="video-overlay"><p>Instrumental Highlights</p></div><div class="play-icon">▶</div></a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="instrument1.jpg" alt="Saxophone" loading="lazy">
+<div class="video-overlay"><p>Saxophone Performance</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="instrument2.jpg" alt="Live Music" loading="lazy">
+<div class="video-overlay"><p>Live Collaboration</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="instrument3.jpg" alt="Musical" loading="lazy">
+<div class="video-overlay"><p>Instrumental Highlights</p></div>
+<div class="play-icon">▶</div>
+</a>
 </div>
 <a class="view-more" href="https://youtube.com/@mckeke" target="_blank">Explore Music Gallery →</a>
 </div>
+
 <div class="category">
-<div class="category-header"><h3>🕺 Dance & Crowd Control</h3><span class="category-badge">High Energy</span></div>
+<div class="category-header">
+<h3>🕺 Dance & Crowd Control</h3>
+<span class="category-badge">High Energy</span>
+</div>
 <p>Expert crowd management through dance and interactive activities. Transform shy audiences into energized participants ready to celebrate and enjoy every moment.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="dance1.jpg" alt="Dancing" loading="lazy"><div class="video-overlay"><p>Wedding Dance Floor</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="dance2.jpg" alt="Crowd" loading="lazy"><div class="video-overlay"><p>Party Activation</p></div><div class="play-icon">▶</div></a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item"><img src="dance3.jpg" alt="Performance" loading="lazy"><div class="video-overlay"><p>Dance Competition</p></div><div class="play-icon">▶</div></a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="dance1.jpg" alt="Dancing" loading="lazy">
+<div class="video-overlay"><p>Wedding Dance Floor</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="dance2.jpg" alt="Crowd" loading="lazy">
+<div class="video-overlay"><p>Party Activation</p></div>
+<div class="play-icon">▶</div>
+</a>
+<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
+<img src="dance3.jpg" alt="Performance" loading="lazy">
+<div class="video-overlay"><p>Dance Competition</p></div>
+<div class="play-icon">▶</div>
+</a>
 </div>
 <a class="view-more" href="https://youtube.com/@mckeke" target="_blank">View Dance Videos →</a>
 </div>
+
 </div>
 </section>
 
@@ -1006,7 +1342,7 @@ footer {
 <div class="event-card reveal" data-gallery="gallery-thanksgiving"><span class="event-icon">🙏</span><div>Thanksgiving Events</div></div>
 <div class="event-card reveal" data-gallery="gallery-political"><span class="event-icon">🎤</span><div>Political Rallies</div></div>
 <div class="event-card reveal" data-gallery="gallery-launches"><span class="event-icon">🎪</span><div>Product Launches</div></div>
-</div>
+
 </div>
 </section>
 
@@ -1014,16 +1350,100 @@ footer {
 <div class="container">
 <h2>Event Gallery</h2>
 <p class="subtitle">Moments captured from our most memorable events</p>
-<div class="category" id="gallery-weddings"><div class="category-header"><h3>💍 Weddings</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="wedding1.jpg" alt="Wedding Event 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="wedding2.jpg" alt="Wedding Event 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="wedding3.jpg" alt="Wedding Event 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-burials"><div class="category-header"><h3>🕊️ Burials & Memorial Services</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="burial1.jpg" alt="Burials 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="burial2.jpg" alt="Burials 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="burial3.jpg" alt="Burials 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-birthday"><div class="category-header"><h3>🎂 Birthday Celebrations</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="birthday1.jpg" alt="Birthday 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="birthday2.jpg" alt="Birthday 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="birthday3.jpg" alt="Birthday 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-harambees"><div class="category-header"><h3>🤝 Harambees</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="harambee1.jpg" alt="Harambee 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="harambee2.jpg" alt="Harambee 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="harambee3.jpg" alt="Harambee 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-dowry"><div class="category-header"><h3>💝 Dowry Negotiations</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="dowry1.jpg" alt="Dowry 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="dowry2.jpg" alt="Dowry 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="dowry3.jpg" alt="Dowry 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-team"><div class="category-header"><h3>🏢 Team Building</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="team1.jpg" alt="Team 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="team2.jpg" alt="Team 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="team3.jpg" alt="Team 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-graduation"><div class="category-header"><h3>🎓 Graduation Parties</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="graduation1.jpg" alt="Graduation 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="graduation2.jpg" alt="Graduation 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="graduation3.jpg" alt="Graduation 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-thanksgiving"><div class="category-header"><h3>🙏 Thanksgiving Events</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="thanksgiving1.jpg" alt="Thanksgiving 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="thanksgiving2.jpg" alt="Thanksgiving 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="thanksgiving3.jpg" alt="Thanksgiving 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-political"><div class="category-header"><h3>🎤 Political Rallies</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="political1.jpg" alt="Political 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="political2.jpg" alt="Political 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="political3.jpg" alt="Political 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div></div></div>
-<div class="category" id="gallery-launches"><div class="category-header"><h3>🎪 Product Launches</h3></div><div class="gallery-grid"><div class="gallery-item reveal"><img src="launch1.jpg" alt="Launch 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="launch2.jpg" alt="Launch 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div><div class="gallery-item reveal"><img src="launch3.jpg" alt="Launch 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div></div></div>
+
+<div class="category" id="gallery-weddings">
+<div class="category-header"><h3>💍 Weddings</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="wedding1.jpg" alt="Wedding Event 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="wedding2.jpg" alt="Wedding Event 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="wedding3.jpg" alt="Wedding Event 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-burials">
+<div class="category-header"><h3>🕊️ Burials & Memorial Services</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="burial1.jpg" alt="Burials 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="burial2.jpg" alt="Burials 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="burial3.jpg" alt="Burials 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-birthday">
+<div class="category-header"><h3>🎂 Birthday Celebrations</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="birthday1.jpg" alt="Birthday 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="birthday2.jpg" alt="Birthday 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="birthday3.jpg" alt="Birthday 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-harambees">
+<div class="category-header"><h3>🤝 Harambees</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="harambee1.jpg" alt="Harambee 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="harambee2.jpg" alt="Harambee 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="harambee3.jpg" alt="Harambee 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-dowry">
+<div class="category-header"><h3>💝 Dowry Negotiations</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="dowry1.jpg" alt="Dowry 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="dowry2.jpg" alt="Dowry 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="dowry3.jpg" alt="Dowry 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+
+<div class="category" id="gallery-team">
+<div class="category-header"><h3>🏢 Team Building</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="team1.jpg" alt="Team 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="team2.jpg" alt="Team 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="team3.jpg" alt="Team 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-graduation">
+<div class="category-header"><h3>🎓 Graduation Parties</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="graduation1.jpg" alt="Graduation 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="graduation2.jpg" alt="Graduation 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="graduation3.jpg" alt="Graduation 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-thanksgiving">
+<div class="category-header"><h3>🙏 Thanksgiving Events</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="thanksgiving1.jpg" alt="Thanksgiving 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="thanksgiving2.jpg" alt="Thanksgiving 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="thanksgiving3.jpg" alt="Thanksgiving 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-political">
+<div class="category-header"><h3>🎤 Political Rallies</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="political1.jpg" alt="Political 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="political2.jpg" alt="Political 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="political3.jpg" alt="Political 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+<div class="category" id="gallery-launches">
+<div class="category-header"><h3>🎪 Product Launches</h3></div>
+<div class="gallery-grid">
+<div class="gallery-item reveal"><img src="launch1.jpg" alt="Launch 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="launch2.jpg" alt="Launch 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item reveal"><img src="launch3.jpg" alt="Launch 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
+</div>
+</div>
+
+
+
 </div>
 </section>
 
@@ -1032,8 +1452,30 @@ footer {
 <h2>Client Testimonials</h2>
 <p class="subtitle">Hear from those who experienced the KEKE EVENTS difference</p>
 <div class="testimonial-grid">
-<div class="testimonial-card reveal"><div class="quote-icon">"</div><p class="testimonial-text">KEKE EVENTS made our wedding unforgettable! His energy, humor, and professionalism kept our guests entertained throughout. The fundraising session exceeded our expectations by 40%!</p><div class="testimonial-author"><div class="author-img">JM</div><div class="author-info"><strong>John & Mary Kilonzo</strong><span>Wedding Clients</span></div></div></div>
-<div class="testimonial-card reveal"><div class="quote-icon">"</div><p class="testimonial-text">Best MC in Kenya hands down! His ability to read the crowd and adjust his performance accordingly is exceptional. Our harambee raised 3x our initial target!</p><div class="testimonial-author"><div class="author-img">PO</div><div class="author-info"><strong>Peter Omondi</strong><span>Community Leader</span></div></div></div>
+<div class="testimonial-card reveal">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">KEKE EVENTS made our wedding unforgettable! His energy, humor, and professionalism kept our guests entertained throughout. The fundraising session exceeded our expectations by 40%!</p>
+<div class="testimonial-author">
+<div class="author-img">JM</div>
+<div class="author-info"><strong>John & Mary Kilonzo</strong><span>Wedding Clients</span></div>
+</div>
+</div>
+<!-- <div class="testimonial-card reveal">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">We hired MC KEKE for our corporate team building event. He understood our company culture perfectly and delivered a program that was both professional and incredibly engaging.</p>
+<div class="testimonial-author">
+<div class="author-img">SM</div>
+<div class="author-info"><strong>Sarah Mwangi</strong><span>HR Manager, Tech Corp</span></div>
+</div>
+</div> -->
+<div class="testimonial-card reveal">
+<div class="quote-icon">"</div>
+<p class="testimonial-text">Best MC in Kenya hands down! His ability to read the crowd and adjust his performance accordingly is exceptional. Our harambee raised 3x our initial target!</p>
+<div class="testimonial-author">
+<div class="author-img">PO</div>
+<div class="author-info"><strong>Peter Omondi</strong><span>Community Leader</span></div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -1041,7 +1483,9 @@ footer {
 <section class="promo" id="promotions">
 <div class="container">
 <h2>Brand & Business Promotions</h2>
-<div class="promo-content"><p>Partner with KEKE EVENTS to amplify your brand message through live events, comedy content, and authentic audience engagement. I help businesses connect with Kenyan consumers in memorable ways.</p></div>
+<div class="promo-content">
+<p>Partner with KEKE EVENTS to amplify your brand message through live events, comedy content, and authentic audience engagement. I help businesses connect with Kenyan consumers in memorable ways.</p>
+</div>
 <div class="promo-features">
 <div class="promo-feature reveal"><h4>Product Launches</h4><p>Create buzz and excitement around your new products with entertaining launch events</p></div>
 <div class="promo-feature reveal"><h4>Brand Activation</h4><p>Engage directly with your target audience through interactive brand experiences</p></div>
@@ -1059,7 +1503,22 @@ footer {
 <div class="form-group"><label>Your Name *</label><input name="name" placeholder="Enter your full name" required></div>
 <div class="form-group"><label>Phone Number *</label><input name="phone" type="tel" placeholder="e.g., 0712345678" required></div>
 <div class="form-group"><label>Email Address</label><input name="email" type="email" placeholder="your@email.com"></div>
-<div class="form-group"><label>Event Type *</label><select name="event" required><option value="">Select your event type</option><option>Wedding</option><option>Burial / Memorial Service</option><option>Birthday Party</option><option>Harambee</option><option>Corporate Event</option><option>Team Building</option><option>Product Launch</option><option>Graduation Party</option><option>Dowry Ceremony</option><option>Political Event</option><option>Other</option></select></div>
+<div class="form-group"><label>Event Type *</label>
+<select name="event" required>
+<option value="">Select your event type</option>
+<option>Wedding</option>
+<option>Burial / Memorial Service</option>
+<option>Birthday Party</option>
+<option>Harambee</option>
+<option>Corporate Event</option>
+<option>Team Building</option>
+<option>Product Launch</option>
+<option>Graduation Party</option>
+<option>Dowry Ceremony</option>
+<option>Political Event</option>
+<option>Other</option>
+</select>
+</div>
 <div class="form-group"><label>Event Date</label><input name="date" type="date"></div>
 <div class="form-group"><label>Event Location</label><input name="location" placeholder="City or venue name"></div>
 <div class="form-group"><label>Expected Number of Guests</label><input name="guests" type="number" placeholder="Approximate attendance"></div>
@@ -1102,27 +1561,37 @@ footer {
 <p>Nairobi • Kiambu • Machakos • Kajiado • Nakuru • Kisumu • Mombasa • Eldoret • All Kenya Counties</p>
 </div>
 </div>
-<div class="footer-bottom"><p>© 2025 MC KEKE EVENTS | Beyond Entertainment | All Rights Reserved</p></div>
+<div class="footer-bottom">
+<p>© 2025 MC KEKE EVENTS | Beyond Entertainment | All Rights Reserved</p>
+</div>
 </footer>
 
 <script>
+// Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 
+// Hero slideshow - NO dynamic height on mobile
 const slides = document.querySelectorAll('.slide');
 const hero = document.querySelector('.hero');
 let currentSlide = 0;
 
 function updateHeroHeight() {
+    // Only update height on desktop (>768px)
     if (window.innerWidth > 768) {
         const img = slides[currentSlide].querySelector('img');
-        if (img.complete) hero.style.height = img.offsetHeight + 'px';
-        else img.onload = () => hero.style.height = img.offsetHeight + 'px';
+        if (img.complete) {
+            hero.style.height = img.offsetHeight + 'px';
+        } else {
+            img.onload = () => hero.style.height = img.offsetHeight + 'px';
+        }
     }
 }
 
@@ -1134,32 +1603,53 @@ function showSlide(index) {
 }
 
 updateHeroHeight();
-setInterval(() => showSlide(currentSlide + 1), 5000);
+
+setInterval(() => {
+    showSlide(currentSlide + 1);
+}, 5000);
+
 window.addEventListener('resize', updateHeroHeight);
 
+// Intersection Observer for reveal animations
 const revealElements = document.querySelectorAll('.reveal, .category');
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            if (entry.target.classList.contains('category')) entry.target.classList.add('visible');
+            if (entry.target.classList.contains('category')) {
+                entry.target.classList.add('visible');
+            }
         }
     });
 }, observerOptions);
+
 revealElements.forEach(element => observer.observe(element));
 
+// Header scroll effect
 let lastScroll = 0;
 const header = document.getElementById('header');
+
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+    
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
     lastScroll = currentScroll;
 });
 
+// WhatsApp form submission
 document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
     const formData = new FormData(e.target);
     const name = formData.get('name');
     const phone = formData.get('phone');
@@ -1189,13 +1679,16 @@ ${message}`;
     window.open(whatsappURL, '_blank');
 });
 
+// Mobile menu toggle
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     const menuToggle = document.querySelector('.menu-toggle');
+    
     navLinks.classList.toggle('active');
     menuToggle.classList.toggle('active');
 }
 
+// Close mobile menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         document.querySelector('.nav-links').classList.remove('active');
@@ -1203,14 +1696,19 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+// Event card click to scroll to gallery
 document.querySelectorAll('.event-card').forEach(card => {
     card.addEventListener('click', function() {
         const galleryId = this.getAttribute('data-gallery');
         const gallerySection = document.getElementById(galleryId);
-        if (gallerySection) gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        if (gallerySection) {
+            gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 
+// Performance optimization: Lazy load images
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1224,13 +1722,18 @@ if ('IntersectionObserver' in window) {
             }
         });
     });
-    document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
 }
 
+// Accessibility improvements
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const navLinks = document.querySelector('.nav-links');
         const menuToggle = document.querySelector('.menu-toggle');
+        
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             menuToggle.classList.remove('active');
@@ -1238,5 +1741,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 </script>
+
 </body>
 </html>
