@@ -33,7 +33,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ANIMATIONS */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -45,20 +44,11 @@ body {
     }
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.fade-in {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* LIGHTBOX STYLES */
 .lightbox {
     display: none;
     position: fixed;
@@ -75,11 +65,6 @@ body {
 
 .lightbox.active {
     display: flex;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 .lightbox-content {
@@ -101,30 +86,32 @@ body {
 
 .lightbox-close {
     position: absolute;
-    top: -50px;
-    right: 0;
+    top: 20px;
+    right: 40px;
     color: white;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
     background: var(--orange);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
-    z-index: 10000;
+    z-index: 10001;
+    line-height: 1;
+    padding-bottom: 5px;
 }
 
 .lightbox-close:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(90deg);
 }
 
 .lightbox-caption {
     position: absolute;
-    bottom: -50px;
+    bottom: 20px;
     left: 0;
     right: 0;
     color: white;
@@ -166,7 +153,6 @@ body {
     right: 20px;
 }
 
-/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -250,7 +236,6 @@ header.scrolled {
     box-shadow: 0 6px 18px rgba(247, 147, 30, 0.4);
 }
 
-/* MOBILE MENU */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -279,7 +264,6 @@ header.scrolled {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* HERO SECTION */
 .hero {
     margin-top: 70px;
     width: 100%;
@@ -308,7 +292,7 @@ header.scrolled {
     position: absolute;
     inset: 0;
     display: flex;
-    transform: translateY(-20%);
+    transform: translateY(0);
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -322,6 +306,7 @@ header.scrolled {
 .hero-content h1 {
     font-size: clamp(2.2rem, 6vw, 4rem);
     font-weight: 900;
+    margin-top: -1rem;
     margin-bottom: clamp(1rem, 3vw, 1.5rem);
     text-shadow: 
         2px 2px 4px rgba(0, 0, 0, 0.9),
@@ -392,7 +377,6 @@ header.scrolled {
     border: 2px solid var(--orange);
 }
 
-/* STATS SECTION */
 .stats {
     background: linear-gradient(135deg, var(--blue), #1a2d6f);
     color: var(--white);
@@ -433,7 +417,6 @@ header.scrolled {
     opacity: 0.9;
 }
 
-/* SECTIONS */
 section {
     padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 4vw, 2rem);
 }
@@ -475,7 +458,6 @@ h2::after {
     line-height: 1.8;
 }
 
-/* SERVICE SECTIONS */
 .service-section {
     margin-bottom: clamp(4rem, 8vw, 6rem);
     opacity: 0;
@@ -527,49 +509,9 @@ h2::after {
     margin-right: auto;
 }
 
-.service-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 3rem;
-}
-
-.feature-item {
-    background: var(--white);
-    padding: clamp(1.5rem, 3vw, 2rem);
-    border-radius: 20px;
-    box-shadow: 0 5px 20px rgba(35, 59, 139, 0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--orange);
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(35, 59, 139, 0.15);
-}
-
-.feature-icon {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.feature-item h4 {
-    color: var(--blue);
-    margin-bottom: 0.8rem;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-}
-
-.feature-item p {
-    color: #666;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
-    line-height: 1.7;
-}
-
-/* MEDIA GRID - FIXED TO SHOW FULL IMAGES */
 .media-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(1.5rem, 3vw, 2rem);
 }
 
@@ -580,12 +522,9 @@ h2::after {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 350px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+    background: #f5f5f5;
+    display: block;
+    padding: 0;
 }
 
 .media-item:hover {
@@ -594,18 +533,18 @@ h2::after {
 }
 
 .media-item img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.3s ease;
+    aspect-ratio: 5/4;
+    min-height: 450px;
 }
 
 .media-item:hover img {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .media-overlay {
@@ -647,7 +586,6 @@ h2::after {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* ALTERNATING BACKGROUNDS */
 .service-section:nth-child(even) {
     background: var(--light);
     padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
@@ -655,7 +593,6 @@ h2::after {
     margin-right: calc(-1 * clamp(1rem, 4vw, 2rem));
 }
 
-/* VIDEO SECTIONS (Event Capabilities) */
 .category {
     margin-bottom: clamp(4rem, 8vw, 6rem);
     opacity: 0;
@@ -712,12 +649,9 @@ h2::after {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 300px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+    background: #f5f5f5;
+    display: block;
+    padding: 0;
 }
 
 .video-item:hover {
@@ -726,18 +660,18 @@ h2::after {
 }
 
 .video-item img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     display: block;
     transition: transform 0.3s ease;
+    aspect-ratio: 5/4;
+    min-height: 450px;
 }
 
 .video-item:hover img {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .video-overlay {
@@ -772,7 +706,6 @@ h2::after {
     gap: 1rem;
 }
 
-/* EVENTS SECTION */
 .events {
     background: linear-gradient(135deg, #f7f7f7, var(--white));
 }
@@ -830,7 +763,6 @@ h2::after {
     font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
-/* GALLERY - FIXED TO SHOW FULL IMAGES */
 .gallery {
     background: var(--white);
 }
@@ -849,12 +781,9 @@ h2::after {
     box-shadow: 0 10px 30px rgba(35, 59, 139, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
-    height: 350px;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+    background: #f5f5f5;
+    display: block;
+    padding: 0;
 }
 
 .gallery-item:hover {
@@ -863,17 +792,18 @@ h2::after {
 }
 
 .gallery-item img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
+    display: block;
     transition: transform 0.5s ease;
+    aspect-ratio: 5/4;
+    min-height: 450px;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .gallery-overlay {
@@ -918,7 +848,6 @@ h2::after {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* TESTIMONIALS */
 .testimonials {
     background: linear-gradient(135deg, var(--blue), #1a2d6f);
     color: var(--white);
@@ -995,7 +924,6 @@ h2::after {
     font-size: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
-/* CONTACT FORM */
 .contact {
     background: var(--light);
 }
@@ -1072,7 +1000,6 @@ button:hover {
     box-shadow: 0 15px 40px rgba(247, 147, 30, 0.4);
 }
 
-/* FOOTER */
 footer {
     background: var(--blue);
     color: var(--white);
@@ -1144,7 +1071,6 @@ footer {
     font-size: clamp(0.85rem, 1.6vw, 0.95rem);
 }
 
-/* REVEAL ANIMATION */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -1156,7 +1082,6 @@ footer {
     transform: translateY(0);
 }
 
-/* MOBILE OPTIMIZATIONS */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -1214,6 +1139,10 @@ footer {
         object-position: center center;
     }
     
+    .hero-content {
+        transform: translateY(0);
+    }
+    
     .hero-cta {
         flex-direction: column;
         width: 100%;
@@ -1246,10 +1175,11 @@ footer {
     }
 
     .lightbox-close {
-        top: -40px;
-        width: 40px;
-        height: 40px;
-        font-size: 30px;
+        top: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 35px;
     }
 }
 
@@ -1264,7 +1194,6 @@ footer {
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
     <span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
@@ -1316,15 +1245,11 @@ footer {
 </div>
 </section>
 
-
-
-<!-- OUR SERVICES SECTION -->
 <section id="services">
 <div class="container">
 <h2>Our Complete Services</h2>
 <p class="subtitle">Professional event solutions for all your needs</p>
 
-<!-- SERVICE 1: MC SERVICES -->
 <div class="service-section">
 <div class="service-header">
 <div class="service-number">1</div>
@@ -1357,12 +1282,8 @@ footer {
 <p class="service-description">
 Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (harambees), crowd control through dancing, and live instrument performances. Kenya's most sought-after MC bringing energy and professionalism to every occasion.
 </p>
-
-<div class="service-features">
-</div>
 </div>
 
-<!-- SERVICE 2: VIDEOGRAPHY & PHOTOGRAPHY -->
 <div class="service-section">
 <div class="service-header">
 <div class="service-number">2</div>
@@ -1391,12 +1312,8 @@ Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (h
 <p class="service-description">
 Capture every precious moment with professional photography and videography. From candid shots to cinematic videos, we document your special day with creativity and precision.
 </p>
-
-<div class="service-features">
-</div>
 </div>
 
-<!-- SERVICE 3: P/A SYSTEM -->
 <div class="service-section">
 <div class="service-header">
 <div class="service-number">3</div>
@@ -1405,7 +1322,7 @@ Capture every precious moment with professional photography and videography. Fro
 
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa2.jpeg" alt="PA System" loading="lazy" data-caption="Events">
+<img src="pa1.jpeg" alt="PA System" loading="lazy" data-caption="Events">
 <div class="media-overlay"><p>Corporate Events</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
@@ -1425,12 +1342,8 @@ Capture every precious moment with professional photography and videography. Fro
 <p class="service-description">
 Crystal clear sound for events of any size. Professional PA systems ensure every guest hears every word, song, and announcement perfectly.
 </p>
-
-<div class="service-features">
-</div>
 </div>
 
-<!-- SERVICE 4: TENTS -->
 <div class="service-section">
 <div class="service-header">
 <div class="service-number">4</div>
@@ -1459,12 +1372,8 @@ Crystal clear sound for events of any size. Professional PA systems ensure every
 <p class="service-description">
 Premium quality tents for all weather conditions. From elegant wedding canopies to spacious event tents, we provide shelter and ambiance for your guests.
 </p>
-
-<div class="service-features">
-</div>
 </div>
 
-<!-- SERVICE 5: CATERING -->
 <div class="service-section">
 <div class="service-header">
 <div class="service-number">5</div>
@@ -1493,15 +1402,11 @@ Premium quality tents for all weather conditions. From elegant wedding canopies 
 <p class="service-description">
 Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.
 </p>
-
-<div class="service-features">
-</div>
 </div>
 
 </div>
 </section>
 
-<!-- EVENT CAPABILITIES / PORTFOLIO SECTION -->
 <section id="portfolio" style="background: var(--light);">
 <div class="container">
 <h2>Event Capabilities</h2>
@@ -1730,6 +1635,7 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 
 </div>
 </section>
+
 <section class="stats">
 <div class="stats-grid">
 <div class="stat-item reveal"><span class="stat-number">500+</span><span class="stat-label">Events Hosted</span></div>
@@ -1738,6 +1644,7 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <div class="stat-item reveal"><span class="stat-number">5</span><span class="stat-label">Complete Services</span></div>
 </div>
 </section>
+
 <section class="testimonials" id="testimonials">
 <div class="container">
 <h2>Client Testimonials</h2>
@@ -1850,7 +1757,6 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </footer>
 
 <script>
-// Lightbox functionality
 let currentImageIndex = 0;
 let galleryImages = [];
 
@@ -1860,7 +1766,6 @@ function openLightbox(element) {
     const lightboxCaption = document.getElementById('lightbox-caption');
     const img = element.querySelector('img');
     
-    // Get all images in the same gallery section
     const gallerySection = element.closest('.category, .service-section');
     galleryImages = Array.from(gallerySection.querySelectorAll('.gallery-item img, .media-item img'));
     currentImageIndex = galleryImages.indexOf(img);
@@ -1894,7 +1799,6 @@ function changeLightboxImage(direction) {
     lightboxCaption.textContent = newImg.getAttribute('data-caption') || newImg.alt;
 }
 
-// Close lightbox on escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeLightbox();
@@ -1905,14 +1809,12 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Close lightbox when clicking outside the image
 document.getElementById('lightbox').addEventListener('click', function(e) {
     if (e.target === this) {
         closeLightbox();
     }
 });
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1923,7 +1825,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Hero slideshow
 const slides = document.querySelectorAll('.slide');
 const hero = document.querySelector('.hero');
 let currentSlide = 0;
@@ -1950,7 +1851,6 @@ updateHeroHeight();
 setInterval(() => showSlide(currentSlide + 1), 5000);
 window.addEventListener('resize', updateHeroHeight);
 
-// Intersection Observer
 const revealElements = document.querySelectorAll('.reveal, .service-section, .category');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1965,7 +1865,6 @@ const observer = new IntersectionObserver((entries) => {
 
 revealElements.forEach(element => observer.observe(element));
 
-// Header scroll
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 50) {
@@ -1975,7 +1874,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// WhatsApp form
 document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -1998,7 +1896,6 @@ ${formData.get('message') || 'None'}`;
     window.open(`https://wa.me/254738720478?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
 });
 
-// Mobile menu
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('active');
     document.querySelector('.menu-toggle').classList.toggle('active');
@@ -2011,7 +1908,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Event card clicks
 document.querySelectorAll('.event-card').forEach(card => {
     card.addEventListener('click', function() {
         const galleryId = this.getAttribute('data-gallery');
