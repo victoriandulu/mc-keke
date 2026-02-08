@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KEKE Events | Beyond Entertainment</title>
 <meta name="description" content="KEKE Events – Complete Event Solutions: MC Services, Photography & Videography, P/A Systems, Tents, Catering">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -29,26 +29,9 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* Lightbox - Simplified */
 .lightbox {
     display: none;
     position: fixed;
@@ -57,68 +40,43 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    align-items: center;
-    justify-content: center;
-    animation: fadeIn 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .lightbox.active {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lightbox-content {
     position: relative;
     max-width: 90%;
     max-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .lightbox-content img {
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
 }
 
 .lightbox-close {
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 15px;
+    right: 30px;
     color: white;
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 40px;
     cursor: pointer;
     background: var(--orange);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
     z-index: 10001;
-    line-height: 1;
-    padding-bottom: 5px;
-}
-
-.lightbox-close:hover {
-    transform: scale(1.1) rotate(90deg);
-}
-
-.lightbox-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    color: white;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
 }
 
 .lightbox-nav {
@@ -126,23 +84,15 @@ body {
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 30px;
     cursor: pointer;
-    background: rgba(247, 147, 30, 0.8);
-    width: 50px;
-    height: 50px;
+    background: var(--orange);
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    user-select: none;
-}
-
-.lightbox-nav:hover {
-    background: var(--orange);
-    transform: translateY(-50%) scale(1.1);
 }
 
 .lightbox-prev {
@@ -153,19 +103,15 @@ body {
     right: 20px;
 }
 
+/* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     background: var(--white);
-    box-shadow: 0 3px 15px rgba(35, 59, 139, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-header.scrolled {
-    box-shadow: 0 3px 20px rgba(35, 59, 139, 0.2);
 }
 
 .nav {
@@ -174,66 +120,40 @@ header.scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.6rem clamp(1rem, 4vw, 2rem);
+    padding: 0.8rem 2rem;
 }
 
 .logo img {
-    height: clamp(35px, 6vw, 45px);
+    height: 40px;
     width: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-    transform: scale(1.05);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 3vw, 2rem);
+    gap: 2rem;
 }
 
 .nav a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    position: relative;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+    font-size: 0.95rem;
 }
 
-.nav a:not(.btn):hover {
+.nav a:hover {
     color: var(--orange);
 }
 
-.nav a:not(.btn)::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--orange);
-    transition: width 0.3s ease;
-}
-
-.nav a:not(.btn):hover::after {
-    width: 100%;
-}
-
 .nav .btn {
-    background: linear-gradient(135deg, var(--orange), #ffb347);
+    background: var(--orange);
     color: var(--white);
-    padding: clamp(0.6rem, 1.5vw, 0.7rem) clamp(1.2rem, 2.5vw, 1.6rem);
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(247, 147, 30, 0.3);
-    transition: all 0.3s ease;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
 }
 
 .nav .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(247, 147, 30, 0.4);
+    background: #e08318;
 }
 
 .menu-toggle {
@@ -248,8 +168,8 @@ header.scrolled {
     width: 25px;
     height: 3px;
     background: var(--blue);
-    transition: all 0.3s ease;
     border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 .menu-toggle.active span:nth-child(1) {
@@ -264,10 +184,12 @@ header.scrolled {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
+/* Hero Section - Simplified */
 .hero {
-    margin-top: 70px;
+    margin-top: 60px;
     width: 100%;
     position: relative;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -275,7 +197,7 @@ header.scrolled {
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 0.8s ease;
 }
 
 .slide.active {
@@ -284,103 +206,64 @@ header.scrolled {
 
 .slide img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-content {
     position: absolute;
     inset: 0;
     display: flex;
-    transform: translateY(0);
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: clamp(1rem, 4vw, 2rem);
+    padding: 2rem;
     color: var(--white);
-    pointer-events: none;
-    z-index: 10;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 70%);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .hero-content h1 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    font-weight: 900;
-    margin-top: -1rem;
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
-    text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.9),
-        4px 4px 8px rgba(0, 0, 0, 0.8),
-        6px 6px 12px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(0, 0, 0, 0.95),
-        0 0 60px rgba(0, 0, 0, 0.9);
-    animation: fadeInUp 1s ease-out;
-    line-height: 1.2;
-    letter-spacing: 2px;
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .hero-content p {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    margin-bottom: clamp(1.5rem, 3vw, 2rem);
-    text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.95),
-        4px 4px 8px rgba(0, 0, 0, 0.9),
-        6px 6px 12px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(0, 0, 0, 1),
-        0 0 50px rgba(0, 0, 0, 0.95);
-    animation: fadeInUp 1s ease-out 0.3s backwards;
-    max-width: 800px;
-    font-weight: 600;
-    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.2);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hero-cta {
     display: flex;
-    gap: clamp(0.75rem, 2vw, 1rem);
-    animation: fadeInUp 1s ease-out 0.6s backwards;
-    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: center;
-    pointer-events: auto;
+    flex-wrap: wrap;
 }
 
 .hero-cta a {
-    padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
-    border-radius: 50px;
+    padding: 1rem 2rem;
+    border-radius: 30px;
     text-decoration: none;
-    font-weight: 700;
-    transition: all 0.3s ease;
-    font-size: clamp(0.875rem, 1.8vw, 1rem);
-    white-space: nowrap;
+    font-weight: 600;
 }
 
 .cta-primary {
     background: var(--orange);
     color: var(--white);
-    box-shadow: 0 10px 30px rgba(247, 147, 30, 0.4);
-}
-
-.cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(247, 147, 30, 0.5);
 }
 
 .cta-secondary {
     background: var(--white);
     color: var(--blue);
-    border: 2px solid var(--white);
 }
 
-.cta-secondary:hover {
-    background: var(--orange);
-    color: var(--white);
-    border: 2px solid var(--orange);
-}
-
+/* Stats */
 .stats {
-    background: linear-gradient(135deg, var(--blue), #1a2d6f);
+    background: var(--blue);
     color: var(--white);
-    padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+    padding: 3rem 2rem;
 }
 
 .stats-grid {
@@ -388,37 +271,32 @@ header.scrolled {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: 2rem;
     text-align: center;
 }
 
 .stat-item {
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: 1.5rem;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
+    border-radius: 15px;
 }
 
-.stat-item:hover {
-    transform: translateY(-10px);
-}
-
-.stat-number {
-    font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 800;
-    color: var(--orange);
+.stat-label {
+    font-size: 1rem;
     display: block;
     margin-bottom: 0.5rem;
 }
 
-.stat-label {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    opacity: 0.9;
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    display: block;
 }
 
+/* Sections */
 section {
-    padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 4vw, 2rem);
+    padding: 4rem 2rem;
 }
 
 .container {
@@ -428,135 +306,78 @@ section {
 
 h2 {
     text-align: center;
-    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
     color: var(--blue);
     margin-bottom: 1rem;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(60px, 10vw, 80px);
-    height: 4px;
-    background: linear-gradient(90deg, var(--orange), var(--blue));
-    border-radius: 2px;
 }
 
 .subtitle {
     text-align: center;
     color: var(--text-light);
-    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
     max-width: 700px;
-    line-height: 1.8;
 }
 
+/* Service Section */
 .service-section {
-    margin-bottom: clamp(4rem, 8vw, 6rem);
-    opacity: 0;
-}
-
-.service-section.visible {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.service-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.service-number {
-    background: linear-gradient(135deg, var(--orange), #ffb347);
-    color: var(--white);
-    width: clamp(50px, 10vw, 70px);
-    height: clamp(50px, 10vw, 70px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 900;
-    box-shadow: 0 5px 20px rgba(247, 147, 30, 0.3);
+    margin-bottom: 4rem;
 }
 
 .service-section h3 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
     color: var(--blue);
     text-align: center;
-    flex: 1;
-    min-width: 250px;
+    margin-bottom: 2rem;
 }
 
 .service-description {
     text-align: center;
     color: #555;
-    margin-bottom: 2.5rem;
-    font-size: clamp(1rem, 2vw, 1.15rem);
-    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Media Grid - Simplified */
 .media-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .media-item {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     background: #f5f5f5;
-    display: block;
-    padding: 0;
 }
 
 .media-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .media-item img {
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.3s ease;
-    aspect-ratio: 5/4;
-    min-height: 450px;
-}
-
-.media-item:hover img {
-    transform: scale(1.05);
 }
 
 .media-overlay {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(35, 59, 139, 0.8), transparent);
-    display: flex;
-    align-items: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     padding: 1.5rem;
     color: var(--white);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
 }
 
 .media-item:hover .media-overlay {
@@ -568,122 +389,87 @@ h2::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(50px, 10vw, 60px);
-    height: clamp(50px, 10vw, 60px);
+    width: 55px;
+    height: 55px;
     background: var(--orange);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-size: 1.3rem;
     color: var(--white);
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s;
 }
 
 .media-item:hover .play-icon {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
 }
 
-.service-section:nth-child(even) {
-    background: var(--light);
-    padding: clamp(4rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
-    margin-left: calc(-1 * clamp(1rem, 4vw, 2rem));
-    margin-right: calc(-1 * clamp(1rem, 4vw, 2rem));
-}
-
+/* Category Section */
 .category {
-    margin-bottom: clamp(4rem, 8vw, 6rem);
-    opacity: 0;
-}
-
-.category.visible {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    margin-bottom: 4rem;
 }
 
 .category h3 {
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-size: clamp(1.4rem, 3vw, 2rem);
     color: var(--blue);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
 
 .category-badge {
-    background: linear-gradient(135deg, var(--orange), #ffb347);
+    display: inline-block;
+    background: var(--orange);
     color: var(--white);
-    padding: 0.5rem 1.2rem;
-    border-radius: 20px;
-    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-    font-weight: 700;
-    white-space: nowrap;
+    padding: 0.4rem 1rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 1rem;
 }
 
 .category p {
     color: #555;
-    margin: 0.5rem 0 2rem;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
 }
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .video-item {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     background: #f5f5f5;
-    display: block;
-    padding: 0;
 }
 
 .video-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .video-item img {
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.3s ease;
-    aspect-ratio: 5/4;
-    min-height: 450px;
-}
-
-.video-item:hover img {
-    transform: scale(1.05);
 }
 
 .video-overlay {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(35, 59, 139, 0.8), transparent);
-    display: flex;
-    align-items: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     padding: 1.5rem;
     color: var(--white);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
 }
 
 .video-item:hover .video-overlay {
@@ -691,130 +477,88 @@ h2::after {
 }
 
 .view-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
+    display: inline-block;
+    margin-top: 1.5rem;
     color: var(--orange);
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    transition: gap 0.3s ease;
 }
 
-.view-more:hover {
-    gap: 1rem;
-}
-
+/* Events */
 .events {
-    background: linear-gradient(135deg, #f7f7f7, var(--white));
+    background: var(--light);
 }
 
 .events-grid {
     max-width: 1200px;
-    margin: 3rem auto 0;
+    margin: 2rem auto 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
 }
 
 .event-card {
     background: var(--white);
-    padding: clamp(1.5rem, 3vw, 2rem);
+    padding: 2rem;
     text-align: center;
-    border-radius: 20px;
-    font-weight: 600;
-    box-shadow: 0 5px 20px rgba(35, 59, 139, 0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
     cursor: pointer;
-}
-
-.event-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(247, 147, 30, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.event-card:hover::before {
-    left: 100%;
+    border: 2px solid transparent;
 }
 
 .event-card:hover {
     border-color: var(--orange);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(35, 59, 139, 0.15);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
 .event-icon {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
     display: block;
 }
 
-.event-card div {
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
-}
-
+/* Gallery */
 .gallery {
     background: var(--white);
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(35, 59, 139, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     background: #f5f5f5;
-    display: block;
-    padding: 0;
 }
 
 .gallery-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(35, 59, 139, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
+    height: 350px;
     object-fit: cover;
-    object-position: center;
     display: block;
-    transition: transform 0.5s ease;
-    aspect-ratio: 5/4;
-    min-height: 450px;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
 }
 
 .gallery-overlay {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(35, 59, 139, 0.9), transparent);
-    display: flex;
-    align-items: flex-end;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     padding: 1.5rem;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s;
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -824,32 +568,33 @@ h2::after {
 .gallery-caption {
     color: var(--white);
     font-weight: 600;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 
 .gallery-zoom {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: clamp(50px, 10vw, 60px);
-    height: clamp(50px, 10vw, 60px);
+    transform: translate(-50%, -50%);
+    width: 55px;
+    height: 55px;
     background: var(--orange);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-    transition: transform 0.3s ease;
+    font-size: 1.3rem;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .gallery-item:hover .gallery-zoom {
-    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
+/* Testimonials */
 .testimonials {
-    background: linear-gradient(135deg, var(--blue), #1a2d6f);
+    background: var(--blue);
     color: var(--white);
 }
 
@@ -857,39 +602,27 @@ h2::after {
     color: var(--white);
 }
 
-.testimonials h2::after {
-    background: var(--orange);
-}
-
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .testimonial-card {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: clamp(1.8rem, 4vw, 2.5rem);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-10px);
+    padding: 2rem;
+    border-radius: 15px;
 }
 
 .quote-icon {
-    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-size: 2.5rem;
     color: var(--orange);
     margin-bottom: 1rem;
 }
 
 .testimonial-text {
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    line-height: 1.8;
+    font-size: 1.05rem;
     margin-bottom: 1.5rem;
     font-style: italic;
 }
@@ -901,29 +634,27 @@ h2::after {
 }
 
 .author-img {
-    width: clamp(45px, 8vw, 50px);
-    height: clamp(45px, 8vw, 50px);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--orange);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-    flex-shrink: 0;
 }
 
 .author-info strong {
     display: block;
     margin-bottom: 0.2rem;
-    font-size: clamp(0.95rem, 1.8vw, 1rem);
 }
 
 .author-info span {
     opacity: 0.8;
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    font-size: 0.9rem;
 }
 
+/* Contact Form */
 .contact {
     background: var(--light);
 }
@@ -932,21 +663,9 @@ form {
     max-width: 700px;
     margin: 0 auto;
     background: var(--white);
-    padding: clamp(2rem, 5vw, 3.5rem);
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(35, 59, 139, 0.12);
-    position: relative;
-}
-
-form::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--blue), var(--orange));
-    border-radius: 30px 30px 0 0;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
@@ -958,17 +677,15 @@ label {
     margin-bottom: 0.5rem;
     color: var(--blue);
     font-weight: 600;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
 }
 
 input, select, textarea {
     width: 100%;
-    padding: clamp(1rem, 2vw, 1.2rem);
-    border-radius: 15px;
+    padding: 1rem;
+    border-radius: 10px;
     border: 2px solid #e0e0e0;
     font-family: inherit;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
-    transition: border-color 0.3s ease;
+    font-size: 1rem;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -983,53 +700,49 @@ textarea {
 
 button {
     width: 100%;
-    padding: clamp(1.1rem, 2.5vw, 1.3rem);
-    background: linear-gradient(135deg, var(--orange), #ffb347);
+    padding: 1.2rem;
+    background: var(--orange);
     border: none;
-    border-radius: 50px;
+    border-radius: 30px;
     color: var(--white);
-    font-size: clamp(1rem, 2.2vw, 1.2rem);
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 30px rgba(247, 147, 30, 0.3);
-    transition: all 0.3s ease;
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(247, 147, 30, 0.4);
+    background: #e08318;
 }
 
+/* Footer */
 footer {
     background: var(--blue);
     color: var(--white);
-    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+    padding: 3rem 2rem;
 }
 
 .footer-content {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
-    gap: clamp(2rem, 4vw, 3rem);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .footer-section h3 {
     color: var(--orange);
-    margin-bottom: 1.5rem;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 1rem;
 }
 
 .footer-section p {
     line-height: 1.8;
     opacity: 0.9;
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    margin-bottom: 0.5rem;
 }
 
 .footer-section a {
     color: var(--white);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
@@ -1040,12 +753,11 @@ footer {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
-    flex-wrap: wrap;
 }
 
 .social-links a {
-    width: clamp(40px, 8vw, 45px);
-    height: clamp(40px, 8vw, 45px);
+    width: 45px;
+    height: 45px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     display: flex;
@@ -1053,35 +765,22 @@ footer {
     justify-content: center;
     color: var(--white);
     text-decoration: none;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
 }
 
 .social-links a:hover {
     background: var(--orange);
-    transform: translateY(-5px);
 }
 
 .footer-bottom {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0.8;
-    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex;
@@ -1089,124 +788,84 @@ footer {
     
     .nav-links {
         position: fixed;
-        top: clamp(55px, 10vw, 65px);
+        top: 60px;
         left: 0;
         right: 0;
         background: var(--white);
         flex-direction: column;
         padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transform: translateY(-120%);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
         transition: transform 0.3s ease;
-        gap: 0;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
     }
     
     .nav-links.active {
         transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
     
     .nav-links a {
-        margin: 1rem 0;
+        margin: 0.8rem 0;
         width: 100%;
         text-align: center;
+        padding: 0.8rem;
     }
-    
+
     .nav .btn {
         width: 100%;
     }
 
     .hero {
-        height: 65vh;
-        min-height: 480px;
-        max-height: 650px;
-        overflow: hidden;
-    }
-
-    .slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--blue);
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-    }
-    
-    .hero-content {
-        transform: translateY(0);
+        height: 100vh;
     }
     
     .hero-cta {
         flex-direction: column;
         width: 100%;
         max-width: 300px;
-        margin: 0 auto;
     }
     
     .hero-cta a {
         width: 100%;
-        text-align: center;
-    }
-    
-    .service-section:nth-child(even) {
-        margin-left: -1rem;
-        margin-right: -1rem;
     }
 
-    .lightbox-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 30px;
+    .media-grid,
+    .video-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 
-    .lightbox-prev {
-        left: 10px;
-    }
-
-    .lightbox-next {
-        right: 10px;
-    }
-
-    .lightbox-close {
-        top: 10px;
-        right: 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 35px;
+    form {
+        padding: 2rem 1.5rem;
     }
 }
 
-@media (max-width: 480px) {
-    .hero {
-        height: 55vh;
-        min-height: 420px;
-        max-height: 550px;
-    }
+/* Image Loading Optimization */
+img {
+    loading: lazy;
 }
 </style>
 </head>
 <body>
 
+<!-- Lightbox -->
 <div id="lightbox" class="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
     <span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
     <span class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</span>
     <div class="lightbox-content">
         <img id="lightbox-img" src="" alt="Full view">
-        <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 </div>
 
-<header id="header">
+<!-- Header -->
+<header>
 <div class="nav">
-<div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo" loading="lazy"></div>
+<div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo"></div>
 <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 <div class="nav-links">
 <a href="#services">Our Services</a>
@@ -1219,18 +878,19 @@ footer {
 </div>
 </header>
 
-<section class="hero" id="hero">
+<!-- Hero Section -->
+<section class="hero">
 <div class="slide active">
-<img src="slide-1.jpg" alt="KEKE Events" loading="lazy">
+<img src="slide-1.jpg" alt="KEKE Events">
 </div>
 <div class="slide">
-<img src="slide-2.jpg" alt="KEKE Events Performance" loading="lazy">
+<img src="slide-2.jpg" alt="KEKE Events Performance">
 </div>
 <div class="slide">
-<img src="test.jpg" alt="KEKE Events Show" loading="lazy">
+<img src="test.jpg" alt="KEKE Events Show">
 </div>
 <div class="slide">
-<img src="event.jpg" alt="KEKE Events Entertainment" loading="lazy">
+<img src="event.jpg" alt="KEKE Events Entertainment">
 </div>
 
 <div class="hero-content">
@@ -1245,160 +905,134 @@ footer {
 </div>
 </section>
 
+<!-- Services Section -->
 <section id="services">
 <div class="container">
-<h2>Our Complete Services</h2>
-<p class="subtitle">Professional event solutions for all your needs</p>
 
 <div class="service-section">
-<div class="service-header">
-<div class="service-number">1</div>
-<h3>🎤 KEKE EVENTS- Professional MC Services</h3>
-</div>
-
+<h3>🎤 Professional MC Services</h3>
 <div class="media-grid">
 <a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="comedy1.jpg" alt="MC KEKE Comedy" loading="lazy">
+<img src="mc-1.jpg" alt="MC KEKE Comedy">
 <div class="media-overlay"><p>Comedy Performance</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="money1.jpg" alt="MC KEKE Fundraising" loading="lazy">
+<img src="mc-2.JPG" alt="MC KEKE Fundraising">
 <div class="media-overlay"><p>Fundraising Excellence</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="dance1.jpg" alt="MC KEKE Dancing" loading="lazy">
+<img src="mc-3.jpg" alt="MC KEKE Dancing">
 <div class="media-overlay"><p>Crowd Control</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="instrument1.jpg" alt="MC KEKE Music" loading="lazy">
+<img src="mc-4.jpg" alt="MC KEKE Music">
 <div class="media-overlay"><p>Live Music</p></div>
 <div class="play-icon">▶</div>
 </a>
 </div>
-
 <p class="service-description">
 Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (harambees), crowd control through dancing, and live instrument performances. Kenya's most sought-after MC bringing energy and professionalism to every occasion.
 </p>
 </div>
 
 <div class="service-section">
-<div class="service-header">
-<div class="service-number">2</div>
 <h3>📸 Videography & Photography</h3>
-</div>
-
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="1.jpg" alt="Wedding Photography" loading="lazy" data-caption="Wedding Photography">
+<img src="1.jpg" alt="Wedding Photography">
 <div class="media-overlay"><p>Wedding Photography</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="2.jpg" alt="Event Coverage" loading="lazy" data-caption="Event Videography">
+<img src="2.jpg" alt="Event Coverage">
 <div class="media-overlay"><p>Event Videography</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="3.jpg" alt="Professional Shoots" loading="lazy" data-caption="Professional Documentation">
+<img src="3.jpg" alt="Professional Shoots">
 <div class="media-overlay"><p>Professional Documentation</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="5.jpg" alt="Cultural Events" loading="lazy" data-caption="Cultural Ceremonies">
+<img src="5.jpg" alt="Cultural Events">
 <div class="media-overlay"><p>Cultural Ceremonies</p></div>
 </div>
 </div>
-
 <p class="service-description">
 Capture every precious moment with professional photography and videography. From candid shots to cinematic videos, we document your special day with creativity and precision.
 </p>
 </div>
 
 <div class="service-section">
-<div class="service-header">
-<div class="service-number">3</div>
 <h3>🔊 Professional P/A Sound Systems</h3>
-</div>
-
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa1.jpeg" alt="PA System" loading="lazy" data-caption="Events">
+<img src="pa1.jpeg" alt="PA System">
 <div class="media-overlay"><p>Corporate Events</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa2.jpeg" alt="Sound Equipment" loading="lazy" data-caption="Wedding">
+<img src="pa2.jpeg" alt="Sound Equipment">
 <div class="media-overlay"><p>Wedding Audio</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa3.jpeg" alt="Audio Setup" loading="lazy" data-caption="Political Rallies">
+<img src="pa3.jpeg" alt="Audio Setup">
 <div class="media-overlay"><p>Political Rallies</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="launch1.jpg" alt="Professional Sound" loading="lazy" data-caption="Product Launches">
+<img src="launch1.jpg" alt="Professional Sound">
 <div class="media-overlay"><p>Product Launches</p></div>
 </div>
 </div>
-
 <p class="service-description">
 Crystal clear sound for events of any size. Professional PA systems ensure every guest hears every word, song, and announcement perfectly.
 </p>
 </div>
 
 <div class="service-section">
-<div class="service-header">
-<div class="service-number">4</div>
 <h3>⛺ Tents & Canopies</h3>
-</div>
-
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="event.jpg" alt="Wedding Tent" loading="lazy" data-caption="Wedding Canopy">
+<img src="event.jpg" alt="Wedding Tent">
 <div class="media-overlay"><p>Wedding Canopy</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="birthday2.jpg" alt="Event Tent" loading="lazy" data-caption="Birthday Setup">
+<img src="tent-2.jpg" alt="Event Tent">
 <div class="media-overlay"><p>Birthday Setup</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="harambee2.jpg" alt="Large Tent" loading="lazy" data-caption="Harambee Tent">
+<img src="tent-3.jpg" alt="Large Tent">
 <div class="media-overlay"><p>Harambee Tent</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="graduation1.jpg" alt="Canopy" loading="lazy" data-caption="Graduation Event">
+<img src="tent-4.jpg" alt="Canopy">
 <div class="media-overlay"><p>Graduation Event</p></div>
 </div>
 </div>
-
 <p class="service-description">
 Premium quality tents for all weather conditions. From elegant wedding canopies to spacious event tents, we provide shelter and ambiance for your guests.
 </p>
 </div>
 
 <div class="service-section">
-<div class="service-header">
-<div class="service-number">5</div>
 <h3>🍽️ Professional Catering Services</h3>
-</div>
-
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="dowry2.jpg" alt="Catering" loading="lazy" data-caption="Traditional Feast">
+<img src="dowry2.jpg" alt="Catering">
 <div class="media-overlay"><p>Traditional Feast</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="team2.jpg" alt="Food Service" loading="lazy" data-caption="Corporate Catering">
+<img src="team2.jpg" alt="Food Service">
 <div class="media-overlay"><p>Corporate Catering</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="birthday3.jpg" alt="Buffet" loading="lazy" data-caption="Birthday Buffet">
+<img src="birthday3.jpg" alt="Buffet">
 <div class="media-overlay"><p>Birthday Buffet</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="thanksgiving1.jpg" alt="Meal Service" loading="lazy" data-caption="Thanksgiving Dinner">
+<img src="thanksgiving1.jpg" alt="Meal Service">
 <div class="media-overlay"><p>Thanksgiving Dinner</p></div>
 </div>
 </div>
-
 <p class="service-description">
 Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.
 </p>
@@ -1407,30 +1041,28 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 </section>
 
+<!-- Portfolio Section -->
 <section id="portfolio" style="background: var(--light);">
 <div class="container">
 <h2>Event Capabilities</h2>
 <p class="subtitle">Watch our diverse portfolio of entertainment services</p>
 
 <div class="category">
-<div class="category-header">
-<h3>😂 Comedy & Entertainment</h3>
-<span class="category-badge">Most Popular</span>
-</div>
+<h3>😂 Comedy & Entertainment <span class="category-badge">Most Popular</span></h3>
 <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work that keeps everyone laughing.</p>
 <div class="video-grid">
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy1.jpg" alt="Comedy Performance" loading="lazy">
+<img src="comedy-1.jpg" alt="Comedy Performance">
 <div class="video-overlay"><p>Wedding Comedy Special</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy2.jpg" alt="Comedy Show" loading="lazy">
+<img src="comedy-2.jpg" alt="Comedy Show">
 <div class="video-overlay"><p>Event Highlights</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy3.jpg" alt="Stand Up" loading="lazy">
+<img src="comedy-3.jpg" alt="Stand Up">
 <div class="video-overlay"><p>Birthday Party Roast</p></div>
 <div class="play-icon">▶</div>
 </a>
@@ -1439,24 +1071,21 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 
 <div class="category">
-<div class="category-header">
-<h3>💰 Fundraising Excellence</h3>
-<span class="category-badge">Highest Returns</span>
-</div>
+<h3>💰 Fundraising Excellence <span class="category-badge">Highest Returns</span></h3>
 <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and ensuring your fundraising targets are exceeded.</p>
 <div class="video-grid">
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money1.jpg" alt="Fundraising" loading="lazy">
+<img src="money1.jpg" alt="Fundraising">
 <div class="video-overlay"><p>Harambee Success Story</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money2.jpg" alt="Money Raising" loading="lazy">
+<img src="money2.jpg" alt="Money Raising">
 <div class="video-overlay"><p>Wedding Fundraising</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money3.jpg" alt="Contributions" loading="lazy">
+<img src="money3.jpg" alt="Contributions">
 <div class="video-overlay"><p>Community Project</p></div>
 <div class="play-icon">▶</div>
 </a>
@@ -1465,24 +1094,21 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 
 <div class="category">
-<div class="category-header">
-<h3>🎷 Live Music Performances</h3>
-<span class="category-badge">Premium</span>
-</div>
+<h3>🎷 Live Music Performances <span class="category-badge">Premium</span></h3>
 <p>Saxophone and percussion performances that add sophisticated ambiance. Perfect for cocktail hours and creating memorable musical moments.</p>
 <div class="video-grid">
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument1.jpg" alt="Saxophone" loading="lazy">
+<img src="instrument1.jpg" alt="Saxophone">
 <div class="video-overlay"><p>Saxophone Performance</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument2.jpg" alt="Live Music" loading="lazy">
+<img src="instrument2.jpg" alt="Live Music">
 <div class="video-overlay"><p>Live Collaboration</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument3.jpg" alt="Musical" loading="lazy">
+<img src="instrument3.jpg" alt="Musical">
 <div class="video-overlay"><p>Instrumental Highlights</p></div>
 <div class="play-icon">▶</div>
 </a>
@@ -1491,24 +1117,21 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 
 <div class="category">
-<div class="category-header">
-<h3>🕺 Dance & Crowd Control</h3>
-<span class="category-badge">High Energy</span>
-</div>
+<h3>🕺 Dance & Crowd Control <span class="category-badge">High Energy</span></h3>
 <p>Expert crowd management through dance and interactive activities. Transform shy audiences into energized participants.</p>
 <div class="video-grid">
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance1.jpg" alt="Dancing" loading="lazy">
+<img src="dance1.jpg" alt="Dancing">
 <div class="video-overlay"><p>Wedding Dance Floor</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance2.jpg" alt="Crowd" loading="lazy">
+<img src="dance2.jpg" alt="Crowd">
 <div class="video-overlay"><p>Party Activation</p></div>
 <div class="play-icon">▶</div>
 </a>
 <a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance3.jpg" alt="Performance" loading="lazy">
+<img src="dance3.jpg" alt="Performance">
 <div class="video-overlay"><p>Dance Competition</p></div>
 <div class="play-icon">▶</div>
 </a>
@@ -1519,138 +1142,142 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 </section>
 
+<!-- Events We Transform -->
 <section class="events" id="events">
 <div class="container">
 <h2>Events We Transform</h2>
 <p class="subtitle">Professional services for every occasion</p>
 <div class="events-grid">
-<div class="event-card reveal" data-gallery="gallery-weddings"><span class="event-icon">💍</span><div>Weddings</div></div>
-<div class="event-card reveal" data-gallery="gallery-burials"><span class="event-icon">🕊️</span><div>Burials & Memorials</div></div>
-<div class="event-card reveal" data-gallery="gallery-birthday"><span class="event-icon">🎂</span><div>Birthday Celebrations</div></div>
-<div class="event-card reveal" data-gallery="gallery-harambees"><span class="event-icon">🤝</span><div>Harambees</div></div>
-<div class="event-card reveal" data-gallery="gallery-dowry"><span class="event-icon">💝</span><div>Dowry Negotiations</div></div>
-<div class="event-card reveal" data-gallery="gallery-team"><span class="event-icon">🏢</span><div>Team Building</div></div>
-<div class="event-card reveal" data-gallery="gallery-graduation"><span class="event-icon">🎓</span><div>Graduation Parties</div></div>
-<div class="event-card reveal" data-gallery="gallery-thanksgiving"><span class="event-icon">🙏</span><div>Thanksgiving Events</div></div>
-<div class="event-card reveal" data-gallery="gallery-political"><span class="event-icon">🎤</span><div>Political Rallies</div></div>
-<div class="event-card reveal" data-gallery="gallery-launches"><span class="event-icon">🎪</span><div>Product Launches</div></div>
+<div class="event-card" data-gallery="gallery-weddings"><span class="event-icon">💍</span><div>Weddings</div></div>
+<div class="event-card" data-gallery="gallery-burials"><span class="event-icon">🕊️</span><div>Burials & Memorials</div></div>
+<div class="event-card" data-gallery="gallery-birthday"><span class="event-icon">🎂</span><div>Birthday Celebrations</div></div>
+<div class="event-card" data-gallery="gallery-harambees"><span class="event-icon">🤝</span><div>Harambees</div></div>
+<div class="event-card" data-gallery="gallery-dowry"><span class="event-icon">💝</span><div>Dowry Negotiations</div></div>
+<div class="event-card" data-gallery="gallery-team"><span class="event-icon">🏢</span><div>Team Building</div></div>
+<div class="event-card" data-gallery="gallery-graduation"><span class="event-icon">🎓</span><div>Graduation Parties</div></div>
+<div class="event-card" data-gallery="gallery-thanksgiving"><span class="event-icon">🙏</span><div>Thanksgiving Events</div></div>
+<div class="event-card" data-gallery="gallery-political"><span class="event-icon">🎤</span><div>Political Rallies</div></div>
+<div class="event-card" data-gallery="gallery-launches"><span class="event-icon">🎪</span><div>Product Launches</div></div>
 </div>
 </div>
 </section>
 
+<!-- Gallery Section -->
 <section class="gallery" id="gallery">
 <div class="container">
 <h2>Event Gallery</h2>
 <p class="subtitle">Moments captured from our most memorable events</p>
 
 <div class="category" id="gallery-weddings">
-<div class="category-header"><h3>💍 Weddings</h3></div>
+<h3>💍 Weddings</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="wedding1.jpg" alt="Wedding 1" loading="lazy" data-caption="Ceremony Moments"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="wedding2.jpg" alt="Wedding 2" loading="lazy" data-caption="Reception Joy"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="wedding3.jpg" alt="Wedding 3" loading="lazy" data-caption="Dance Floor Energy"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding1.jpg" alt="Wedding 1"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding2.jpg" alt="Wedding 2"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding3.jpg" alt="Wedding 3"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-burials">
-<div class="category-header"><h3>🕊️ Burials & Memorial Services</h3></div>
+<h3>🕊️ Burials & Memorial Services</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="burial1.jpg" alt="Burial 1" loading="lazy" data-caption="Dignified Farewell"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="burial2.jpg" alt="Burial 2" loading="lazy" data-caption="Respectful Tribute"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="burial3.jpg" alt="Burial 3" loading="lazy" data-caption="Memorial Gathering"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial1.jpg" alt="Burial 1"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial2.jpg" alt="Burial 2"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial3.jpg" alt="Burial 3"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-birthday">
-<div class="category-header"><h3>🎂 Birthday Celebrations</h3></div>
+<h3>🎂 Birthday Celebrations</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="birthday1.jpg" alt="Birthday 1" loading="lazy" data-caption="Party Time"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="birthday2.jpg" alt="Birthday 2" loading="lazy" data-caption="Cake Cutting"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="birthday3.jpg" alt="Birthday 3" loading="lazy" data-caption="Fun & Games"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday1.jpg" alt="Birthday 1"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday2.jpg" alt="Birthday 2"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday3.jpg" alt="Birthday 3"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-harambees">
-<div class="category-header"><h3>🤝 Harambees</h3></div>
+<h3>🤝 Harambees</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="harambee1.jpg" alt="Harambee 1" loading="lazy" data-caption="Community Support"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="harambee2.jpg" alt="Harambee 2" loading="lazy" data-caption="Fundraising Success"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="harambee3.jpg" alt="Harambee 3" loading="lazy" data-caption="Unity in Action"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee1.jpg" alt="Harambee 1"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee2.jpg" alt="Harambee 2"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee3.jpg" alt="Harambee 3"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-dowry">
-<div class="category-header"><h3>💝 Dowry Negotiations</h3></div>
+<h3>💝 Dowry Negotiations</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="dowry1.jpg" alt="Dowry 1" loading="lazy" data-caption="Cultural Ceremony"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="dowry2.jpg" alt="Dowry 2" loading="lazy" data-caption="Family Bonding"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="dowry3.jpg" alt="Dowry 3" loading="lazy" data-caption="Celebration"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry1.jpg" alt="Dowry 1"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry2.jpg" alt="Dowry 2"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry3.jpg" alt="Dowry 3"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-team">
-<div class="category-header"><h3>🏢 Team Building</h3></div>
+<h3>🏢 Team Building</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="team1.jpg" alt="Team 1" loading="lazy" data-caption="Group Activities"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="team2.jpg" alt="Team 2" loading="lazy" data-caption="Corporate Fun"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="team3.jpg" alt="Team 3" loading="lazy" data-caption="Team Spirit"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team1.jpg" alt="Team 1"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team2.jpg" alt="Team 2"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team3.jpg" alt="Team 3"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-graduation">
-<div class="category-header"><h3>🎓 Graduation Parties</h3></div>
+<h3>🎓 Graduation Parties</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="graduation1.jpg" alt="Graduation 1" loading="lazy" data-caption="Academic Achievement"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="graduation2.jpg" alt="Graduation 2" loading="lazy" data-caption="Celebration Time"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="graduation3.jpg" alt="Graduation 3" loading="lazy" data-caption="Success Stories"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation1.jpg" alt="Graduation 1"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation2.jpg" alt="Graduation 2"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation3.jpg" alt="Graduation 3"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-thanksgiving">
-<div class="category-header"><h3>🙏 Thanksgiving Events</h3></div>
+<h3>🙏 Thanksgiving Events</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="thanksgiving1.jpg" alt="Thanksgiving 1" loading="lazy" data-caption="Gratitude Gathering"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="thanksgiving2.jpg" alt="Thanksgiving 2" loading="lazy" data-caption="Worship & Praise"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="thanksgiving3.jpg" alt="Thanksgiving 3" loading="lazy" data-caption="Blessed Moments"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving1.jpg" alt="Thanksgiving 1"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving2.jpg" alt="Thanksgiving 2"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving3.jpg" alt="Thanksgiving 3"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-political">
-<div class="category-header"><h3>🎤 Political Rallies</h3></div>
+<h3>🎤 Political Rallies</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="political1.jpg" alt="Political 1" loading="lazy" data-caption="Campaign Energy"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="political2.jpg" alt="Political 2" loading="lazy" data-caption="Crowd Engagement"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="political3.jpg" alt="Political 3" loading="lazy" data-caption="Public Speaking"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political1.jpg" alt="Political 1"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political2.jpg" alt="Political 2"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political3.jpg" alt="Political 3"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-launches">
-<div class="category-header"><h3>🎪 Product Launches</h3></div>
+<h3>🎪 Product Launches</h3>
 <div class="gallery-grid">
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="launch1.jpg" alt="Launch 1" loading="lazy" data-caption="Brand Unveiling"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="launch2.jpg" alt="Launch 2" loading="lazy" data-caption="Exciting Reveal"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item reveal" onclick="openLightbox(this)"><img src="launch3.jpg" alt="Launch 3" loading="lazy" data-caption="Market Buzz"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch1.jpg" alt="Launch 1"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch2.jpg" alt="Launch 2"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch3.jpg" alt="Launch 3"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 </div>
 </section>
 
+<!-- Stats (NOW PLACED BEFORE TESTIMONIALS) -->
 <section class="stats">
 <div class="stats-grid">
-<div class="stat-item reveal"><span class="stat-number">500+</span><span class="stat-label">Events Hosted</span></div>
-<div class="stat-item reveal"><span class="stat-number">100%</span><span class="stat-label">Client Satisfaction</span></div>
-<div class="stat-item reveal"><span class="stat-number">10+</span><span class="stat-label">Years Experience</span></div>
-<div class="stat-item reveal"><span class="stat-number">5</span><span class="stat-label">Complete Services</span></div>
+<div class="stat-item"><span class="stat-label">Events Hosted</span><span class="stat-number">500+</span></div>
+<div class="stat-item"><span class="stat-label">Client Satisfaction</span><span class="stat-number">100%</span></div>
+<div class="stat-item"><span class="stat-label">Years Experience</span><span class="stat-number">10+</span></div>
+<div class="stat-item"><span class="stat-label">Complete Services</span><span class="stat-number">5</span></div>
 </div>
 </section>
 
+<!-- Testimonials -->
 <section class="testimonials" id="testimonials">
 <div class="container">
 <h2>Client Testimonials</h2>
 <p class="subtitle">Hear from those who experienced the KEKE EVENTS difference</p>
 <div class="testimonial-grid">
-<div class="testimonial-card reveal">
+<div class="testimonial-card">
 <div class="quote-icon">"</div>
 <p class="testimonial-text">KEKE EVENTS provided complete services for our wedding - MC, photography, sound, tents, and catering. Everything was perfect! MC KEKE's energy kept our guests entertained, the food was delicious, and the photos are stunning!</p>
 <div class="testimonial-author">
@@ -1658,7 +1285,7 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <div class="author-info"><strong>John & Mary Kilonzo</strong><span>Wedding Clients</span></div>
 </div>
 </div>
-<div class="testimonial-card reveal">
+<div class="testimonial-card">
 <div class="quote-icon">"</div>
 <p class="testimonial-text">Best MC in Kenya hands down! His ability to read the crowd and adjust his performance accordingly is exceptional. Our harambee raised 3x our initial target!</p>
 <div class="testimonial-author">
@@ -1670,6 +1297,7 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 </section>
 
+<!-- Contact Form -->
 <section class="contact" id="contact">
 <div class="container">
 <h2>Book KEKE EVENTS</h2>
@@ -1718,16 +1346,17 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </div>
 </section>
 
+<!-- Footer -->
 <footer>
 <div class="footer-content">
 <div class="footer-section">
 <h3>KEKE EVENTS</h3>
 <p>Kenya's premier complete event solutions provider. From MC services to photography, sound systems, tents, and catering - we deliver unforgettable experiences.</p>
 <div class="social-links">
-<a href="https://youtube.com/@mckeke" target="_blank" aria-label="YouTube">▶</a>
-<a href="#" target="_blank" aria-label="Facebook">f</a>
-<a href="#" target="_blank" aria-label="Instagram">📷</a>
-<a href="#" target="_blank" aria-label="LinkedIn">💼</a>
+<a href="https://youtube.com/@mckeke" target="_blank">▶</a>
+<a href="#" target="_blank">f</a>
+<a href="#" target="_blank">📷</a>
+<a href="#" target="_blank">💼</a>
 </div>
 </div>
 <div class="footer-section">
@@ -1737,7 +1366,6 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <p><a href="#services">P/A Sound Systems</a></p>
 <p><a href="#services">Tents & Canopies</a></p>
 <p><a href="#services">Catering Services</a></p>
-<p><a href="#contact">Book Now</a></p>
 </div>
 <div class="footer-section">
 <h3>Contact Info</h3>
@@ -1757,13 +1385,36 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 </footer>
 
 <script>
+// Smooth Scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Hero Slideshow
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+setInterval(() => showSlide(currentSlide + 1), 4000);
+
+// Lightbox
 let currentImageIndex = 0;
 let galleryImages = [];
 
 function openLightbox(element) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
     const img = element.querySelector('img');
     
     const gallerySection = element.closest('.category, .service-section');
@@ -1771,113 +1422,40 @@ function openLightbox(element) {
     currentImageIndex = galleryImages.indexOf(img);
     
     lightboxImg.src = img.src;
-    lightboxCaption.textContent = img.getAttribute('data-caption') || img.alt;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
+    document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = 'auto';
 }
 
 function changeLightboxImage(direction) {
     currentImageIndex += direction;
+    if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
     
-    if (currentImageIndex >= galleryImages.length) {
-        currentImageIndex = 0;
-    } else if (currentImageIndex < 0) {
-        currentImageIndex = galleryImages.length - 1;
-    }
-    
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxCaption = document.getElementById('lightbox-caption');
-    const newImg = galleryImages[currentImageIndex];
-    
-    lightboxImg.src = newImg.src;
-    lightboxCaption.textContent = newImg.getAttribute('data-caption') || newImg.alt;
+    document.getElementById('lightbox-img').src = galleryImages[currentImageIndex].src;
 }
 
+// Keyboard navigation for lightbox
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    } else if (e.key === 'ArrowLeft') {
-        changeLightboxImage(-1);
-    } else if (e.key === 'ArrowRight') {
-        changeLightboxImage(1);
-    }
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeLightboxImage(-1);
+    if (e.key === 'ArrowRight') changeLightboxImage(1);
 });
 
+// Close lightbox when clicking outside image
 document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeLightbox();
-    }
+    if (e.target === this) closeLightbox();
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-
-const slides = document.querySelectorAll('.slide');
-const hero = document.querySelector('.hero');
-let currentSlide = 0;
-
-function updateHeroHeight() {
-    if (window.innerWidth > 768) {
-        const img = slides[currentSlide].querySelector('img');
-        if (img.complete) {
-            hero.style.height = img.offsetHeight + 'px';
-        } else {
-            img.onload = () => hero.style.height = img.offsetHeight + 'px';
-        }
-    }
-}
-
-function showSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    updateHeroHeight();
-}
-
-updateHeroHeight();
-setInterval(() => showSlide(currentSlide + 1), 5000);
-window.addEventListener('resize', updateHeroHeight);
-
-const revealElements = document.querySelectorAll('.reveal, .service-section, .category');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            if (entry.target.classList.contains('service-section') || entry.target.classList.contains('category')) {
-                entry.target.classList.add('visible');
-            }
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-revealElements.forEach(element => observer.observe(element));
-
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
+// WhatsApp Form
 document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const whatsappMessage = `🎉 *NEW BOOKING REQUEST*
+    const message = `🎉 *NEW BOOKING REQUEST*
 
 👤 *Name:* ${formData.get('name')}
 📱 *Phone:* ${formData.get('phone')}
@@ -1893,14 +1471,16 @@ Guests: ${formData.get('guests') || 'Not specified'}
 💬 *Additional Info:*
 ${formData.get('message') || 'None'}`;
 
-    window.open(`https://wa.me/254738720478?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    window.open(`https://wa.me/254738720478?text=${encodeURIComponent(message)}`, '_blank');
 });
 
+// Mobile Menu Toggle
 function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('active');
     document.querySelector('.menu-toggle').classList.toggle('active');
 }
 
+// Close menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         document.querySelector('.nav-links').classList.remove('active');
@@ -1908,12 +1488,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+// Event Card Gallery Navigation
 document.querySelectorAll('.event-card').forEach(card => {
     card.addEventListener('click', function() {
         const galleryId = this.getAttribute('data-gallery');
         const gallerySection = document.getElementById(galleryId);
         if (gallerySection) {
-            gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
