@@ -5,867 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KEKE Events | Beyond Entertainment</title>
 <meta name="description" content="KEKE Events – Complete Event Solutions: MC Services, Photography & Videography, P/A Systems, Tents, Catering">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --blue: #233B8B;
-    --orange: #F7931E;
-    --dark: #111;
-    --light: #f7f7f7;
-    --white: #ffffff;
-    --text-dark: #222;
-    --text-light: #666;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* Lightbox - Simplified */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.lightbox.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 15px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    background: var(--orange);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10001;
-}
-
-.lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    background: var(--orange);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-prev {
-    left: 20px;
-}
-
-.lightbox-next {
-    right: 20px;
-}
-
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.nav {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 2rem;
-}
-
-.logo img {
-    height: 40px;
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.nav a:hover {
-    color: var(--orange);
-}
-
-.nav .btn {
-    background: var(--orange);
-    color: var(--white);
-    padding: 0.7rem 1.5rem;
-    border-radius: 25px;
-}
-
-.nav .btn:hover {
-    background: #e08318;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--blue);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Hero Section - Simplified */
-.hero {
-    margin-top: 60px;
-    width: 100%;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-}
-
-.slide.active {
-    opacity: 1;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    color: var(--white);
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.hero-content h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.hero-content p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.hero-cta {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.hero-cta a {
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cta-primary {
-    background: var(--orange);
-    color: var(--white);
-}
-
-.cta-secondary {
-    background: var(--white);
-    color: var(--blue);
-}
-
-/* Stats */
-.stats {
-    background: var(--blue);
-    color: var(--white);
-    padding: 3rem 2rem;
-}
-
-.stats-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.stat-item {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-}
-
-.stat-label {
-    font-size: 1rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--orange);
-    display: block;
-}
-
-/* Sections */
-section {
-    padding: 4rem 2rem;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-h2 {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    color: var(--blue);
-    margin-bottom: 1rem;
-}
-
-.subtitle {
-    text-align: center;
-    color: var(--text-light);
-    margin: 0 auto 3rem;
-    font-size: 1.1rem;
-    max-width: 700px;
-}
-
-/* Service Section */
-.service-section {
-    margin-bottom: 4rem;
-}
-
-.service-section h3 {
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    color: var(--blue);
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.service-description {
-    text-align: center;
-    color: #555;
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Media Grid - Simplified */
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.media-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    background: #f5f5f5;
-}
-
-.media-item:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.media-item img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
-}
-
-.media-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    padding: 1.5rem;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.media-item:hover .media-overlay {
-    opacity: 1;
-}
-
-.play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 55px;
-    height: 55px;
-    background: var(--orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.media-item:hover .play-icon {
-    opacity: 1;
-}
-
-/* Category Section */
-.category {
-    margin-bottom: 4rem;
-}
-
-.category h3 {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    color: var(--blue);
-    margin-bottom: 1rem;
-}
-
-.category-badge {
-    display: inline-block;
-    background: var(--orange);
-    color: var(--white);
-    padding: 0.4rem 1rem;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-left: 1rem;
-}
-
-.category p {
-    color: #555;
-    margin-bottom: 2rem;
-    font-size: 1.05rem;
-}
-
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.video-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    background: #f5f5f5;
-}
-
-.video-item:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.video-item img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
-}
-
-.video-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    padding: 1.5rem;
-    color: var(--white);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.video-item:hover .video-overlay {
-    opacity: 1;
-}
-
-.view-more {
-    display: inline-block;
-    margin-top: 1.5rem;
-    color: var(--orange);
-    font-weight: 600;
-    text-decoration: none;
-}
-
-/* Events */
-.events {
-    background: var(--light);
-}
-
-.events-grid {
-    max-width: 1200px;
-    margin: 2rem auto 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-}
-
-.event-card {
-    background: var(--white);
-    padding: 2rem;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-
-.event-card:hover {
-    border-color: var(--orange);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-}
-
-.event-icon {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    display: block;
-}
-
-/* Gallery */
-.gallery {
-    background: var(--white);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    background: #f5f5f5;
-}
-
-.gallery-item:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    padding: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.gallery-item:hover .gallery-overlay {
-    opacity: 1;
-}
-
-.gallery-caption {
-    color: var(--white);
-    font-weight: 600;
-}
-
-.gallery-zoom {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 55px;
-    height: 55px;
-    background: var(--orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-size: 1.3rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.gallery-item:hover .gallery-zoom {
-    opacity: 1;
-}
-
-/* Testimonials */
-.testimonials {
-    background: var(--blue);
-    color: var(--white);
-}
-
-.testimonials h2 {
-    color: var(--white);
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 15px;
-}
-
-.quote-icon {
-    font-size: 2.5rem;
-    color: var(--orange);
-    margin-bottom: 1rem;
-}
-
-.testimonial-text {
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-}
-
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.author-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-}
-
-.author-info strong {
-    display: block;
-    margin-bottom: 0.2rem;
-}
-
-.author-info span {
-    opacity: 0.8;
-    font-size: 0.9rem;
-}
-
-/* Contact Form */
-.contact {
-    background: var(--light);
-}
-
-form {
-    max-width: 700px;
-    margin: 0 auto;
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--blue);
-    font-weight: 600;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 2px solid #e0e0e0;
-    font-family: inherit;
-    font-size: 1rem;
-}
-
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--orange);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-button {
-    width: 100%;
-    padding: 1.2rem;
-    background: var(--orange);
-    border: none;
-    border-radius: 30px;
-    color: var(--white);
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #e08318;
-}
-
-/* Footer */
-footer {
-    background: var(--blue);
-    color: var(--white);
-    padding: 3rem 2rem;
-}
-
-.footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.footer-section h3 {
-    color: var(--orange);
-    margin-bottom: 1rem;
-}
-
-.footer-section p {
-    line-height: 1.8;
-    opacity: 0.9;
-    margin-bottom: 0.5rem;
-}
-
-.footer-section a {
-    color: var(--white);
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    color: var(--orange);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.social-links a {
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.social-links a:hover {
-    background: var(--orange);
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0.8;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        flex-direction: column;
-        padding: 2rem;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 999;
-    }
-    
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .nav-links a {
-        margin: 0.8rem 0;
-        width: 100%;
-        text-align: center;
-        padding: 0.8rem;
-    }
-
-    .nav .btn {
-        width: 100%;
-    }
-
-    .hero {
-        height: 100vh;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .hero-cta a {
-        width: 100%;
-    }
-
-    .media-grid,
-    .video-grid,
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    form {
-        padding: 2rem 1.5rem;
-    }
-}
-
-/* Image Loading Optimization */
-img {
-    loading: lazy;
-}
+:root{--blue:#233B8B;--orange:#F7931E;--dark:#111;--light:#f7f7f7;--white:#fff;--text-dark:#222;--text-light:#666}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text-dark);line-height:1.6;overflow-x:hidden}.lightbox{display:none;position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.9)}.lightbox.active{display:flex;align-items:center;justify-content:center}.lightbox-content{position:relative;max-width:90%;max-height:90vh}.lightbox-content img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px}.lightbox-close{position:absolute;top:15px;right:30px;color:#fff;font-size:40px;cursor:pointer;background:var(--orange);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:10001}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:30px;cursor:pointer;background:var(--orange);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center}.lightbox-prev{left:20px}.lightbox-next{right:20px}header{position:fixed;top:0;left:0;right:0;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000}.nav{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.8rem 2rem}.logo img{height:40px;width:auto}.nav-links{display:flex;align-items:center;gap:2rem}.nav a{text-decoration:none;color:var(--text-dark);font-weight:600;font-size:.95rem}.nav a:hover{color:var(--orange)}.nav .btn{background:var(--orange);color:var(--white);padding:.7rem 1.5rem;border-radius:25px}.nav .btn:hover{background:#e08318}.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}.menu-toggle span{width:25px;height:3px;background:var(--blue);border-radius:2px;transition:all .3s ease}.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}.menu-toggle.active span:nth-child(2){opacity:0}.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}.hero{margin-top:60px;width:100%;position:relative;height:100vh;overflow:hidden}.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease}.slide.active{opacity:1}.slide img{width:100%;height:100%;object-fit:cover}.hero-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--white);background:rgba(0,0,0,.4)}.hero-content h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1rem;text-shadow:2px 2px 10px rgba(0,0,0,.8)}.hero-content p{font-size:clamp(1rem,2vw,1.2rem);margin-bottom:2rem;text-shadow:2px 2px 8px rgba(0,0,0,.8)}.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}.hero-cta a{padding:1rem 2rem;border-radius:30px;text-decoration:none;font-weight:600}.cta-primary{background:var(--orange);color:var(--white)}.cta-secondary{background:var(--white);color:var(--blue)}.stats{background:var(--blue);color:var(--white);padding:3rem 2rem}.stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;text-align:center}.stat-item{padding:1.5rem;background:rgba(255,255,255,.1);border-radius:15px}.stat-label{font-size:1rem;display:block;margin-bottom:.5rem}.stat-number{font-size:2.5rem;font-weight:700;color:var(--orange);display:block}section{padding:4rem 2rem}.container{max-width:1400px;margin:0 auto}h2{text-align:center;font-size:clamp(2rem,4vw,2.8rem);color:var(--blue);margin-bottom:1rem}.subtitle{text-align:center;color:var(--text-light);margin:0 auto 3rem;font-size:1.1rem;max-width:700px}.service-section{margin-bottom:4rem}.service-section h3{font-size:clamp(1.5rem,3vw,2.2rem);color:var(--blue);text-align:center;margin-bottom:2rem}.service-description{text-align:center;color:#555;margin-bottom:2rem;font-size:1.05rem;max-width:900px;margin-left:auto;margin-right:auto}.media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.media-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.media-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.media-item img{width:100%;height:350px;object-fit:cover;display:block}.media-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;color:var(--white);opacity:0;transition:opacity .3s}.media-item:hover .media-overlay{opacity:1}.play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55px;height:55px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--white);opacity:0;transition:opacity .3s}.media-item:hover .play-icon{opacity:1}.category{margin-bottom:4rem}.category h3{font-size:clamp(1.4rem,3vw,2rem);color:var(--blue);margin-bottom:1rem}.category-badge{display:inline-block;background:var(--orange);color:var(--white);padding:.4rem 1rem;border-radius:15px;font-size:.85rem;font-weight:600;margin-left:1rem}.category p{color:#555;margin-bottom:2rem;font-size:1.05rem}.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.video-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.video-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.video-item img{width:100%;height:350px;object-fit:cover;display:block}.video-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;color:var(--white);opacity:0;transition:opacity .3s}.video-item:hover .video-overlay{opacity:1}.view-more{display:inline-block;margin-top:1.5rem;color:var(--orange);font-weight:600;text-decoration:none}.events{background:var(--light)}.events-grid{max-width:1200px;margin:2rem auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem}.event-card{background:var(--white);padding:2rem;text-align:center;border-radius:15px;box-shadow:0 3px 15px rgba(0,0,0,.08);cursor:pointer;border:2px solid transparent}.event-card:hover{border-color:var(--orange);box-shadow:0 5px 20px rgba(0,0,0,.15)}.event-icon{font-size:2.2rem;margin-bottom:.8rem;display:block}.gallery{background:var(--white)}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}.gallery-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.gallery-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.gallery-item img{width:100%;height:350px;object-fit:cover;display:block}.gallery-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;opacity:0;transition:opacity .3s}.gallery-item:hover .gallery-overlay{opacity:1}.gallery-caption{color:var(--white);font-weight:600}.gallery-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55px;height:55px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;opacity:0;transition:opacity .3s}.gallery-item:hover .gallery-zoom{opacity:1}.testimonials{background:var(--blue);color:var(--white)}.testimonials h2{color:var(--white)}.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2rem}.testimonial-card{background:rgba(255,255,255,.1);padding:2rem;border-radius:15px}.quote-icon{font-size:2.5rem;color:var(--orange);margin-bottom:1rem}.testimonial-text{font-size:1.05rem;margin-bottom:1.5rem;font-style:italic}.testimonial-author{display:flex;align-items:center;gap:1rem}.author-img{width:50px;height:50px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-weight:700}.author-info strong{display:block;margin-bottom:.2rem}.author-info span{opacity:.8;font-size:.9rem}.contact{background:var(--light)}form{max-width:700px;margin:0 auto;background:var(--white);padding:3rem;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1)}.form-group{margin-bottom:1.5rem}label{display:block;margin-bottom:.5rem;color:var(--blue);font-weight:600}input,select,textarea{width:100%;padding:1rem;border-radius:10px;border:2px solid #e0e0e0;font-family:inherit;font-size:1rem}input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:120px}button{width:100%;padding:1.2rem;background:var(--orange);border:none;border-radius:30px;color:var(--white);font-size:1.1rem;font-weight:600;cursor:pointer}button:hover{background:#e08318}footer{background:var(--blue);color:var(--white);padding:3rem 2rem}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}.footer-section h3{color:var(--orange);margin-bottom:1rem}.footer-section p{line-height:1.8;opacity:.9;margin-bottom:.5rem}.footer-section a{color:var(--white);text-decoration:none}.footer-section a:hover{color:var(--orange)}.social-links{display:flex;gap:1rem;margin-top:1rem}.social-links a{width:45px;height:45px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;font-size:1.2rem}.social-links a:hover{background:var(--orange)}.footer-bottom{text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);opacity:.8}@media (max-width:768px){.menu-toggle{display:flex}.nav-links{position:fixed;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:2rem;box-shadow:0 5px 20px rgba(0,0,0,.1);transform:translateY(-150%);transition:transform .3s ease;opacity:0;visibility:hidden;z-index:999}.nav-links.active{transform:translateY(0);opacity:1;visibility:visible}.nav-links a{margin:.8rem 0;width:100%;text-align:center;padding:.8rem}.nav .btn{width:100%}.hero{height:100vh}.hero-cta{flex-direction:column;width:100%;max-width:300px}.hero-cta a{width:100%}.media-grid,.video-grid,.gallery-grid{grid-template-columns:1fr}form{padding:2rem 1.5rem}}
 </style>
 </head>
 <body>
 
 <!-- Lightbox -->
 <div id="lightbox" class="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
-    <span class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</span>
-    <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="Full view">
-    </div>
+<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+<span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
+<span class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</span>
+<div class="lightbox-content">
+<img id="lightbox-img" src="" alt="Full view">
+</div>
 </div>
 
 <!-- Header -->
 <header>
 <div class="nav">
-<div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo"></div>
+<div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo" width="120" height="40"></div>
 <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 <div class="nav-links">
 <a href="#services">Our Services</a>
@@ -881,16 +44,16 @@ img {
 <!-- Hero Section -->
 <section class="hero">
 <div class="slide active">
-<img src="slide-1.jpg" alt="KEKE Events">
+<img src="slide-1.jpg" alt="KEKE Events" width="1920" height="1080" loading="eager">
 </div>
 <div class="slide">
-<img src="slide-2.jpg" alt="KEKE Events Performance">
+<img src="slide-2.jpg" alt="KEKE Events Performance" width="1920" height="1080">
 </div>
 <div class="slide">
-<img src="test.jpg" alt="KEKE Events Show">
+<img src="test.jpg" alt="KEKE Events Show" width="1920" height="1080">
 </div>
 <div class="slide">
-<img src="event.jpg" alt="KEKE Events Entertainment">
+<img src="event.jpg" alt="KEKE Events Entertainment" width="1920" height="1080">
 </div>
 
 <div class="hero-content">
@@ -912,23 +75,23 @@ img {
 <div class="service-section">
 <h3>🎤 Professional MC Services</h3>
 <div class="media-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="mc-1.jpg" alt="MC KEKE Comedy">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
+<img src="mc-1.jpg" alt="MC KEKE Comedy" width="400" height="350">
 <div class="media-overlay"><p>Comedy Performance</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="mc-2.jpg" alt="MC KEKE Fundraising">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
+<img src="mc-2.jpg" alt="MC KEKE Fundraising" width="400" height="350">
 <div class="media-overlay"><p>Fundraising Excellence</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="mc-3.jpg" alt="MC KEKE Dancing">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
+<img src="mc-3.jpg" alt="MC KEKE Dancing" width="400" height="350">
 <div class="media-overlay"><p>Crowd Control</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="media-item">
-<img src="mc-4.jpg" alt="MC KEKE Music">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
+<img src="mc-4.jpg" alt="MC KEKE Music" width="400" height="350">
 <div class="media-overlay"><p>Live Music</p></div>
 <div class="play-icon">▶</div>
 </a>
@@ -942,20 +105,20 @@ Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (h
 <h3>📸 Videography & Photography</h3>
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="1.jpg" alt="Wedding Photography">
-<div class="media-overlay"><p>Wedding Photography</p></div>
+<img src="1.jpg" alt="Photography Sample 1" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="2.jpg" alt="Event Coverage">
-<div class="media-overlay"><p>Event Videography</p></div>
+<img src="2.jpg" alt="Photography Sample 2" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="3.jpg" alt="Professional Shoots">
-<div class="media-overlay"><p>Professional Documentation</p></div>
+<img src="3.jpg" alt="Photography Sample 3" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="5.jpg" alt="Cultural Events">
-<div class="media-overlay"><p>Cultural Ceremonies</p></div>
+<img src="4.jpg" alt="Photography Sample 4" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 </div>
 <p class="service-description">
@@ -967,19 +130,19 @@ Capture every precious moment with professional photography and videography. Fro
 <h3>🔊 Professional P/A Sound Systems</h3>
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa1.jpeg" alt="PA System">
+<img src="pa1.jpeg" alt="PA System" width="400" height="350">
 <div class="media-overlay"><p>Corporate Events</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa2.jpeg" alt="Sound Equipment">
+<img src="pa2.jpeg" alt="Sound Equipment" width="400" height="350">
 <div class="media-overlay"><p>Wedding Audio</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="pa3.jpeg" alt="Audio Setup">
+<img src="pa3.jpeg" alt="Audio Setup" width="400" height="350">
 <div class="media-overlay"><p>Political Rallies</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="launch1.jpg" alt="Professional Sound">
+<img src="launch1.jpg" alt="Professional Sound" width="400" height="350">
 <div class="media-overlay"><p>Product Launches</p></div>
 </div>
 </div>
@@ -992,19 +155,19 @@ Crystal clear sound for events of any size. Professional PA systems ensure every
 <h3>⛺ Tents & Canopies</h3>
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="event.jpg" alt="Wedding Tent">
+<img src="event.jpg" alt="Wedding Tent" width="400" height="350">
 <div class="media-overlay"><p>Wedding Canopy</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="tent-2.jpg" alt="Event Tent">
+<img src="tent-2.jpg" alt="Event Tent" width="400" height="350">
 <div class="media-overlay"><p>Birthday Setup</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="tent-3.jpg" alt="Large Tent">
+<img src="tent-3.jpg" alt="Large Tent" width="400" height="350">
 <div class="media-overlay"><p>Harambee Tent</p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="tent-4.jpg" alt="Canopy">
+<img src="tent-4.jpg" alt="Canopy" width="400" height="350">
 <div class="media-overlay"><p>Graduation Event</p></div>
 </div>
 </div>
@@ -1017,20 +180,20 @@ Premium quality tents for all weather conditions. From elegant wedding canopies 
 <h3>🍽️ Professional Catering Services</h3>
 <div class="media-grid">
 <div class="media-item" onclick="openLightbox(this)">
-<img src="dowry2.jpg" alt="Catering">
-<div class="media-overlay"><p>Traditional Feast</p></div>
+<img src="food-1.jpg" alt="Catering Sample 1" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="team2.jpg" alt="Food Service">
-<div class="media-overlay"><p>Corporate Catering</p></div>
+<img src="food-2.jpg" alt="Catering Sample 2" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="birthday3.jpg" alt="Buffet">
-<div class="media-overlay"><p>Birthday Buffet</p></div>
+<img src="food-1.jpg" alt="Catering Sample 3" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 <div class="media-item" onclick="openLightbox(this)">
-<img src="thanksgiving1.jpg" alt="Meal Service">
-<div class="media-overlay"><p>Thanksgiving Dinner</p></div>
+<img src="food-2.jpg" alt="Catering Sample 4" width="400" height="350">
+<div class="media-overlay"><p></p></div>
 </div>
 </div>
 <p class="service-description">
@@ -1051,92 +214,92 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <h3>😂 Comedy & Entertainment <span class="category-badge">Most Popular</span></h3>
 <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work that keeps everyone laughing.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy-1.jpg" alt="Comedy Performance">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="comedy-1.jpg" alt="Comedy Performance" width="400" height="350">
 <div class="video-overlay"><p>Wedding Comedy Special</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy-2.jpg" alt="Comedy Show">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="comedy-2.jpg" alt="Comedy Show" width="400" height="350">
 <div class="video-overlay"><p>Event Highlights</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="comedy-3.jpg" alt="Stand Up">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="comedy-3.jpg" alt="Stand Up" width="400" height="350">
 <div class="video-overlay"><p>Birthday Party Roast</p></div>
 <div class="play-icon">▶</div>
 </a>
 </div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank">Watch Full Comedy Playlist →</a>
+<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">Watch Full Comedy Playlist →</a>
 </div>
 
 <div class="category">
 <h3>💰 Fundraising Excellence <span class="category-badge">Highest Returns</span></h3>
 <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and ensuring your fundraising targets are exceeded.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money1.jpg" alt="Fundraising">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="money1.jpg" alt="Fundraising" width="400" height="350">
 <div class="video-overlay"><p>Harambee Success Story</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money2.jpg" alt="Money Raising">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="money2.jpg" alt="Money Raising" width="400" height="350">
 <div class="video-overlay"><p>Wedding Fundraising</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="money3.jpg" alt="Contributions">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="money3.jpg" alt="Contributions" width="400" height="350">
 <div class="video-overlay"><p>Community Project</p></div>
 <div class="play-icon">▶</div>
 </a>
 </div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank">See Fundraising Portfolio →</a>
+<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">See Fundraising Portfolio →</a>
 </div>
 
 <div class="category">
 <h3>🎷 Live Music Performances <span class="category-badge">Premium</span></h3>
 <p>Saxophone and percussion performances that add sophisticated ambiance. Perfect for cocktail hours and creating memorable musical moments.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument1.jpg" alt="Saxophone">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="instrument1.jpg" alt="Saxophone" width="400" height="350">
 <div class="video-overlay"><p>Saxophone Performance</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument2.jpg" alt="Live Music">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="instrument2.jpg" alt="Live Music" width="400" height="350">
 <div class="video-overlay"><p>Live Collaboration</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="instrument3.jpg" alt="Musical">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="instrument3.jpg" alt="Musical" width="400" height="350">
 <div class="video-overlay"><p>Instrumental Highlights</p></div>
 <div class="play-icon">▶</div>
 </a>
 </div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank">Explore Music Gallery →</a>
+<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">Explore Music Gallery →</a>
 </div>
 
 <div class="category">
 <h3>🕺 Dance & Crowd Control <span class="category-badge">High Energy</span></h3>
 <p>Expert crowd management through dance and interactive activities. Transform shy audiences into energized participants.</p>
 <div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance1.jpg" alt="Dancing">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="dance1.jpg" alt="Dancing" width="400" height="350">
 <div class="video-overlay"><p>Wedding Dance Floor</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance2.jpg" alt="Crowd">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="dance2.jpg" alt="Crowd" width="400" height="350">
 <div class="video-overlay"><p>Party Activation</p></div>
 <div class="play-icon">▶</div>
 </a>
-<a href="https://youtube.com/@mckeke" target="_blank" class="video-item">
-<img src="dance3.jpg" alt="Performance">
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
+<img src="dance3.jpg" alt="Performance" width="400" height="350">
 <div class="video-overlay"><p>Dance Competition</p></div>
 <div class="play-icon">▶</div>
 </a>
 </div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank">View Dance Videos →</a>
+<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">View Dance Videos →</a>
 </div>
 
 </div>
@@ -1171,97 +334,97 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <div class="category" id="gallery-weddings">
 <h3>💍 Weddings</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding1.jpg" alt="Wedding 1"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding2.jpg" alt="Wedding 2"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding3.jpg" alt="Wedding 3"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding1.jpg" alt="Wedding 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding2.jpg" alt="Wedding 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding3.jpg" alt="Wedding 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-burials">
 <h3>🕊️ Burials & Memorial Services</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial1.jpg" alt="Burial 1"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial2.jpg" alt="Burial 2"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial3.jpg" alt="Burial 3"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial1.jpg" alt="Burial 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial2.jpg" alt="Burial 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="burial3.jpg" alt="Burial 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-birthday">
 <h3>🎂 Birthday Celebrations</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday1.jpg" alt="Birthday 1"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday2.jpg" alt="Birthday 2"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday3.jpg" alt="Birthday 3"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday1.jpg" alt="Birthday 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday2.jpg" alt="Birthday 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday3.jpg" alt="Birthday 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-harambees">
 <h3>🤝 Harambees</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee1.jpg" alt="Harambee 1"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee2.jpg" alt="Harambee 2"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee3.jpg" alt="Harambee 3"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee1.jpg" alt="Harambee 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee2.jpg" alt="Harambee 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee3.jpg" alt="Harambee 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-dowry">
 <h3>💝 Dowry Negotiations</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry1.jpg" alt="Dowry 1"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry2.jpg" alt="Dowry 2"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry3.jpg" alt="Dowry 3"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry1.jpg" alt="Dowry 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry2.jpg" alt="Dowry 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry3.jpg" alt="Dowry 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-team">
 <h3>🏢 Team Building</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team1.jpg" alt="Team 1"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team2.jpg" alt="Team 2"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team3.jpg" alt="Team 3"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team1.jpg" alt="Team 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team2.jpg" alt="Team 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="team3.jpg" alt="Team 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-graduation">
 <h3>🎓 Graduation Parties</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation1.jpg" alt="Graduation 1"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation2.jpg" alt="Graduation 2"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation3.jpg" alt="Graduation 3"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation1.jpg" alt="Graduation 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation2.jpg" alt="Graduation 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation3.jpg" alt="Graduation 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-thanksgiving">
 <h3>🙏 Thanksgiving Events</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving1.jpg" alt="Thanksgiving 1"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving2.jpg" alt="Thanksgiving 2"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving3.jpg" alt="Thanksgiving 3"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving1.jpg" alt="Thanksgiving 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving2.jpg" alt="Thanksgiving 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving3.jpg" alt="Thanksgiving 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-political">
 <h3>🎤 Political Rallies</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political1.jpg" alt="Political 1"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political2.jpg" alt="Political 2"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political3.jpg" alt="Political 3"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political1.jpg" alt="Political 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political2.jpg" alt="Political 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="political3.jpg" alt="Political 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 <div class="category" id="gallery-launches">
 <h3>🎪 Product Launches</h3>
 <div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch1.jpg" alt="Launch 1"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch2.jpg" alt="Launch 2"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch3.jpg" alt="Launch 3"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch1.jpg" alt="Launch 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch2.jpg" alt="Launch 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
+<div class="gallery-item" onclick="openLightbox(this)"><img src="launch3.jpg" alt="Launch 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
 </div>
 </div>
 
 </div>
 </section>
 
-<!-- Stats (NOW PLACED BEFORE TESTIMONIALS) -->
+<!-- Stats -->
 <section class="stats">
 <div class="stats-grid">
 <div class="stat-item"><span class="stat-label">Events Hosted</span><span class="stat-number">500+</span></div>
@@ -1353,10 +516,10 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 <h3>KEKE EVENTS</h3>
 <p>Kenya's premier complete event solutions provider. From MC services to photography, sound systems, tents, and catering - we deliver unforgettable experiences.</p>
 <div class="social-links">
-<a href="https://youtube.com/@mckeke" target="_blank">▶</a>
-<a href="#" target="_blank">f</a>
-<a href="#" target="_blank">📷</a>
-<a href="#" target="_blank">💼</a>
+<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener">▶</a>
+<a href="#" target="_blank" rel="noopener">f</a>
+<a href="#" target="_blank" rel="noopener">📷</a>
+<a href="#" target="_blank" rel="noopener">💼</a>
 </div>
 </div>
 <div class="footer-section">
@@ -1386,118 +549,45 @@ Delicious food that delights your guests. From traditional Kenyan cuisine to int
 
 <script>
 // Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth'})}})});
 
 // Hero Slideshow
-const slides = document.querySelectorAll('.slide');
-let currentSlide = 0;
-
-function showSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-}
-
-setInterval(() => showSlide(currentSlide + 1), 4000);
+const slides=document.querySelectorAll('.slide');let currentSlide=0;function showSlide(index){slides[currentSlide].classList.remove('active');currentSlide=(index+slides.length)%slides.length;slides[currentSlide].classList.add('active')}setInterval(()=>showSlide(currentSlide+1),4000);
 
 // Lightbox
-let currentImageIndex = 0;
-let galleryImages = [];
+let currentImageIndex=0;let galleryImages=[];function openLightbox(element){const lightbox=document.getElementById('lightbox');const lightboxImg=document.getElementById('lightbox-img');const img=element.querySelector('img');const gallerySection=element.closest('.category, .service-section');galleryImages=Array.from(gallerySection.querySelectorAll('.gallery-item img, .media-item img'));currentImageIndex=galleryImages.indexOf(img);lightboxImg.src=img.src;lightbox.classList.add('active');document.body.style.overflow='hidden'}function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='auto'}function changeLightboxImage(direction){currentImageIndex+=direction;if(currentImageIndex>=galleryImages.length)currentImageIndex=0;if(currentImageIndex<0)currentImageIndex=galleryImages.length-1;const img=galleryImages[currentImageIndex];document.getElementById('lightbox-img').src=img.src}
 
-function openLightbox(element) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const img = element.querySelector('img');
-    
-    const gallerySection = element.closest('.category, .service-section');
-    galleryImages = Array.from(gallerySection.querySelectorAll('.gallery-item img, .media-item img'));
-    currentImageIndex = galleryImages.indexOf(img);
-    
-    lightboxImg.src = img.src;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+// Keyboard navigation
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')changeLightboxImage(-1);if(e.key==='ArrowRight')changeLightboxImage(1)});
 
-function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function changeLightboxImage(direction) {
-    currentImageIndex += direction;
-    if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
-    if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-    
-    document.getElementById('lightbox-img').src = galleryImages[currentImageIndex].src;
-}
-
-// Keyboard navigation for lightbox
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') changeLightboxImage(-1);
-    if (e.key === 'ArrowRight') changeLightboxImage(1);
-});
-
-// Close lightbox when clicking outside image
-document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-});
+// Close lightbox on click outside
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox()});
 
 // WhatsApp Form
-document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const message = `🎉 *NEW BOOKING REQUEST*
+document.getElementById('whatsappForm').addEventListener('submit',function(e){e.preventDefault();const formData=new FormData(e.target);const message=`🎉 *NEW BOOKING REQUEST*
 
 👤 *Name:* ${formData.get('name')}
 📱 *Phone:* ${formData.get('phone')}
-📧 *Email:* ${formData.get('email') || 'Not provided'}
+📧 *Email:* ${formData.get('email')||'Not provided'}
 
 🎊 *Event Details:*
 Type: ${formData.get('event')}
 Services: ${formData.get('services')}
-Date: ${formData.get('date') || 'TBC'}
-Location: ${formData.get('location') || 'TBC'}
-Guests: ${formData.get('guests') || 'Not specified'}
+Date: ${formData.get('date')||'TBC'}
+Location: ${formData.get('location')||'TBC'}
+Guests: ${formData.get('guests')||'Not specified'}
 
 💬 *Additional Info:*
-${formData.get('message') || 'None'}`;
-
-    window.open(`https://wa.me/254738720478?text=${encodeURIComponent(message)}`, '_blank');
-});
+${formData.get('message')||'None'}`;window.open(`https://wa.me/254738720478?text=${encodeURIComponent(message)}`,'_blank')});
 
 // Mobile Menu Toggle
-function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
-    document.querySelector('.menu-toggle').classList.toggle('active');
-}
+function toggleMenu(){document.querySelector('.nav-links').classList.toggle('active');document.querySelector('.menu-toggle').classList.toggle('active')}
 
-// Close menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-        document.querySelector('.menu-toggle').classList.remove('active');
-    });
-});
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('active');document.querySelector('.menu-toggle').classList.remove('active')})});
 
 // Event Card Gallery Navigation
-document.querySelectorAll('.event-card').forEach(card => {
-    card.addEventListener('click', function() {
-        const galleryId = this.getAttribute('data-gallery');
-        const gallerySection = document.getElementById(galleryId);
-        if (gallerySection) {
-            gallerySection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
+document.querySelectorAll('.event-card').forEach(card=>{card.addEventListener('click',function(){const galleryId=this.getAttribute('data-gallery');const gallerySection=document.getElementById(galleryId);if(gallerySection){gallerySection.scrollIntoView({behavior:'smooth'})}})});
 </script>
 
 </body>
