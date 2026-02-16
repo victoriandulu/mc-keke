@@ -1,594 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KEKE Events | Beyond Entertainment</title>
-<meta name="description" content="KEKE Events – Complete Event Solutions: MC Services, Photography & Videography, P/A Systems, Tents, Catering">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MC Keke – Video Portfolio</title>
 
-<style>
-:root{--blue:#233B8B;--orange:#F7931E;--dark:#111;--light:#f7f7f7;--white:#fff;--text-dark:#222;--text-light:#666}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text-dark);line-height:1.6;overflow-x:hidden}.lightbox{display:none;position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.9)}.lightbox.active{display:flex;align-items:center;justify-content:center}.lightbox-content{position:relative;max-width:90%;max-height:90vh}.lightbox-content img{max-width:100%;max-height:90vh;object-fit:contain;border-radius:8px}.lightbox-close{position:absolute;top:15px;right:30px;color:#fff;font-size:40px;cursor:pointer;background:var(--orange);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:10001}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:30px;cursor:pointer;background:var(--orange);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center}.lightbox-prev{left:20px}.lightbox-next{right:20px}header{position:fixed;top:0;left:0;right:0;background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.1);z-index:1000}.nav{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.8rem 2rem}.logo img{height:40px;width:auto}.nav-links{display:flex;align-items:center;gap:2rem}.nav a{text-decoration:none;color:var(--text-dark);font-weight:600;font-size:.95rem}.nav a:hover{color:var(--orange)}.nav .btn{background:var(--orange);color:var(--white);padding:.7rem 1.5rem;border-radius:25px}.nav .btn:hover{background:#e08318}.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}.menu-toggle span{width:25px;height:3px;background:var(--blue);border-radius:2px;transition:all .3s ease}.menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}.menu-toggle.active span:nth-child(2){opacity:0}.menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}.hero{margin-top:60px;width:100%;position:relative;height:100vh;overflow:hidden}.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease}.slide.active{opacity:1}.slide img{width:100%;height:100%;object-fit:cover}.hero-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;color:var(--white);background:rgba(0,0,0,.4)}.hero-content h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin-bottom:1rem;text-shadow:2px 2px 10px rgba(0,0,0,.8)}.hero-content p{font-size:clamp(1rem,2vw,1.2rem);margin-bottom:2rem;text-shadow:2px 2px 8px rgba(0,0,0,.8)}.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}.hero-cta a{padding:1rem 2rem;border-radius:30px;text-decoration:none;font-weight:600}.cta-primary{background:var(--orange);color:var(--white)}.cta-secondary{background:var(--white);color:var(--blue)}.stats{background:var(--blue);color:var(--white);padding:3rem 2rem}.stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;text-align:center}.stat-item{padding:1.5rem;background:rgba(255,255,255,.1);border-radius:15px}.stat-label{font-size:1rem;display:block;margin-bottom:.5rem}.stat-number{font-size:2.5rem;font-weight:700;color:var(--orange);display:block}section{padding:4rem 2rem}.container{max-width:1400px;margin:0 auto}h2{text-align:center;font-size:clamp(2rem,4vw,2.8rem);color:var(--blue);margin-bottom:1rem}.subtitle{text-align:center;color:var(--text-light);margin:0 auto 3rem;font-size:1.1rem;max-width:700px}.service-section{margin-bottom:4rem}.service-section h3{font-size:clamp(1.5rem,3vw,2.2rem);color:var(--blue);text-align:center;margin-bottom:2rem}.service-description{text-align:center;color:#555;margin-bottom:2rem;font-size:1.05rem;max-width:900px;margin-left:auto;margin-right:auto}.media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.media-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.media-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.media-item img{width:100%;height:350px;object-fit:cover;display:block}.media-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;color:var(--white);opacity:0;transition:opacity .3s}.media-item:hover .media-overlay{opacity:1}.play-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55px;height:55px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--white);opacity:0;transition:opacity .3s}.media-item:hover .play-icon{opacity:1}.category{margin-bottom:4rem}.category h3{font-size:clamp(1.4rem,3vw,2rem);color:var(--blue);margin-bottom:1rem}.category-badge{display:inline-block;background:var(--orange);color:var(--white);padding:.4rem 1rem;border-radius:15px;font-size:.85rem;font-weight:600;margin-left:1rem}.category p{color:#555;margin-bottom:2rem;font-size:1.05rem}.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.video-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.video-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.video-item img{width:100%;height:350px;object-fit:cover;display:block}.video-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;color:var(--white);opacity:0;transition:opacity .3s}.video-item:hover .video-overlay{opacity:1}.view-more{display:inline-block;margin-top:1.5rem;color:var(--orange);font-weight:600;text-decoration:none}.events{background:var(--light)}.events-grid{max-width:1200px;margin:2rem auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem}.event-card{background:var(--white);padding:2rem;text-align:center;border-radius:15px;box-shadow:0 3px 15px rgba(0,0,0,.08);cursor:pointer;border:2px solid transparent}.event-card:hover{border-color:var(--orange);box-shadow:0 5px 20px rgba(0,0,0,.15)}.event-icon{font-size:2.2rem;margin-bottom:.8rem;display:block}.gallery{background:var(--white)}.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}.gallery-item{position:relative;overflow:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;background:#f5f5f5;min-height:350px}.gallery-item:hover{box-shadow:0 8px 25px rgba(0,0,0,.2)}.gallery-item img{width:100%;height:350px;object-fit:cover;display:block}.gallery-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:1.5rem;opacity:0;transition:opacity .3s}.gallery-item:hover .gallery-overlay{opacity:1}.gallery-caption{color:var(--white);font-weight:600}.gallery-zoom{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:55px;height:55px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;opacity:0;transition:opacity .3s}.gallery-item:hover .gallery-zoom{opacity:1}.testimonials{background:var(--blue);color:var(--white)}.testimonials h2{color:var(--white)}.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-top:2rem}.testimonial-card{background:rgba(255,255,255,.1);padding:2rem;border-radius:15px}.quote-icon{font-size:2.5rem;color:var(--orange);margin-bottom:1rem}.testimonial-text{font-size:1.05rem;margin-bottom:1.5rem;font-style:italic}.testimonial-author{display:flex;align-items:center;gap:1rem}.author-img{width:50px;height:50px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-weight:700}.author-info strong{display:block;margin-bottom:.2rem}.author-info span{opacity:.8;font-size:.9rem}.contact{background:var(--light)}form{max-width:700px;margin:0 auto;background:var(--white);padding:3rem;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1)}.form-group{margin-bottom:1.5rem}label{display:block;margin-bottom:.5rem;color:var(--blue);font-weight:600}input,select,textarea{width:100%;padding:1rem;border-radius:10px;border:2px solid #e0e0e0;font-family:inherit;font-size:1rem}input:focus,select:focus,textarea:focus{outline:none;border-color:var(--orange)}textarea{resize:vertical;min-height:120px}button{width:100%;padding:1.2rem;background:var(--orange);border:none;border-radius:30px;color:var(--white);font-size:1.1rem;font-weight:600;cursor:pointer}button:hover{background:#e08318}footer{background:var(--blue);color:var(--white);padding:3rem 2rem}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}.footer-section h3{color:var(--orange);margin-bottom:1rem}.footer-section p{line-height:1.8;opacity:.9;margin-bottom:.5rem}.footer-section a{color:var(--white);text-decoration:none}.footer-section a:hover{color:var(--orange)}.social-links{display:flex;gap:1rem;margin-top:1rem}.social-links a{width:45px;height:45px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;font-size:1.2rem}.social-links a:hover{background:var(--orange)}.footer-bottom{text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);opacity:.8}@media (max-width:768px){.menu-toggle{display:flex}.nav-links{position:fixed;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:2rem;box-shadow:0 5px 20px rgba(0,0,0,.1);transform:translateY(-150%);transition:transform .3s ease;opacity:0;visibility:hidden;z-index:999}.nav-links.active{transform:translateY(0);opacity:1;visibility:visible}.nav-links a{margin:.8rem 0;width:100%;text-align:center;padding:.8rem}.nav .btn{width:100%}.hero{height:100vh}.hero-cta{flex-direction:column;width:100%;max-width:300px}.hero-cta a{width:100%}.media-grid,.video-grid,.gallery-grid{grid-template-columns:1fr}form{padding:2rem 1.5rem}}
-</style>
+  <meta name="description" content="MC Keke video portfolio. Watch comedy and event highlights directly on the website.">
+  <meta name="author" content="MC Keke">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,.1);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 */
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .video-info h3 {
+      margin: .5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .video-info a {
+      display: inline-block;
+      margin-top: .5rem;
+      text-decoration: none;
+      font-weight: 600;
+      color: #d62828;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      text-align: center;
+      background: #000;
+      color: #fff;
+      font-size: .9rem;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-<span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-<span class="lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</span>
-<span class="lightbox-next" onclick="changeLightboxImage(1)">&#10095;</span>
-<div class="lightbox-content">
-<img id="lightbox-img" src="" alt="Full view">
-</div>
-</div>
-
-<!-- Header -->
 <header>
-<div class="nav">
-<div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo" width="120" height="40"></div>
-<div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-<div class="nav-links">
-<a href="#services">Our Services</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#events">Events</a>
-<a href="#gallery">Gallery</a>
-<a href="#testimonials">Testimonials</a>
-<a href="#contact" class="btn">Book Now</a>
-</div>
-</div>
+  MC Keke – Video Portfolio
 </header>
 
-<!-- Hero Section -->
-<section class="hero">
-<div class="slide active">
-<img src="slide-1.jpg" alt="KEKE Events" width="1920" height="1080" loading="eager">
-</div>
-<div class="slide">
-<img src="slide-2.jpg" alt="KEKE Events Performance" width="1920" height="1080">
-</div>
-<div class="slide">
-<img src="slide-3.jpg" alt="KEKE Events Show" width="1920" height="1080">
-</div>
-<div class="slide">
-<img src="tent-1.jpg" alt="KEKE Events Entertainment" width="1920" height="1080">
-</div>
+<main>
+  <h1>Watch Highlights</h1>
 
-<div class="hero-content">
-<div>
-<h1>KEKE EVENTS</h1>
-<p>Complete Event Solutions | MC • Photography • P/A System • Tents • Catering</p>
-<div class="hero-cta">
-<a href="#contact" class="cta-primary">Book Your Event</a>
-<a href="#services" class="cta-secondary">Our Services</a>
-</div>
-</div>
-</div>
-</section>
+  <section class="video-grid">
 
-<!-- Services Section -->
-<section id="services">
-<div class="container">
+    <!-- VIDEO 1 -->
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/RxRiiFnegRI?rel=0&modestbranding=1&playsinline=1"
+          title="Wedding Comedy Special"
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Wedding Comedy Special</h3>
+        <a href="https://www.youtube.com/watch?v=RxRiiFnegRI" target="_blank" rel="noopener">
+          Watch on YouTube →
+        </a>
+      </div>
+    </div>
 
-<div class="service-section">
-<h3>🎤 Professional MC Services</h3>
-<div class="media-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
-<img src="mc-1.jpg" alt="MC KEKE Comedy" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
-<img src="mc-2.jpg" alt="MC KEKE Fundraising" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
-<img src="mc-3.jpg" alt="MC KEKE Dancing" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="media-item">
-<img src="mc-4.jpg" alt="MC KEKE Music" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-<div class="play-icon">▶</div>
-</a>
-</div>
-<p class="service-description">
-Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (harambees), crowd control through dancing, and live instrument performances. Kenya's most sought-after MC bringing energy and professionalism to every occasion.
-</p>
-</div>
+    <!-- VIDEO 2 -->
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/K8NZm6RqjBk?rel=0&modestbranding=1&playsinline=1"
+          title="Live Event Performance"
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Live Event Performance</h3>
+        <a href="https://www.youtube.com/watch?v=K8NZm6RqjBk" target="_blank" rel="noopener">
+          Watch on YouTube →
+        </a>
+      </div>
+    </div>
 
-<div class="service-section">
-<h3>📸 Videography & Photography</h3>
-<div class="media-grid">
-<div class="media-item" onclick="openLightbox(this)">
-<img src="1.jpg" alt="Photography Sample 1" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="2.jpg" alt="Photography Sample 2" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="3.jpg" alt="Photography Sample 3" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="4.jpg" alt="Photography Sample 4" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-</div>
-<p class="service-description">
-Capture every precious moment with professional photography and videography. From candid shots to cinematic videos, we document your special day with creativity and precision.
-</p>
-</div>
+    <!-- ADD MORE VIDEOS BELOW SAME WAY -->
 
-<div class="service-section">
-<h3>🔊 Professional P/A Sound Systems</h3>
-<div class="media-grid">
-<div class="media-item" onclick="openLightbox(this)">
-<img src="pa1.jpeg" alt="PA System" width="400" height="350">
-<div class="media-overlay"><p>Corporate Events</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="pa2.jpeg" alt="Sound Equipment" width="400" height="350">
-<div class="media-overlay"><p>Wedding Audio</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="pa3.jpeg" alt="Audio Setup" width="400" height="350">
-<div class="media-overlay"><p>Political Rallies</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="launch1.jpg" alt="Professional Sound" width="400" height="350">
-<div class="media-overlay"><p>Product Launches</p></div>
-</div>
-</div>
-<p class="service-description">
-Crystal clear sound for events of any size. Professional PA systems ensure every guest hears every word, song, and announcement perfectly.
-</p>
-</div>
+  </section>
+</main>
 
-<div class="service-section">
-<h3>⛺ Tents & Canopies</h3>
-<div class="media-grid">
-<div class="media-item" onclick="openLightbox(this)">
-<img src="event.jpg" alt="Wedding Tent" width="400" height="350">
-<div class="media-overlay"><p>Wedding Canopy</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="tent-2.jpg" alt="Event Tent" width="400" height="350">
-<div class="media-overlay"><p>Birthday Setup</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="tent-3.jpg" alt="Large Tent" width="400" height="350">
-<div class="media-overlay"><p>Harambee Tent</p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="tent-4.jpg" alt="Canopy" width="400" height="350">
-<div class="media-overlay"><p>Graduation Event</p></div>
-</div>
-</div>
-<p class="service-description">
-Premium quality tents for all weather conditions. From elegant wedding canopies to spacious event tents, we provide shelter and ambiance for your guests.
-</p>
-</div>
-
-<div class="service-section">
-<h3>🍽️ Professional Catering Services</h3>
-<div class="media-grid">
-<div class="media-item" onclick="openLightbox(this)">
-<img src="food-1.jpg" alt="Catering Sample 1" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="food-2.jpg" alt="Catering Sample 2" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="food-1.jpg" alt="Catering Sample 3" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-<div class="media-item" onclick="openLightbox(this)">
-<img src="food-2.jpg" alt="Catering Sample 4" width="400" height="350">
-<div class="media-overlay"><p></p></div>
-</div>
-</div>
-<p class="service-description">
-Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.
-</p>
-</div>
-
-</div>
-</section>
-
-<!-- Portfolio Section -->
-<section id="portfolio" style="background: var(--light);">
-<div class="container">
-<h2>Event Capabilities</h2>
-<p class="subtitle">Watch our diverse portfolio of entertainment services</p>
-
-<div class="category">
-<h3>😂 Comedy & Entertainment <span class="category-badge">Most Popular</span></h3>
-<p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work that keeps everyone laughing.</p>
-<div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="comedy-1.jpg" alt="Comedy Performance" width="400" height="350">
-<div class="video-overlay"><p>Wedding Comedy Special</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="comedy-2.jpg" alt="Comedy Show" width="400" height="350">
-<div class="video-overlay"><p>Event Highlights</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="comedy-3.jpg" alt="Stand Up" width="400" height="350">
-<div class="video-overlay"><p>Birthday Party Roast</p></div>
-<div class="play-icon">▶</div>
-</a>
-</div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">Watch Full Comedy Playlist →</a>
-</div>
-
-<div class="category">
-<h3>💰 Fundraising Excellence <span class="category-badge">Highest Returns</span></h3>
-<p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and ensuring your fundraising targets are exceeded.</p>
-<div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="money1.jpg" alt="Fundraising" width="400" height="350">
-<div class="video-overlay"><p>Harambee Success Story</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="money2.jpg" alt="Money Raising" width="400" height="350">
-<div class="video-overlay"><p>Wedding Fundraising</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="money3.jpg" alt="Contributions" width="400" height="350">
-<div class="video-overlay"><p>Community Project</p></div>
-<div class="play-icon">▶</div>
-</a>
-</div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">See Fundraising Portfolio →</a>
-</div>
-
-<div class="category">
-<h3>🎷 Live Music Performances <span class="category-badge">Premium</span></h3>
-<p>Saxophone and percussion performances that add sophisticated ambiance. Perfect for cocktail hours and creating memorable musical moments.</p>
-<div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="instrument1.jpg" alt="Saxophone" width="400" height="350">
-<div class="video-overlay"><p>Saxophone Performance</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="instrument2.jpg" alt="Live Music" width="400" height="350">
-<div class="video-overlay"><p>Live Collaboration</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="instrument3.jpg" alt="Musical" width="400" height="350">
-<div class="video-overlay"><p>Instrumental Highlights</p></div>
-<div class="play-icon">▶</div>
-</a>
-</div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">Explore Music Gallery →</a>
-</div>
-
-<div class="category">
-<h3>🕺 Dance & Crowd Control <span class="category-badge">High Energy</span></h3>
-<p>Expert crowd management through dance and interactive activities. Transform shy audiences into energized participants.</p>
-<div class="video-grid">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="dance1.jpg" alt="Dancing" width="400" height="350">
-<div class="video-overlay"><p>Wedding Dance Floor</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="dance2.jpg" alt="Crowd" width="400" height="350">
-<div class="video-overlay"><p>Party Activation</p></div>
-<div class="play-icon">▶</div>
-</a>
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="video-item">
-<img src="dance3.jpg" alt="Performance" width="400" height="350">
-<div class="video-overlay"><p>Dance Competition</p></div>
-<div class="play-icon">▶</div>
-</a>
-</div>
-<a class="view-more" href="https://youtube.com/@mckeke" target="_blank" rel="noopener">View Dance Videos →</a>
-</div>
-
-</div>
-</section>
-
-<!-- Events We Transform -->
-<section class="events" id="events">
-<div class="container">
-<h2>Events We Transform</h2>
-<p class="subtitle">Professional services for every occasion</p>
-<div class="events-grid">
-<div class="event-card" data-gallery="gallery-weddings"><span class="event-icon">💍</span><div>Weddings</div></div>
-<div class="event-card" data-gallery="gallery-burials"><span class="event-icon">🕊️</span><div>Burials & Memorials</div></div>
-<div class="event-card" data-gallery="gallery-birthday"><span class="event-icon">🎂</span><div>Birthday Celebrations</div></div>
-<div class="event-card" data-gallery="gallery-harambees"><span class="event-icon">🤝</span><div>Harambees</div></div>
-<div class="event-card" data-gallery="gallery-dowry"><span class="event-icon">💝</span><div>Dowry Negotiations</div></div>
-<div class="event-card" data-gallery="gallery-team"><span class="event-icon">🏢</span><div>Team Building</div></div>
-<div class="event-card" data-gallery="gallery-graduation"><span class="event-icon">🎓</span><div>Graduation Parties</div></div>
-<div class="event-card" data-gallery="gallery-thanksgiving"><span class="event-icon">🙏</span><div>Thanksgiving Events</div></div>
-<div class="event-card" data-gallery="gallery-political"><span class="event-icon">🎤</span><div>Political Rallies</div></div>
-<div class="event-card" data-gallery="gallery-launches"><span class="event-icon">🎪</span><div>Product Launches</div></div>
-</div>
-</div>
-</section>
-
-<!-- Gallery Section -->
-<section class="gallery" id="gallery">
-<div class="container">
-<h2>Event Gallery</h2>
-<p class="subtitle">Moments captured from our most memorable events</p>
-
-<div class="category" id="gallery-weddings">
-<h3>💍 Weddings</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding1.jpg" alt="Wedding 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Ceremony Moments</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding2.jpg" alt="Wedding 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Reception Joy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="wedding3.jpg" alt="Wedding 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Dance Floor Energy</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-burials">
-<h3>🕊️ Burials & Memorial Services</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial1.jpg" alt="Burial 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Dignified Farewell</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial2.jpg" alt="Burial 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Respectful Tribute</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="burial3.jpg" alt="Burial 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Memorial Gathering</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-birthday">
-<h3>🎂 Birthday Celebrations</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday1.jpg" alt="Birthday 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Party Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday2.jpg" alt="Birthday 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Cake Cutting</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="birthday3.jpg" alt="Birthday 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Fun & Games</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-harambees">
-<h3>🤝 Harambees</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee1.jpg" alt="Harambee 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Community Support</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee2.jpg" alt="Harambee 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Fundraising Success</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="harambee3.jpg" alt="Harambee 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Unity in Action</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-dowry">
-<h3>💝 Dowry Negotiations</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry1.jpg" alt="Dowry 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry2.jpg" alt="Dowry 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="dowry3.jpg" alt="Dowry 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-team">
-<h3>🏢 Team Building</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team1.jpg" alt="Team 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Group Activities</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team2.jpg" alt="Team 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Corporate Fun</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="team3.jpg" alt="Team 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Team Spirit</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-graduation">
-<h3>🎓 Graduation Parties</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation1.jpg" alt="Graduation 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Academic Achievement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation2.jpg" alt="Graduation 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Celebration Time</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="graduation3.jpg" alt="Graduation 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Success Stories</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-thanksgiving">
-<h3>🙏 Thanksgiving Events</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving1.jpg" alt="Thanksgiving 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Gratitude Gathering</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving2.jpg" alt="Thanksgiving 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Worship & Praise</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="thanksgiving3.jpg" alt="Thanksgiving 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Blessed Moments</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-political">
-<h3>🎤 Political Rallies</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political1.jpg" alt="Political 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Campaign Energy</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political2.jpg" alt="Political 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Crowd Engagement</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="political3.jpg" alt="Political 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Public Speaking</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-<div class="category" id="gallery-launches">
-<h3>🎪 Product Launches</h3>
-<div class="gallery-grid">
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch1.jpg" alt="Launch 1" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Brand Unveiling</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch2.jpg" alt="Launch 2" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Exciting Reveal</p></div><div class="gallery-zoom">🔍</div></div>
-<div class="gallery-item" onclick="openLightbox(this)"><img src="launch3.jpg" alt="Launch 3" width="400" height="350"><div class="gallery-overlay"><p class="gallery-caption">Market Buzz</p></div><div class="gallery-zoom">🔍</div></div>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- Stats -->
-<section class="stats">
-<div class="stats-grid">
-<div class="stat-item"><span class="stat-label">Events Hosted</span><span class="stat-number">500+</span></div>
-<div class="stat-item"><span class="stat-label">Client Satisfaction</span><span class="stat-number">100%</span></div>
-<div class="stat-item"><span class="stat-label">Years Experience</span><span class="stat-number">10+</span></div>
-<div class="stat-item"><span class="stat-label">Complete Services</span><span class="stat-number">5</span></div>
-</div>
-</section>
-
-<!-- Testimonials -->
-<section class="testimonials" id="testimonials">
-<div class="container">
-<h2>Client Testimonials</h2>
-<p class="subtitle">Hear from those who experienced the KEKE EVENTS difference</p>
-<div class="testimonial-grid">
-<div class="testimonial-card">
-<div class="quote-icon">"</div>
-<p class="testimonial-text">KEKE EVENTS provided complete services for our wedding - MC, photography, sound, tents, and catering. Everything was perfect! MC KEKE's energy kept our guests entertained, the food was delicious, and the photos are stunning!</p>
-<div class="testimonial-author">
-<div class="author-img">JM</div>
-<div class="author-info"><strong>John & Mary Kilonzo</strong><span>Wedding Clients</span></div>
-</div>
-</div>
-<div class="testimonial-card">
-<div class="quote-icon">"</div>
-<p class="testimonial-text">Best MC in Kenya hands down! His ability to read the crowd and adjust his performance accordingly is exceptional. Our harambee raised 3x our initial target!</p>
-<div class="testimonial-author">
-<div class="author-img">PO</div>
-<div class="author-info"><strong>Peter Omondi</strong><span>Community Leader</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Contact Form -->
-<section class="contact" id="contact">
-<div class="container">
-<h2>Book KEKE EVENTS</h2>
-<p class="subtitle">Let's make your event extraordinary. Fill out the form and we'll get back to you within 24 hours</p>
-<form id="whatsappForm">
-<div class="form-group"><label>Your Name *</label><input name="name" placeholder="Enter your full name" required></div>
-<div class="form-group"><label>Phone Number *</label><input name="phone" type="tel" placeholder="e.g., 0712345678" required></div>
-<div class="form-group"><label>Email Address</label><input name="email" type="email" placeholder="your@email.com"></div>
-<div class="form-group"><label>Event Type *</label>
-<select name="event" required>
-<option value="">Select your event type</option>
-<option>Wedding</option>
-<option>Burial / Memorial Service</option>
-<option>Birthday Party</option>
-<option>Harambee</option>
-<option>Corporate Event</option>
-<option>Team Building</option>
-<option>Product Launch</option>
-<option>Graduation Party</option>
-<option>Dowry Ceremony</option>
-<option>Political Event</option>
-<option>Other</option>
-</select>
-</div>
-<div class="form-group"><label>Services Needed *</label>
-<select name="services" required>
-<option value="">Select services you need</option>
-<option>MC Services Only</option>
-<option>Photography & Videography Only</option>
-<option>P/A Sound System Only</option>
-<option>Tents Only</option>
-<option>Catering Only</option>
-<option>MC + Photography</option>
-<option>MC + P/A System</option>
-<option>MC + Tents + P/A</option>
-<option>Complete Package (All Services)</option>
-<option>Custom Package (I'll specify below)</option>
-</select>
-</div>
-<div class="form-group"><label>Event Date</label><input name="date" type="date"></div>
-<div class="form-group"><label>Event Location</label><input name="location" placeholder="City or venue name"></div>
-<div class="form-group"><label>Expected Number of Guests</label><input name="guests" type="number" placeholder="Approximate attendance"></div>
-<div class="form-group"><label>Additional Details</label><textarea name="message" placeholder="Tell us more about your event, specific requirements, or questions..."></textarea></div>
-<button type="submit">📱 Send Booking Request via WhatsApp</button>
-</form>
-</div>
-</section>
-
-<!-- Footer -->
 <footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>KEKE EVENTS</h3>
-<p>Kenya's premier complete event solutions provider. From MC services to photography, sound systems, tents, and catering - we deliver unforgettable experiences.</p>
-<div class="social-links">
-<a href="https://youtube.com/@mckeke" target="_blank" rel="noopener">▶</a>
-<a href="#" target="_blank" rel="noopener">f</a>
-<a href="#" target="_blank" rel="noopener">📷</a>
-<a href="#" target="_blank" rel="noopener">💼</a>
-</div>
-</div>
-<div class="footer-section">
-<h3>Our Services</h3>
-<p><a href="#services">MC KEKE Services</a></p>
-<p><a href="#services">Photography & Videography</a></p>
-<p><a href="#services">P/A Sound Systems</a></p>
-<p><a href="#services">Tents & Canopies</a></p>
-<p><a href="#services">Catering Services</a></p>
-</div>
-<div class="footer-section">
-<h3>Contact Info</h3>
-<p>📱 Phone: +254 738 720 478</p>
-<p>📧 Email: info@kekeevents.co.ke</p>
-<p>📍 Location: Nairobi, Kenya</p>
-<p>🕐 Available: 24/7 for bookings</p>
-</div>
-<div class="footer-section">
-<h3>Service Areas</h3>
-<p>Nairobi • Kiambu • Machakos • Kajiado • Nakuru • Kisumu • Mombasa • Eldoret • All Kenya Counties</p>
-</div>
-</div>
-<div class="footer-bottom">
-<p>© 2026 KEKE EVENTS | Complete Event Solutions | All Rights Reserved</p>
-</div>
+  © 2026 MC Keke. All rights reserved.
 </footer>
-
-<script>
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();const target=document.querySelector(this.getAttribute('href'));if(target){target.scrollIntoView({behavior:'smooth'})}})});
-
-// Hero Slideshow
-const slides=document.querySelectorAll('.slide');let currentSlide=0;function showSlide(index){slides[currentSlide].classList.remove('active');currentSlide=(index+slides.length)%slides.length;slides[currentSlide].classList.add('active')}setInterval(()=>showSlide(currentSlide+1),4000);
-
-// Lightbox
-let currentImageIndex=0;let galleryImages=[];function openLightbox(element){const lightbox=document.getElementById('lightbox');const lightboxImg=document.getElementById('lightbox-img');const img=element.querySelector('img');const gallerySection=element.closest('.category, .service-section');galleryImages=Array.from(gallerySection.querySelectorAll('.gallery-item img, .media-item img'));currentImageIndex=galleryImages.indexOf(img);lightboxImg.src=img.src;lightbox.classList.add('active');document.body.style.overflow='hidden'}function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='auto'}function changeLightboxImage(direction){currentImageIndex+=direction;if(currentImageIndex>=galleryImages.length)currentImageIndex=0;if(currentImageIndex<0)currentImageIndex=galleryImages.length-1;const img=galleryImages[currentImageIndex];document.getElementById('lightbox-img').src=img.src}
-
-// Keyboard navigation
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')changeLightboxImage(-1);if(e.key==='ArrowRight')changeLightboxImage(1)});
-
-// Close lightbox on click outside
-document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox()});
-
-// WhatsApp Form
-document.getElementById('whatsappForm').addEventListener('submit',function(e){e.preventDefault();const formData=new FormData(e.target);const message=`🎉 *NEW BOOKING REQUEST*
-
-👤 *Name:* ${formData.get('name')}
-📱 *Phone:* ${formData.get('phone')}
-📧 *Email:* ${formData.get('email')||'Not provided'}
-
-🎊 *Event Details:*
-Type: ${formData.get('event')}
-Services: ${formData.get('services')}
-Date: ${formData.get('date')||'TBC'}
-Location: ${formData.get('location')||'TBC'}
-Guests: ${formData.get('guests')||'Not specified'}
-
-💬 *Additional Info:*
-${formData.get('message')||'None'}`;window.open(`https://wa.me/254738720478?text=${encodeURIComponent(message)}`,'_blank')});
-
-// Mobile Menu Toggle
-function toggleMenu(){document.querySelector('.nav-links').classList.toggle('active');document.querySelector('.menu-toggle').classList.toggle('active')}
-
-// Close menu on link click
-document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('active');document.querySelector('.menu-toggle').classList.remove('active')})});
-
-// Event Card Gallery Navigation
-document.querySelectorAll('.event-card').forEach(card=>{card.addEventListener('click',function(){const galleryId=this.getAttribute('data-gallery');const gallerySection=document.getElementById(galleryId);if(gallerySection){gallerySection.scrollIntoView({behavior:'smooth'})}})});
-</script>
 
 </body>
 </html>
