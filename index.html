@@ -64,18 +64,15 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin
 .service-section h3{font-size:clamp(1.4rem,3vw,2rem);color:var(--blue);text-align:center;margin-bottom:1.5rem}
 .service-desc{text-align:center;color:#555;font-size:1.05rem;max-width:900px;margin:1.5rem auto 0}
 
-/* ── MEDIA GRID — flexible columns based on item count ─ */
-.media-grid{
-  display:grid;
-  gap:1.2rem;
-}
-.media-grid.items-3 { grid-template-columns: repeat(3, 1fr); }
-.media-grid.items-4 { grid-template-columns: repeat(4, 1fr); }
+/* ── MEDIA GRID ─ */
+.media-grid{display:grid;gap:1.2rem}
+.media-grid.items-3{grid-template-columns:repeat(3,1fr)}
+.media-grid.items-4{grid-template-columns:repeat(4,1fr)}
 
-/* ── MC CARD (slideshow) ───────────────────────────── */
+/* ── MC CARD (slideshow) — BIGGER IMAGES ───────────── */
 .mc-card{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:all .3s;display:block;text-decoration:none}
 .mc-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
-.mc-card-slides{position:relative;width:100%;padding-top:100%;overflow:hidden}
+.mc-card-slides{position:relative;width:100%;padding-top:155%;overflow:hidden}
 .mc-card-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s}
 .mc-card-slide.active{opacity:1}
 .mc-card-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
@@ -90,11 +87,33 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin
 /* ── STANDARD MEDIA ITEM ───────────────────────────── */
 .media-item{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:all .3s;background:#bbb;display:block;text-decoration:none;cursor:pointer}
 .media-item:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
-.media-item img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;display:block}
+.media-item img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;display:block}
 .media-item .media-overlay{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.75));color:var(--white);opacity:0;transition:opacity .3s}
 .media-item:hover .media-overlay{opacity:1}
 .media-item .play-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.2rem;opacity:0;transition:all .3s}
 .media-item:hover .play-badge{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+
+/* ── PA SECTION ─────────────────────────────────────── */
+.pa-spotlight{margin-bottom:4rem}
+.pa-header{text-align:center;margin-bottom:1.5rem}
+.pa-icon-wrap{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;background:linear-gradient(135deg,#F7931E,#e08318);border-radius:50%;font-size:1.6rem;margin-bottom:.8rem;box-shadow:0 4px 14px rgba(247,147,30,0.35)}
+.pa-header h3{font-size:clamp(1.4rem,3vw,2rem)!important;color:var(--blue)!important;text-align:center!important;margin-bottom:.4rem!important}
+.pa-tagline{color:var(--text-light);font-size:1rem;font-style:italic}
+.pa-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:1.5rem}
+.pa-card{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,.12);transition:transform .3s,box-shadow .3s;background:#f0f0f0}
+.pa-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+.pa-img-wrap{width:100%;aspect-ratio:3/4;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0}
+.pa-img-wrap img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:transform .4s ease}
+.pa-card:hover .pa-img-wrap img{transform:scale(1.03)}
+.pa-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.72));padding:2rem .9rem .8rem;opacity:0;transition:opacity .3s}
+.pa-card:hover .pa-label{opacity:1}
+.pa-label span{color:#fff;font-weight:700;font-size:.95rem;letter-spacing:.5px}
+.pa-card::after{content:'🔍';position:absolute;top:50%;left:50%;transform:translate(-50%,-60%) scale(0);font-size:1.4rem;background:var(--orange);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s;z-index:4;line-height:52px;text-align:center;pointer-events:none}
+.pa-card:hover::after{transform:translate(-50%,-60%) scale(1)}
+.pa-features{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-bottom:1.5rem}
+.pa-feat{display:flex;align-items:center;gap:.5rem;background:rgba(35,59,139,0.08);border:1px solid rgba(35,59,139,0.2);border-radius:30px;padding:.5rem 1.1rem;color:var(--blue);font-size:.88rem;font-weight:600;transition:background .3s,transform .3s}
+.pa-feat:hover{background:rgba(247,147,30,0.15);border-color:var(--orange);transform:translateY(-2px)}
+.pa-feat-icon{font-size:1rem}
 
 /* ── PORTFOLIO ─────────────────────────────────────── */
 #portfolio{background:var(--light)}
@@ -103,49 +122,19 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin
 .category-badge{display:inline-block;background:var(--orange);color:var(--white);padding:.3rem .9rem;border-radius:15px;font-size:.8rem;font-weight:600;margin-left:.8rem;vertical-align:middle}
 .category>p{color:#555;margin-bottom:1.5rem;font-size:1rem}
 
-/* ── VIDEO GRID — flexible columns based on item count ─ */
-.video-grid{
-  display:grid;
-  gap:1.2rem;
-  margin-top:1rem;
-}
-.video-grid.items-3 { grid-template-columns: repeat(3, 1fr); }
-.video-grid.items-4 { grid-template-columns: repeat(4, 1fr); }
-
-.video-card{
-  background:var(--white);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 6px 20px rgba(0,0,0,.1);
-  transition:transform .3s;
-  display:flex;
-  flex-direction:column;
-}
-.yt-wrap{
-  position:relative;
-  width:100%;
-  padding-top:75%;
-  background:#111;
-  cursor:pointer;
-  overflow:hidden;
-  flex-shrink:0;
-}
+/* ── VIDEO GRID ─ */
+.video-grid{display:grid;gap:1.2rem;margin-top:1rem}
+.video-grid.items-3{grid-template-columns:repeat(3,1fr)}
+.video-grid.items-4{grid-template-columns:repeat(4,1fr)}
+.video-card{background:var(--white);border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:transform .3s;display:flex;flex-direction:column}
+.yt-wrap{position:relative;width:100%;padding-top:75%;background:#111;cursor:pointer;overflow:hidden;flex-shrink:0}
 .yt-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .3s;display:block}
 .yt-wrap:hover img{transform:scale(1.04)}
 .yt-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:44px;background:#f00;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s;pointer-events:none;z-index:2}
 .yt-wrap:hover .yt-btn{background:#c00}
 .yt-btn svg{width:22px;fill:#fff}
 .yt-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.pixieset-wrap{
-  position:relative;
-  display:block;
-  width:100%;
-  padding-top:75%;
-  overflow:hidden;
-  background:#111;
-  text-decoration:none;
-  flex-shrink:0;
-}
+.pixieset-wrap{position:relative;display:block;width:100%;padding-top:75%;overflow:hidden;background:#111;text-decoration:none;flex-shrink:0}
 .pixieset-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .3s;display:block}
 .pixieset-wrap:hover img{transform:scale(1.04)}
 .pixieset-wrap .yt-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:44px;background:#f00;border-radius:10px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2}
@@ -161,26 +150,12 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin
 .event-icon{font-size:2rem;margin-bottom:.7rem;display:block}
 .event-card div{font-weight:600;font-size:.95rem}
 
-/* ── GALLERY GRID — flexible columns based on item count ─ */
+/* ── GALLERY GRID ─ */
 .gallery{background:var(--white)}
-.gallery-grid{
-  display:grid;
-  gap:1.2rem;
-  margin-top:1rem;
-}
-.gallery-grid.items-3 { grid-template-columns: repeat(3, 1fr); }
-.gallery-grid.items-4 { grid-template-columns: repeat(4, 1fr); }
-
-.gallery-item{
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,.1);
-  cursor:pointer;
-  transition:all .3s;
-  background:#bbb;
-  aspect-ratio:4/3;
-}
+.gallery-grid{display:grid;gap:1.2rem;margin-top:1rem}
+.gallery-grid.items-3{grid-template-columns:repeat(3,1fr)}
+.gallery-grid.items-4{grid-template-columns:repeat(4,1fr)}
+.gallery-item{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.1);cursor:pointer;transition:all .3s;background:#bbb;aspect-ratio:4/3}
 .gallery-item:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
 .gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .gallery-overlay{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.75));opacity:0;transition:opacity .3s}
@@ -188,6 +163,9 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin
 .gallery-caption{color:var(--white);font-weight:600;font-size:.95rem}
 .zoom-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;opacity:0;transition:all .3s}
 .gallery-item:hover .zoom-icon{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+
+/* ── BIRTHDAY GALLERY — TALLER IMAGES (matches drone/media-item 4/5) ── */
+#gallery-birthday .gallery-item{aspect-ratio:4/5}
 
 /* ── LIGHTBOX ──────────────────────────────────────── */
 .lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center}
@@ -234,13 +212,12 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
 .social-row a:hover{background:var(--orange);transform:scale(1.1)}
 .footer-bottom{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);opacity:.75;font-size:.88rem}
 
-/* ── RESPONSIVE (override for tablet/mobile) ───────── */
+/* ── RESPONSIVE ───────────────────────────────────── */
 @media(max-width:1024px){
-  .media-grid.items-3, .media-grid.items-4,
-  .video-grid.items-3, .video-grid.items-4,
-  .gallery-grid.items-3, .gallery-grid.items-4 {
-    grid-template-columns: repeat(2,1fr);
-  }
+  .media-grid.items-3,.media-grid.items-4,
+  .video-grid.items-3,.video-grid.items-4,
+  .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:repeat(2,1fr)}
+  .pa-cards{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .menu-toggle{display:flex}
@@ -250,13 +227,15 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
   .nav .btn{width:100%;text-align:center}
   .hero-cta{flex-direction:column;align-items:center}
   .hero-cta a{width:100%;max-width:280px;text-align:center}
-  .media-grid.items-3, .media-grid.items-4,
-  .video-grid.items-3, .video-grid.items-4,
-  .gallery-grid.items-3, .gallery-grid.items-4 {
-    grid-template-columns: 1fr;
-  }
+  .media-grid.items-3,.media-grid.items-4,
+  .video-grid.items-3,.video-grid.items-4,
+  .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:1fr}
+  .pa-cards{grid-template-columns:repeat(2,1fr);gap:1rem}
   .contact-form{padding:1.8rem 1.2rem}
   section{padding:3rem 1.2rem}
+}
+@media(max-width:480px){
+  .pa-cards{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -308,15 +287,13 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     SERVICES  (all media-grid = 4 items each)
-     ═══════════════════════════════════════════════════ -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
 
-    <!-- MC SERVICES — 4 slideshow cards -->
+    <!-- MC SERVICES -->
     <div class="service-section">
-      <h3>&#127908; Professional MC Services</h3>
+      <h3>&#127908;MC KeKe Professional MC Services</h3>
       <div class="media-grid">
         <a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="mc-card" data-card="0">
           <div class="mc-card-slides">
@@ -331,7 +308,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
         <a href="https://youtube.com/@mckeke" target="_blank" rel="noopener" class="mc-card" data-card="1">
           <div class="mc-card-slides">
             <div class="mc-card-slide active"><img src="prof2.jpeg" alt=""></div>
-            <div class="mc-card-slide"><img src="prof1.jpg" alt="" loading="lazy"></div>
+            <div class="mc-card-slide"><img src="prof1.jpeg" alt="" loading="lazy"></div>
             <div class="mc-card-slide"><img src="prof4.jpg" alt="" loading="lazy"></div>
           </div>
           <div class="mc-card-dots"><div class="mc-card-dot active"></div><div class="mc-card-dot"></div><div class="mc-card-dot"></div></div>
@@ -362,7 +339,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
       <p class="service-desc">Hire MC KEKE for unforgettable event hosting! Expert in comedy, money raising (harambees), crowd control through dancing, and live instrument performances. Kenya's most sought-after MC bringing energy and professionalism to every occasion.</p>
     </div>
 
-    <!-- PHOTOGRAPHY — 4 items -->
+    <!-- PHOTOGRAPHY -->
     <div class="service-section">
       <h3>&#128247; Videography &amp; Photography</h3>
       <div class="media-grid">
@@ -374,38 +351,72 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
       <p class="service-desc">Capture every precious moment with professional photography and videography. From candid shots to cinematic videos, we document your special day with creativity and precision.</p>
     </div>
 
-    <!-- PA SYSTEM — 4 items -->
-    <div class="service-section">
-      <h3>&#128266; Professional P/A Sound Systems</h3>
-      <div class="media-grid">
-        <div class="media-item" onclick="lbOpen(this)"><img src="pa1.jpeg" alt="PA System" loading="lazy"><div class="media-overlay"><p>Corporate Events</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="pa2.jpeg" alt="Sound Equipment" loading="lazy"><div class="media-overlay"><p>Wedding Audio</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="pa3.jpeg" alt="Audio Setup" loading="lazy"><div class="media-overlay"><p>Political Rallies</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="launch1.jpg" alt="Professional Sound" loading="lazy"><div class="media-overlay"><p>Product Launches</p></div></div>
+    <!-- PA SYSTEM -->
+    <div class="service-section pa-spotlight">
+      <div class="pa-header">
+        <div class="pa-icon-wrap">🔊</div>
+        <h3>Mc KeKe Professional P/A Sound Systems</h3>
+        <p class="pa-tagline">Crystal-clear audio that commands every room</p>
+      </div>
+      <div class="pa-cards">
+        <div class="pa-card" onclick="lbOpen(this)">
+          <div class="pa-img-wrap"><img src="pa1.jpeg" alt="PA System" loading="lazy"></div>
+          <div class="pa-label"><span></span></div>
+        </div>
+        <div class="pa-card" onclick="lbOpen(this)">
+          <div class="pa-img-wrap"><img src="pa2.jpeg" alt="Sound Equipment" loading="lazy"></div>
+          <div class="pa-label"><span></span></div>
+        </div>
+        <div class="pa-card" onclick="lbOpen(this)">
+          <div class="pa-img-wrap"><img src="pa3.jpeg" alt="Audio Setup" loading="lazy"></div>
+          <div class="pa-label"><span></span></div>
+        </div>
+        <div class="pa-card" onclick="lbOpen(this)">
+          <div class="pa-img-wrap"><img src="pa4.jpeg" alt="Professional Sound" loading="lazy"></div>
+          <div class="pa-label"><span></span></div>
+        </div>
+      </div>
+      <div class="pa-features">
+        <div class="pa-feat"><span class="pa-feat-icon">🎙️</span><span>Wireless Microphones</span></div>
+        <div class="pa-feat"><span class="pa-feat-icon">📡</span><span>Large Venue Coverage</span></div>
+        <div class="pa-feat"><span class="pa-feat-icon">🔈</span><span>Crystal Clear Audio</span></div>
+        <div class="pa-feat"><span class="pa-feat-icon">⚡</span><span>Professional Setup</span></div>
       </div>
       <p class="service-desc">Crystal clear sound for events of any size. Professional PA systems ensure every guest hears every word, song, and announcement perfectly.</p>
     </div>
 
-    <!-- TENTS — 4 items -->
+    <!-- TENTS -->
     <div class="service-section">
-      <h3>&#9978; Tents &amp; Canopies</h3>
+      <h3>&#9978; Mc KeKe Tents &amp; Canopies</h3>
       <div class="media-grid">
-        <div class="media-item" onclick="lbOpen(this)"><img src="event.jpg" alt="Wedding Tent" loading="lazy"><div class="media-overlay"><p>Wedding Canopy</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="tent-2.jpg" alt="Event Tent" loading="lazy"><div class="media-overlay"><p>Birthday Setup</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="tent-3.jpg" alt="Large Tent" loading="lazy"><div class="media-overlay"><p>Harambee Tent</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="tent-4.jpg" alt="Canopy" loading="lazy"><div class="media-overlay"><p>Graduation Event</p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="event.jpg" alt="Wedding Tent" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="tent-2.jpg" alt="Event Tent" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="tent-3.jpg" alt="Large Tent" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="tent-4.jpg" alt="Canopy" loading="lazy"><div class="media-overlay"><p></p></div></div>
       </div>
       <p class="service-desc">Premium quality tents for all weather conditions. From elegant wedding canopies to spacious event tents, we provide shelter and ambiance for your guests.</p>
     </div>
 
-    <!-- CATERING — 4 items -->
+    <!-- DRONE -->
+    <div class="service-section">
+      <h3>Mc KeKe Drone Services</h3>
+      <div class="media-grid">
+        <div class="media-item" onclick="lbOpen(this)"><img src="drone1.jpg" alt="Drone 1" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="drone2.jpg" alt="Drone 2" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="drone3.jpg" alt="Drone 3" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="drone4.jpg" alt="Drone 4" loading="lazy"><div class="media-overlay"><p></p></div></div>
+      </div>
+      <p class="service-desc">Premium quality tents for all weather conditions. From elegant wedding canopies to spacious event tents, we provide shelter and ambiance for your guests.</p>
+    </div>
+
+    <!-- CATERING -->
     <div class="service-section">
       <h3>&#127869; Professional Catering Services</h3>
       <div class="media-grid">
-        <div class="media-item" onclick="lbOpen(this)"><img src="food-1.jpg" alt="Catering Sample 1" loading="lazy"><div class="media-overlay"><p>Delicious Cuisine</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="food-2.jpg" alt="Catering Sample 2" loading="lazy"><div class="media-overlay"><p>Traditional Dishes</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="food-1.jpg" alt="Catering Sample 3" loading="lazy"><div class="media-overlay"><p>International Menu</p></div></div>
-        <div class="media-item" onclick="lbOpen(this)"><img src="food-2.jpg" alt="Catering Sample 4" loading="lazy"><div class="media-overlay"><p>Event Catering</p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="food-1.jpg" alt="Catering Sample 1" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="food-2.jpg" alt="Catering Sample 2" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="food-1.jpg" alt="Catering Sample 3" loading="lazy"><div class="media-overlay"><p></p></div></div>
+        <div class="media-item" onclick="lbOpen(this)"><img src="food-2.jpg" alt="Catering Sample 4" loading="lazy"><div class="media-overlay"><p></p></div></div>
       </div>
       <p class="service-desc">Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.</p>
     </div>
@@ -413,80 +424,33 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     PORTFOLIO  (video-grid)
-     ═══════════════════════════════════════════════════ -->
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="container">
     <h2>Event Capabilities</h2>
     <p class="subtitle">Watch our diverse portfolio of entertainment services</p>
 
-    <!-- COMEDY — 4 items -->
     <div class="category">
-      <h3>Comedy &amp; Entertainment <span class="category-badge">Most Popular</span></h3>
+      <h3> KeKe Events Comedy &amp; Entertainment <span class="category-badge">Most Popular</span></h3>
       <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work.</p>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Comedy 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/TBl-DhnlK68?si=OBFceXCqfIWQPJeM" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Comedy 4" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/92xD30RB0nk?si=FpD4180CCyp6rKes" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Comedy 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/TBl-DhnlK68?si=OBFceXCqfIWQPJeM" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Comedy 4" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/92xD30RB0nk?si=FpD4180CCyp6rKes" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
-    <!-- FUNDRAISING — 3 items -->
     <div class="category">
-      <h3>Fundraising Excellence <span class="category-badge">Highest Returns</span></h3>
+      <h3>Fundraising Excellence and Contributions <span class="category-badge">Highest Returns</span></h3>
       <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and exceeding targets.</p>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/R_dxU--OGRg/LuRITuyWYM0lt.jpg" alt="Harambees 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
-    <!-- LIVE MUSIC — 4 items -->
     <div class="category">
       <h3>Live Music Performances <span class="category-badge">Premium</span></h3>
       <p>Saxophone and percussion performances that add sophisticated ambiance to cocktail hours and special moments.</p>
@@ -498,13 +462,12 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
       </div>
     </div>
 
-    <!-- DANCE — 4 items -->
     <div class="category">
       <h3>Dance &amp; Crowd Control <span class="category-badge">High Energy</span></h3>
       <p>Expert crowd management through dance and interactive activities. Transforming shy audiences into energized participants.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Music 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Music 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dance 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=SR8gUIpifMQ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card"><div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
@@ -529,183 +492,68 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════
-     GALLERY  (video-grid & gallery-grid)
-     ═══════════════════════════════════════════════════ -->
+<!-- GALLERY -->
 <section class="gallery" id="gallery">
   <div class="container">
     <h2>Event Gallery</h2>
     <p class="subtitle">Moments captured from our most memorable events</p>
 
-    <!-- WEDDINGS — 4 items (1 YT + 3 Pixieset) -->
     <div class="category" id="gallery-weddings">
       <h3>&#128141; Weddings</h3>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap">
-            <img src="wedo4.jpg" alt="Wedding Reception" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </a>
-          <a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a>
-        </div>
-        <div class="video-card">
-          <a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap">
-            <img src="wedo4.jpg" alt="Wedding Reception" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </a>
-          <a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a>
-        </div>
-        <div class="video-card">
-          <a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap">
-            <img src="wedo3.jpg" alt="Wedding Celebration" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </a>
-          <a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap"><img src="wedo4.jpg" alt="Wedding Reception" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></a><a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a></div>
+        <div class="video-card"><a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap"><img src="wedo4.jpg" alt="Wedding Reception" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></a><a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a></div>
+        <div class="video-card"><a href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener" class="pixieset-wrap"><img src="wedo3.jpg" alt="Wedding Celebration" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></a><a class="video-link" href="https://kekeevents81.pixieset.com/katewedsevansphotoshoot/" target="_blank" rel="noopener">&#9654; View Gallery</a></div>
       </div>
     </div>
 
-    <!-- BIRTHDAY — 4 items -->
+    <!-- BIRTHDAY — aspect-ratio overridden to 4/5 via #gallery-birthday .gallery-item rule -->
     <div class="category" id="gallery-birthday">
       <h3>&#128157; Birthday Celebrations</h3>
       <div class="gallery-grid">
-        <div class="gallery-item" onclick="lbOpen(this)"><img src="birth-cel2.jpeg" alt="Birthday 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Cultural Ceremony</p></div><div class="zoom-icon">&#128269;</div></div>
-        <div class="gallery-item" onclick="lbOpen(this)"><img src="birth-cel1.jpg" alt="Birthday 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Celebration</p></div><div class="zoom-icon">&#128269;</div></div>
-        <div class="gallery-item" onclick="lbOpen(this)"><img src="birth-cel2.jpeg" alt="Birthday 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Family Bonding</p></div><div class="zoom-icon">&#128269;</div></div>
-        <div class="gallery-item" onclick="lbOpen(this)"><img src="birth-cel1.jpg" alt="Birthday 4" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption">Joyful Moments</p></div><div class="zoom-icon">&#128269;</div></div>
+        <div class="gallery-item" onclick="lbOpen(this)"><img src="birth-cel2.jpeg" alt="Birthday 1" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption"></p></div><div class="zoom-icon">&#128269;</div></div>
+        <div class="gallery-item" onclick="lbOpen(this)"><img src="cake1.jpg" alt="Birthday 2" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption"></p></div><div class="zoom-icon">&#128269;</div></div>
+        <div class="gallery-item" onclick="lbOpen(this)"><img src="cake2.jpg" alt="Birthday 3" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption"></p></div><div class="zoom-icon">&#128269;</div></div>
+        <div class="gallery-item" onclick="lbOpen(this)"><img src="cake3.png" alt="Birthday 4" loading="lazy"><div class="gallery-overlay"><p class="gallery-caption"></p></div><div class="zoom-icon">&#128269;</div></div>
       </div>
     </div>
 
-    <!-- HARAMBEES — 3 items -->
     <div class="category" id="gallery-harambees">
       <h3>&#129309; Harambees</h3>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/R_dxU--OGRg/LuRITuyWYM0lt.jpg" alt="Harambees 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
-    <!-- DOWRY — 4 items -->
     <div class="category" id="gallery-dowry">
       <h3>&#128157; Dowry Negotiations</h3>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry Negotiation 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry Negotiation 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry Negotiation 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry Negotiation 4" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
-    <!-- THANKSGIVING — 3 items -->
     <div class="category" id="gallery-thanksgiving">
       <h3>&#128591; Thanksgiving Events</h3>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving Event 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving Event 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving Event 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
-    <!-- PRODUCT PROMOTIONS — 4 items -->
     <div class="category" id="gallery-launches">
       <h3>&#127914; Product Promotions</h3>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Product Launch 1" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="RxRiiFnegRI" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Product Launch 2" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="0Yy8IsOfxtg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Product Launch 3" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
-        <div class="video-card">
-          <div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Product Launch 4" loading="lazy">
-            <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-          </div>
-          <a class="video-link" href="https://www.youtube.com/watch?v=SR8gUIpifMQ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
-        </div>
+        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="RxRiiFnegRI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="0Yy8IsOfxtg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Launch 4" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=SR8gUIpifMQ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -825,7 +673,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
     <div class="footer-col">
       <h3>Contact Info</h3>
       <p>&#128242; +254 738 720 478</p>
-      <p>&#128231; info@kekeevents.com</p>
+      <p>&#128231; kekeevents@gmail.com</p>
       <p>&#128205; Nairobi, Kenya</p>
       <p>&#128336; Available 24/7 for bookings</p>
     </div>
@@ -836,6 +684,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
   </div>
   <div class="footer-bottom">&copy; 2026 KEKE EVENTS | Complete Event Solutions | All Rights Reserved</div>
 </footer>
+
 
 <script>
 /* HERO SLIDESHOW */
@@ -890,7 +739,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
   });
 });
 
-/* EVENT CARDS SCROLL TO GALLERY */
+/* EVENT CARDS SCROLL */
 document.querySelectorAll('.event-card').forEach(function(c){
   c.addEventListener('click',function(){
     var t=document.getElementById(this.dataset.target);
@@ -915,8 +764,8 @@ function ytLoad(wrap){
 var lbImgs=[],lbIdx=0;
 function lbOpen(el){
   var img=el.querySelector('img');
-  var sec=el.closest('.category,.service-section');
-  lbImgs=Array.from(sec.querySelectorAll('.media-item img,.gallery-item img'));
+  var sec=el.closest('.category,.service-section,.pa-spotlight');
+  lbImgs=Array.from(sec.querySelectorAll('.media-item img,.gallery-item img,.pa-img-wrap img'));
   lbIdx=lbImgs.indexOf(img);
   document.getElementById('lb-img').src=img.src;
   document.getElementById('lightbox').classList.add('active');
@@ -955,20 +804,14 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
   window.open('https://wa.me/254738720478?text='+encodeURIComponent(msg),'_blank');
 });
 
-/* ── AUTO‑ADAPT GRID COLUMNS (3 or 4 items) ────────── */
-document.addEventListener('DOMContentLoaded', function() {
-  function setGridClasses() {
-    document.querySelectorAll('.media-grid, .video-grid, .gallery-grid').forEach(function(grid) {
-      var count = grid.children.length;
-      grid.classList.remove('items-3', 'items-4');
-      if (count === 3) {
-        grid.classList.add('items-3');
-      } else if (count === 4) {
-        grid.classList.add('items-4');
-      }
-    });
-  }
-  setGridClasses();
+/* AUTO-ADAPT GRID COLUMNS */
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.media-grid,.video-grid,.gallery-grid').forEach(function(grid){
+    var count=grid.children.length;
+    grid.classList.remove('items-3','items-4');
+    if(count===3)grid.classList.add('items-3');
+    else if(count===4)grid.classList.add('items-4');
+  });
 });
 </script>
 </body>
