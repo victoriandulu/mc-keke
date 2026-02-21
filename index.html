@@ -196,7 +196,7 @@ h2{text-align:center;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--orange);marg
 .svc-prev:hover,.svc-next:hover{background:var(--orange);border-color:var(--orange)}
 
 /* Dots */
-.svc-dots{display:flex;gap:7px;justify-content:center;padding:10px 0;background:#fff;position:relative;z-index:5}
+.svc-dots{display:flex;gap:7px;justify-content:center;padding:10px 0;background:#fff;position:relative;z-index:5;flex-wrap:wrap}
 .svc-dot{width:9px;height:9px;border-radius:50%;background:#ccc;cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
 .svc-dot.active{background:var(--orange);transform:scale(1.2)}
 
@@ -311,26 +311,6 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
 .social-row a:hover{background:var(--orange);transform:scale(1.1)}
 .footer-bottom{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);opacity:.75;font-size:.88rem}
 
-/* ── RESPONSIVE ───────────────────────────────────── */
-@media(max-width:1024px){
-  .video-grid.items-3,.video-grid.items-4,
-  .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:768px){
-  .menu-toggle{display:flex}
-  .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;box-shadow:0 5px 20px rgba(0,0,0,.1);transform:translateY(-110%);opacity:0;visibility:hidden;transition:all .3s;z-index:999}
-  .nav-links.active{transform:translateY(0);opacity:1;visibility:visible}
-  .nav-links a{padding:.8rem;text-align:center;width:100%;margin:.3rem 0}
-  .nav .btn{width:100%;text-align:center}
-  .hero-cta{flex-direction:column;align-items:center}
-  .hero-cta a{width:100%;max-width:280px;text-align:center}
-  .video-grid.items-3,.video-grid.items-4,
-  .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:1fr}
-  .contact-form{padding:1.8rem 1.2rem}
-  section{padding:3rem 1.2rem}
-  .svc-prev,.svc-next{width:34px;height:34px;font-size:.9rem}
-}
-
 /* ── IMAGE MODAL ─────────────────────────────────── */
 #img-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.94);align-items:center;justify-content:center}
 #img-modal.open{display:flex}
@@ -375,42 +355,150 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem}
 .bday-dot.active{background:var(--orange);transform:scale(1.25)}
 
 
-/* EXTRA HEROS FOR SMALL SCREEN */
-/* ── HERO MOBILE IMPROVEMENTS ─────────────────────── */
-@media (max-width: 768px) {
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════ */
 
-  .hero-overlay {
-    align-items: flex-start;       /* move content upward */
-    padding-top: 20vh;             /* vertical position control */
-  }
-
-  .hero-overlay h1 {
-    font-size: 3.2rem;             /* BIGGER KEKE EVENTS */
-    line-height: 1.1;
-    margin-bottom: 0.8rem;
-    letter-spacing: 1px;
-  }
-
-  .hero-overlay p {
-    font-size: 1.05rem;            /* readable on phones */
-    line-height: 1.6;
-    max-width: 90%;
-    margin: 0 auto 1.5rem;
-  }
-
-}
-/* ── HERO TEXT SIZE BOOST (SMALL SCREENS) ─────────── */
-@media (max-width: 768px) {
-
-  .hero-overlay p {
-    font-size: 1.15rem;   /* bigger & clearer */
-    line-height: 1.7;
-    font-weight: 500;
-    max-width: 92%;
-  }
-
+/* ── TABLET (≤1024px) ──────────────────────────────── */
+@media(max-width:1024px){
+  .video-grid.items-3,.video-grid.items-4,
+  .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:repeat(2,1fr)}
 }
 
+/* ── MOBILE (≤768px) ──────────────────────────────── */
+@media(max-width:768px){
+
+  /* NAV */
+  .menu-toggle{display:flex}
+  .nav{padding:.8rem 1rem}
+  .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;box-shadow:0 5px 20px rgba(0,0,0,.1);transform:translateY(-110%);opacity:0;visibility:hidden;transition:all .3s;z-index:999}
+  .nav-links.active{transform:translateY(0);opacity:1;visibility:visible}
+  .nav-links a{padding:.8rem;text-align:center;width:100%;margin:.3rem 0}
+  .nav .btn{width:100%;text-align:center}
+
+  /* HERO */
+  .hero-overlay{
+    align-items:flex-start;
+    padding-top:18vh;
+    padding-left:1rem;
+    padding-right:1rem;
+  }
+  .hero-overlay h1{
+    font-size:clamp(2.2rem,8vw,3.2rem);
+    line-height:1.1;
+    margin-bottom:.8rem;
+    letter-spacing:1px;
+  }
+  .hero-overlay p{
+    font-size:clamp(.95rem,3.5vw,1.15rem);
+    line-height:1.6;
+    font-weight:500;
+    max-width:95%;
+    margin:0 auto 1.5rem;
+  }
+  .hero-cta{flex-direction:column;align-items:center}
+  .hero-cta a{width:100%;max-width:280px;text-align:center}
+
+  /* SECTIONS */
+  section{padding:2.5rem 1rem}
+
+  /* HEADINGS */
+  h2{font-size:clamp(1.5rem,6vw,2rem)}
+  .subtitle{font-size:.95rem;margin-bottom:2rem}
+
+  /* SERVICE SLIDESHOWS */
+  .svc-slideshow{border-radius:12px}
+  .svc-slideshow.portrait{max-width:100%}
+  .svc-prev,.svc-next{width:34px;height:34px;font-size:.9rem}
+  .svc-dots{gap:5px;padding:8px 0}
+  .svc-dot{width:7px;height:7px}
+
+  /* STATS */
+  .stats{padding:2rem 1rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
+  .stat-number{font-size:2rem}
+
+  /* VIDEO GRID — single column on phones */
+  .video-grid,
+  .video-grid.items-3,
+  .video-grid.items-4{grid-template-columns:1fr}
+
+  /* GALLERY GRID — single column on phones */
+  .gallery-grid,
+  .gallery-grid.items-3,
+  .gallery-grid.items-4{grid-template-columns:1fr}
+
+  /* EVENTS GRID */
+  .events-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .event-card{padding:1.2rem .8rem}
+  .event-icon{font-size:1.6rem}
+  .event-card div{font-size:.85rem}
+
+  /* CATEGORY BADGES */
+  .category-badge{display:block;margin:4px 0 0 0;font-size:.75rem}
+
+  /* PA FEATURES */
+  .pa-features{gap:.5rem}
+  .pa-feat{font-size:.8rem;padding:.4rem .8rem}
+
+  /* TESTIMONIALS */
+  .testimonial-grid{grid-template-columns:1fr}
+
+  /* CONTACT FORM */
+  .contact-form{padding:1.5rem 1rem;border-radius:14px}
+  input,select,textarea{font-size:.95rem;padding:.8rem .9rem}
+  .submit-btn{font-size:.95rem;padding:1rem}
+
+  /* FOOTER */
+  footer{padding:2rem 1rem 1rem}
+  .footer-grid{grid-template-columns:1fr;gap:1.5rem}
+  .social-row a{width:38px;height:38px}
+
+  /* WEDDING SLIDESHOW */
+  .wedo-prev,.wedo-next{width:30px;height:30px;font-size:.85rem}
+
+  /* BIRTHDAY SLIDESHOW */
+  .bday-slideshow{max-width:100%;border-radius:12px}
+  .bday-prev,.bday-next{width:34px;height:34px;font-size:.95rem}
+
+  /* IMAGE MODAL NAVIGATION — smaller buttons on phones */
+  .img-modal-prev,.img-modal-next{width:40px;height:40px;font-size:1.1rem}
+  .img-modal-prev{left:6px}
+  .img-modal-next{right:6px}
+  .img-modal-close{top:10px;right:10px;width:40px;height:40px;font-size:1.2rem}
+}
+
+/* ── SMALL PHONES (≤420px) ─────────────────────────── */
+@media(max-width:420px){
+  .nav{padding:.7rem .8rem}
+  .logo img{height:34px}
+
+  .hero-overlay{padding-top:15vh;padding-left:.8rem;padding-right:.8rem}
+  .hero-overlay h1{font-size:clamp(1.8rem,9vw,2.6rem)}
+  .hero-overlay p{font-size:.9rem}
+
+  section{padding:2rem .8rem}
+
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .stat-item{padding:1rem .6rem}
+  .stat-number{font-size:1.7rem}
+  .stat-label{font-size:.8rem}
+
+  .events-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}
+  .event-card{padding:1rem .6rem}
+  .event-icon{font-size:1.4rem}
+  .event-card div{font-size:.78rem}
+
+  .contact-form{padding:1.2rem .8rem}
+
+  .svc-prev,.svc-next{width:30px;height:30px;font-size:.8rem}
+
+  .pa-feat{font-size:.75rem;padding:.35rem .65rem}
+
+  h2{font-size:1.4rem}
+  .category h3{font-size:1.1rem}
+  .service-section h3{font-size:1.1rem}
+}
 </style>
 </head>
 <body>
@@ -1408,7 +1496,7 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
     +'Location: '+(f.get('location')||'TBC')+'\n'
     +'Guests: '+(f.get('guests')||'Not specified')+'\n\n'
     +'💬 *Additional Info:*\n'+(f.get('message')||'None');
-  window.open('https://wa.me/254790352338?text='+encodeURIComponent(msg),'_blank');
+  window.open('https://wa.me/254728990478?text='+encodeURIComponent(msg),'_blank');
 });
 
 /* ── AUTO-ADAPT VIDEO/GALLERY GRID COLUMNS ───────── */
