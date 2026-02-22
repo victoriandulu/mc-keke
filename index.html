@@ -373,7 +373,36 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   footer{padding:2rem 1rem 1.2rem}
   .footer-grid{grid-template-columns:1fr;gap:1.5rem}
 }
+/* WHATSAPP CONTACT US  */
+.whatsapp-cta {
+  text-align: center;
+  margin: 30px 0 40px;
+}
 
+.whatsapp-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-cta a:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+}
+
+.wa-icon {
+  font-size: 18px;
+}
 </style>
 </head>
 <body>
@@ -522,35 +551,102 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
 
 </div>
 
-   <!-- PHOTOGRAPHY -->
-    <div class="service-section">
-      
-      <h3 style="text-decoration: underline;">PHOTOGRAPHY</h3>
+<!-- PHOTOGRAPHY -->
+<div class="service-section">
 
-      <p class="service-desc">Capture every precious moment with professional photography and videography. From candid shots to cinematic videos, we document your special day with creativity and precision.</p>
-      <div class="svc-slideshow landscape" id="svc-photo">
-        <div class="svc-slides">
-          <div class="svc-slide active"><img onclick="svcImgOpen(this)" src="photo1.jpg" alt="Professional Photography" loading="lazy"></div>
-          <div class="svc-slide"><img onclick="svcImgOpen(this)" src="photo2.jpg" alt="Event Coverage" loading="lazy"></div>
-          <div class="svc-slide"><img onclick="svcImgOpen(this)" src="pho3.jpg" alt="Cinematic Videos" loading="lazy"></div>
-          <div class="svc-slide"><img onclick="svcImgOpen(this)" src="photo5.jpeg" alt="Cinematic Videos" loading="lazy"></div>
-          <div class="svc-slide"><img onclick="svcImgOpen(this)" src="photo6.jpg" alt="Cinematic Videos" loading="lazy"></div>
-          <div class="svc-slide"><img onclick="svcImgOpen(this)" src="photo4.jpg" alt="Memorable Moments" loading="lazy"></div>
-        </div>
-        <button class="svc-prev" onclick="svcNav(event,'svc-photo',-1)">&#10094;</button>
-        <button class="svc-next" onclick="svcNav(event,'svc-photo',1)">&#10095;</button>
-        <div class="svc-dots" id="dots-svc-photo">
-          <button class="svc-dot active"></button>
-          <button class="svc-dot"></button>
-          <button class="svc-dot"></button>
-          <button class="svc-dot"></button>
-          <button class="svc-dot"></button>
-          <button class="svc-dot"></button>
-        </div>
-        <div class="svc-caption" id="cap-svc-photo">Professional Photography</div>
+  <h3 style="text-decoration: underline;">PHOTOGRAPHY</h3>
+
+  <p class="service-desc">
+    Capture every precious moment with professional photography and videography.
+    From candid shots to cinematic videos, we document your special day with creativity and precision.
+  </p>
+
+  <div class="svc-slideshow landscape" id="svc-photo">
+
+    <div class="svc-slides">
+
+      <div class="svc-slide active">
+        <img src="1.jpg" alt="Professional Photography" loading="lazy" onclick="svcImgOpen(this)">
       </div>
-      
+
+      <div class="svc-slide"><img src="2.jpg" alt="Event Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="3.jpeg" alt="Candid Moments" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="4.jpeg" alt="Wedding Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="5.jpeg" alt="Cinematic Videos" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="6.jpeg" alt="Memorable Moments" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="7.jpeg" alt="Event Highlights" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="8.jpeg" alt="Creative Shots" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="9.jpeg" alt="Photography Details" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="10.jpeg" alt="Professional Videography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="11.jpeg" alt="Event Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="12.jpeg" alt="Wedding Highlights" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="13.jpeg" alt="Ceremony Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="14.jpeg" alt="Reception Moments" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="15.jpeg" alt="Bridal Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="16.jpeg" alt="Couple Portraits" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="17.jpeg" alt="Outdoor Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="18.jpeg" alt="Indoor Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="19.jpeg" alt="Creative Event Shots" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="20.jpeg" alt="Professional Camera Work" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="21.jpeg" alt="Live Event Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="22.jpeg" alt="Storytelling Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="23.jpeg" alt="Artistic Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="24.jpeg" alt="Event Videography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="25.jpeg" alt="Premium Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
+
+      <div class="svc-slide"><img src="photo1.jpg" alt="Professional Photoshoot" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="photo2.jpg" alt="Event Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="pho3.jpg" alt="Cinematic Video Capture" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="photo4.jpg" alt="Memorable Moments" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="photo5.jpeg" alt="High-End Videography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="photo6.jpg" alt="Creative Direction" loading="lazy" onclick="svcImgOpen(this)"></div>
+
     </div>
+
+    <button class="svc-prev" onclick="svcNav(event,'svc-photo',-1)">&#10094;</button>
+    <button class="svc-next" onclick="svcNav(event,'svc-photo',1)">&#10095;</button>
+
+   <div class="svc-dots" id="dots-svc-photo">
+  <button class="svc-dot active"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+  <button class="svc-dot"></button>
+</div>
+
+    <div class="svc-caption" id="cap-svc-photo">
+      Professional Photography
+    </div>
+
+  </div>
+
+</div>
 
     <!-- VIDEOGRAPHY -->
     <div class="service-section">
@@ -938,7 +1034,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
    
 
     <div class="category" id="gallery-dowry">
-      <h3>DOWARY/TRADITIONAL WEDDING CEREMONIES</h3>
+      <h3>DOWRY/TRADITIONAL WEDDING CEREMONIES</h3>
       <div class="video-grid">
         <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
@@ -959,8 +1055,8 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
     <div class="category" id="gallery-launches">
       <h3> BUSINESS PROMOTIONS</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="RxRiiFnegRI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card"><div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card"><div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
@@ -1019,6 +1115,16 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   <div class="container">
     <h2>Book KEKE EVENTS</h2>
     <p class="subtitle">Let's make your event extraordinary. Fill out the form and we'll get back to you within 24 hours.</p>
+   <div class="whatsapp-cta">
+  <a href="https://wa.me/254728990478" target="_blank" rel="noopener" class="wa-link" title="Chat on WhatsApp">
+  <!-- WhatsApp SVG Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512" style="vertical-align: middle; margin-right: 8px;">
+    <path fill="#25D366" d="M380.9 97.1C339.2 55.4 283 32 224 32 100.3 32 0 132.3 0 256c0 45.2 11.7 89.3 33.9 128L0 480l97.1-33.9c37.7 21.8 81.5 33.9 126.9 33.9 123.7 0 224-100.3 224-224 0-59-23.4-115.2-65.1-157.9zM224 438.1c-41 0-80-10.9-114.3-31.5l-8.2-4.9-57.6 20.1 19.5-56.2-5-8.1C45.1 322 34 282.5 34 241.9 34 136.7 136.7 34 224 34c47.8 0 92.7 18.6 126.5 52.3 33.8 33.8 52.3 78.7 52.3 126.5 0 87.3-102.7 190-190.8 190z"/>
+    <path fill="#fff" d="M324.5 207.3c-4.5-2.3-26.6-13-30.8-14.5-4.2-1.5-7.3-2.3-10.4 2.3-3.1 4.5-12 14.5-14.7 17.5-2.7 3-5.5 3.4-10 1.1-4.5-2.3-19-7-36.2-22.3-13.3-11.8-22.3-26.3-24.9-30.8-2.7-4.5-.3-6.9 2-9.1 2.1-2.1 4.5-5.5 6.8-8.3 2.3-2.7 3-4.5 4.5-7.6 1.5-3.1.8-5.8-.4-8.1-1.2-2.3-10.4-25-14.3-34.3-3.7-8.9-7.5-7.6-10.4-7.7-2.7 0-5.8-.1-8.9-.1-3.1 0-8.1 1.2-12.4 5.8-4.2 4.5-16.1 15.7-16.1 38.4 0 22.7 16.5 44.7 18.8 47.8 2.3 3.1 32.5 49.8 78.9 69.7 46.4 19.8 46.4 13.2 54.8 12.4 8.5-.8 26.6-10.9 30.4-21.4 3.8-10.5 3.8-19.5 2.7-21.3-1.1-1.8-4.1-2.9-8.6-5.2z"/>
+  </svg>
+  Contact Us on WhatsApp
+</a>
+</div>
     <div class="contact-form">
       <form id="bookingForm">
         <div class="form-group"><label>Your Name *</label><input name="name" placeholder="Enter your full name" required></div>
@@ -1103,7 +1209,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
     </div>
     <div class="footer-col">
       <h3>Contact Info</h3>
-      <p>&#128242; +254 738 720 478 / +254 728 990 478 </p>
+      <p>&#128242; +254 728 990 478 / +254 738 720 478  </p>
       <p>&#128231; kekeevents@gmail.com</p>
       <p>&#128205; Machakos, Kenya</p>
       <p>&#128336; Available 24/7 for bookings</p>
