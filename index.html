@@ -30,6 +30,12 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 
 <style>
+/* ═══════════════════════════════════════════
+   KEKE EVENTS — CSS
+   Fixes: shimmer loading, no scroll-jump,
+          reserved image spaces, clean layout
+   ═══════════════════════════════════════════ */
+
 :root {
   --blue: #233B8B;
   --orange: #F7931E;
@@ -42,23 +48,20 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { overflow-x: hidden; width: 100%; scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: var(--text-dark);
-  line-height: 1.6;
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  visibility: visible; /* FIX: always visible, no flash-of-invisible */
-}
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; width: 100%; max-width: 100vw; }
 img { max-width: 100%; height: auto; display: block; }
 
-/* ── SHIMMER SKELETON ── */
+/* ─────────────────────────────────────────
+   SHIMMER SKELETON ANIMATION
+   Shown while images are loading —
+   space is reserved so page never jumps
+   ───────────────────────────────────────── */
 @keyframes shimmer {
   0%   { background-position: -800px 0; }
   100% { background-position:  800px 0; }
 }
 
+/* Applied to any wrapper that reserves space before image loads */
 .img-wrap {
   position: relative;
   width: 100%;
@@ -66,17 +69,25 @@ img { max-width: 100%; height: auto; display: block; }
   background: #e8e8e8;
 }
 
+/* The shimmer layer — sits on top until image is loaded */
 .img-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 40%, #e0e0e0 60%, #e8e8e8 100%);
+  background: linear-gradient(
+    90deg,
+    #e8e8e8 0%,
+    #f5f5f5 40%,
+    #e0e0e0 60%,
+    #e8e8e8 100%
+  );
   background-size: 800px 100%;
   animation: shimmer 1.6s infinite linear;
-  z-index: 2;
+  z-index: 1;
   transition: opacity 0.4s ease;
 }
 
+/* Once the image inside .img-wrap loads, hide the shimmer */
 .img-wrap.loaded::before {
   opacity: 0;
   pointer-events: none;
@@ -89,23 +100,33 @@ img { max-width: 100%; height: auto; display: block; }
   height: 100%;
   object-fit: cover;
   display: block;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Aspect-ratio helpers */
+/* Aspect-ratio helpers — these reserve the exact space */
 .ratio-16-9  { padding-top: 56.25%; }
 .ratio-4-3   { padding-top: 75%;    }
 .ratio-4-5   { padding-top: 125%;   }
 .ratio-3-2   { padding-top: 66.67%; }
 .ratio-1-1   { padding-top: 100%;   }
-.ratio-portrait { padding-top: 133%; }
+.ratio-portrait { padding-top: 133%; }  /* 3:4 portrait */
 
-/* ── YOUTUBE SHIMMER ── */
+/* ─────────────────────────────────────────
+   YOUTUBE THUMBNAIL SHIMMER
+   yt-wrap already uses padding-top:75%
+   We add shimmer on top of existing style
+   ───────────────────────────────────────── */
 .yt-wrap::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 40%, #111 60%, #1a1a1a 100%);
+  background: linear-gradient(
+    90deg,
+    #1a1a1a 0%,
+    #2d2d2d 40%,
+    #111 60%,
+    #1a1a1a 100%
+  );
   background-size: 800px 100%;
   animation: shimmer 1.6s infinite linear;
   z-index: 1;
@@ -117,7 +138,16 @@ img { max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
-/* ── NAV ── */
+/* ─────────────────────────────────────────
+   PREVENT PAGE SCROLL-JUMP ON LOAD
+   Body hidden until DOM + first image ready
+   ───────────────────────────────────────── */
+body { visibility: hidden; }
+body.page-ready { visibility: visible; }
+
+/* ═══════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════ */
 header { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,.1); z-index: 1000; }
 .nav { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: .8rem 2rem; height: var(--nav-h); }
 .logo img { height: 40px; width: auto; }
@@ -132,13 +162,24 @@ header { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: va
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px,-7px); }
 
-/* ── HERO ── */
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
 .hero { margin-top: var(--nav-h); position: relative; height: calc(100vh - var(--nav-h)); min-height: 400px; overflow: hidden; width: 100%; }
 .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .8s; }
 .slide.active { opacity: 1; }
 
-.slide .img-wrap { position: absolute; inset: 0; width: 100%; height: 100%; padding-top: 0; }
-.slide .img-wrap img { object-position: center top; }
+/* Hero slide images — space always reserved, no jump */
+.slide .img-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 0; /* full-cover hero needs no padding trick */
+}
+.slide .img-wrap img {
+  object-position: center top;
+}
 
 .hero-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; color: var(--white); background: rgba(0,0,0,.45); z-index: 10; }
 .hero-overlay h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; margin-bottom: 1rem; text-shadow: 2px 2px 10px rgba(0,0,0,.8); }
@@ -150,13 +191,17 @@ header { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: va
 .cta-secondary { background: var(--white); color: var(--blue); }
 .cta-secondary:hover { background: #f0f0f0; transform: translateY(-2px); }
 
-/* ── SECTIONS ── */
+/* ═══════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════ */
 section { padding: 4rem 2rem; width: 100%; box-sizing: border-box; overflow: hidden; }
 .container { max-width: 1400px; margin: 0 auto; width: 100%; }
 h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orange); margin-bottom: 1rem; }
 .subtitle { text-align: center; color: var(--text-light); margin: 0 auto 3rem; font-size: 1.05rem; max-width: 700px; }
 
-/* ── STATS ── */
+/* ═══════════════════════════════════════════
+   STATS
+   ═══════════════════════════════════════════ */
 .stats { background: var(--blue); color: var(--white); padding: 3rem 2rem; width: 100%; box-sizing: border-box; }
 .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 1.5rem; text-align: center; }
 .stat-item { padding: 1.5rem; background: rgba(255,255,255,.1); border-radius: 15px; transition: transform .3s; }
@@ -164,15 +209,20 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .stat-label { font-size: .95rem; display: block; margin-bottom: .5rem; }
 .stat-number { font-size: 2.4rem; font-weight: 700; color: var(--orange); display: block; }
 
-/* ── SERVICES ── */
+/* ═══════════════════════════════════════════
+   SERVICES
+   ═══════════════════════════════════════════ */
 .service-section { margin-bottom: 4rem; width: 100%; }
 .service-section h3 { font-size: clamp(1.4rem,3vw,2rem); color: var(--orange); text-align: center; margin-bottom: 1.5rem; }
 .service-desc { text-align: center; color: #555; font-size: 1.05rem; max-width: 900px; margin: 1.5rem auto 0; }
 
-/* ── SERVICE SLIDESHOWS ── */
+/* ─────────────────────────────────────────
+   SERVICE SLIDESHOWS
+   .img-wrap inside handles shimmer + space
+   ───────────────────────────────────────── */
 .svc-slideshow { position: relative; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.18); background: #e8e8e8; }
 .svc-slide { display: none; width: 100%; }
-.svc-slide .img-wrap { border-radius: 0; }
+.svc-slide .img-wrap { border-radius: 0; }  /* inherit slideshow radius */
 .svc-slide .img-wrap img { cursor: pointer; }
 .svc-slideshow.portrait { max-width: 560px; }
 .svc-slideshow.product .svc-slide { background: #f5f5f5; }
@@ -186,26 +236,35 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .svc-dot.active { background: var(--orange); transform: scale(1.2); }
 .svc-caption { display: none; }
 
-/* ── PA FEATURES ── */
+/* ═══════════════════════════════════════════
+   PA FEATURES
+   ═══════════════════════════════════════════ */
 .pa-header { text-align: center; margin-bottom: 1.5rem; }
 .pa-header h3 { font-size: clamp(1.4rem,3vw,2rem) !important; color: var(--orange) !important; text-align: center !important; margin-bottom: .4rem !important; }
 .pa-features { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; margin: 1.5rem 0; }
 .pa-feat { display: flex; align-items: center; gap: .5rem; background: rgba(35,59,139,.08); border: 1px solid rgba(35,59,139,.2); border-radius: 30px; padding: .5rem 1.1rem; color: var(--blue); font-size: .88rem; font-weight: 600; transition: background .3s, transform .3s; }
 .pa-feat:hover { background: rgba(247,147,30,.15); border-color: var(--orange); transform: translateY(-2px); }
 
-/* ── PORTFOLIO ── */
+/* ═══════════════════════════════════════════
+   PORTFOLIO
+   ═══════════════════════════════════════════ */
 #portfolio { background: var(--light); }
 .category { margin-bottom: 3.5rem; }
 .category h3 { font-size: clamp(1.3rem,3vw,1.9rem); color: var(--orange); margin-bottom: .6rem; }
 .category-badge { display: inline-block; background: var(--orange); color: var(--white); padding: .3rem .9rem; border-radius: 15px; font-size: .8rem; font-weight: 600; margin-left: .8rem; vertical-align: middle; }
 .category > p { color: #555; margin-bottom: 1.5rem; font-size: 1rem; }
 
-/* ── VIDEO GRID ── */
+/* ─────────────────────────────────────────
+   VIDEO GRID
+   padding-top: 75% reserves space before
+   YouTube thumbnail loads — like YouTube
+   ───────────────────────────────────────── */
 .video-grid { display: grid; gap: 1.2rem; margin-top: 1rem; width: 100%; }
 .video-grid.items-3 { grid-template-columns: repeat(3,1fr); }
 .video-grid.items-4 { grid-template-columns: repeat(4,1fr); }
 .video-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,.1); display: flex; flex-direction: column; }
 
+/* The yt-wrap already reserves 75% height — shimmer added via ::before above */
 .yt-wrap { position: relative; width: 100%; padding-top: 75%; background: #111; cursor: pointer; overflow: hidden; }
 .yt-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; z-index: 2; }
 .yt-wrap:hover img { transform: scale(1.04); }
@@ -216,7 +275,9 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .video-link { display: flex; align-items: center; justify-content: center; gap: .5rem; padding: .9rem; text-decoration: none; font-weight: 600; color: var(--orange); font-size: .9rem; transition: color .3s; }
 .video-link:hover { color: #c07010; }
 
-/* ── EVENTS WE SERVE ── */
+/* ═══════════════════════════════════════════
+   EVENTS WE SERVE
+   ═══════════════════════════════════════════ */
 .events { background: var(--light); }
 .events-grid { max-width: 1100px; margin: 2rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 1.2rem; }
 .event-card { background: var(--white); padding: 1.8rem 1.2rem; text-align: center; border-radius: 15px; box-shadow: 0 3px 12px rgba(0,0,0,.08); cursor: pointer; border: 2px solid transparent; transition: all .3s; }
@@ -224,7 +285,9 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .event-icon { font-size: 2rem; margin-bottom: .7rem; display: block; }
 .event-card div { font-weight: 600; font-size: .95rem; }
 
-/* ── GALLERY ── */
+/* ═══════════════════════════════════════════
+   GALLERY
+   ═══════════════════════════════════════════ */
 .gallery { background: var(--white); }
 .gallery-grid { display: grid; gap: 1.2rem; margin-top: 1rem; width: 100%; }
 .gallery-grid.items-3 { grid-template-columns: repeat(3,1fr); }
@@ -239,7 +302,9 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .gallery-item:hover .zoom-icon { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
 #gallery-birthday .gallery-item { aspect-ratio: 4/5; }
 
-/* ── LIGHTBOX ── */
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════ */
 .lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.92); align-items: center; justify-content: center; }
 .lightbox.active { display: flex; }
 .lightbox-content { position: relative; max-width: 92vw; max-height: 92vh; }
@@ -249,7 +314,9 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .lb-prev { left: 12px; }
 .lb-next { right: 12px; }
 
-/* ── TESTIMONIALS ── */
+/* ═══════════════════════════════════════════
+   TESTIMONIALS
+   ═══════════════════════════════════════════ */
 .testimonials { background: var(--blue); color: var(--white); }
 .testimonials h2 { color: var(--white); }
 .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; margin-top: 2rem; }
@@ -262,7 +329,9 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .t-info strong { display: block; font-size: .95rem; }
 .t-info span { opacity: .75; font-size: .85rem; }
 
-/* ── CONTACT ── */
+/* ═══════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════ */
 .contact { background: var(--light); }
 .contact-form { max-width: 700px; margin: 0 auto; background: var(--white); padding: 2.5rem; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,.1); width: 100%; box-sizing: border-box; }
 .form-group { margin-bottom: 1.3rem; overflow: hidden; }
@@ -273,7 +342,9 @@ textarea { resize: vertical; min-height: 110px; }
 .submit-btn { width: 100%; padding: 1.1rem; background: var(--orange); border: none; border-radius: 30px; color: var(--white); font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: all .3s; margin-top: .5rem; box-sizing: border-box; }
 .submit-btn:hover { background: #e08318; transform: translateY(-2px); }
 
-/* ── FOOTER ── */
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
 footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem; width: 100%; box-sizing: border-box; overflow: hidden; }
 .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
 .footer-col h3 { color: var(--orange); margin-bottom: .9rem; font-size: 1.05rem; }
@@ -284,7 +355,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 .social-row a:hover { background: var(--orange); transform: scale(1.1); }
 .footer-bottom { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.12); opacity: .75; font-size: .88rem; }
 
-/* ── IMAGE MODAL ── */
+/* ═══════════════════════════════════════════
+   IMAGE MODAL
+   ═══════════════════════════════════════════ */
 #img-modal { display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,.94); align-items: center; justify-content: center; }
 #img-modal.open { display: flex; }
 .img-modal-inner { position: relative; max-width: 94vw; max-height: 94vh; display: flex; align-items: center; justify-content: center; }
@@ -297,10 +370,15 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 .img-modal-prev:hover, .img-modal-next:hover { background: var(--orange); }
 .img-modal-counter { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.75); font-size: .9rem; font-weight: 600; letter-spacing: 1px; }
 
-/* ── WEDDING SLIDESHOW ── */
+/* ═══════════════════════════════════════════
+   WEDDING SLIDESHOW (inside gallery)
+   ═══════════════════════════════════════════ */
 .wedo-slideshow { position: relative; width: 100%; background: #e8e8e8; overflow: hidden; }
 .wedo-slide { display: none; width: 100%; }
+
+/* Reserve space for wedo images — same shimmer treatment */
 .wedo-slide .img-wrap { padding-top: 75%; }
+
 .wedo-slide img { cursor: pointer; }
 .wedo-prev, .wedo-next { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: rgba(0,0,0,.55); border: none; border-radius: 50%; color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background .2s; }
 .wedo-prev { left: 8px; }
@@ -310,10 +388,15 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 .wedo-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.45); cursor: pointer; display: inline-block; transition: background .3s; }
 .wedo-dot.active { background: var(--orange); }
 
-/* ── BIRTHDAY SLIDESHOW ── */
+/* ═══════════════════════════════════════════
+   BIRTHDAY SLIDESHOW
+   ═══════════════════════════════════════════ */
 .bday-slideshow { position: relative; width: 100%; max-width: 560px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.15); background: #e8e8e8; }
 .bday-slide { display: none; width: 100%; }
-.bday-slide .img-wrap { padding-top: 100%; }
+
+/* Reserve space for birthday images */
+.bday-slide .img-wrap { padding-top: 100%; }  /* roughly square/portrait */
+
 .bday-slide img { cursor: pointer; }
 .bday-prev, .bday-next { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,.5); border: none; border-radius: 50%; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5; transition: background .2s; }
 .bday-prev { left: 10px; }
@@ -323,19 +406,25 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 .bday-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.5); cursor: pointer; display: inline-block; transition: background .3s, transform .3s; }
 .bday-dot.active { background: var(--orange); transform: scale(1.25); }
 
-/* ── WHATSAPP CTA ── */
+/* ═══════════════════════════════════════════
+   WHATSAPP CTA
+   ═══════════════════════════════════════════ */
 .whatsapp-cta { text-align: center; margin: 30px 0 40px; }
 .whatsapp-cta a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; background: #25D366; color: #fff; text-decoration: none; font-size: 16px; font-weight: 600; border-radius: 999px; box-shadow: 0 8px 20px rgba(37,211,102,.25); transition: all .3s ease; }
 .whatsapp-cta a:hover { background: #1ebe5d; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(37,211,102,.35); }
 .wa-icon { font-size: 18px; }
 
-/* ── RESPONSIVE TABLET ── */
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET
+   ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .video-grid.items-3, .video-grid.items-4,
   .gallery-grid.items-3, .gallery-grid.items-4 { grid-template-columns: repeat(2,1fr); }
 }
 
-/* ── RESPONSIVE MOBILE ── */
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE
+   ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   :root { --nav-h: 56px; }
   .nav { padding: .7rem 1rem; }
@@ -374,7 +463,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 </head>
 <body>
 
-<!-- IMAGE MODAL -->
+<!-- ═══════════════════════════════════════════
+     IMAGE MODAL
+     ═══════════════════════════════════════════ -->
 <div id="img-modal" onclick="imgModalBgClick(event)">
   <button class="img-modal-close" onclick="imgModalClose()">&#10005;</button>
   <div class="img-modal-inner">
@@ -385,7 +476,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   <div class="img-modal-counter" id="img-modal-counter"></div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- ═══════════════════════════════════════════
+     LIGHTBOX
+     ═══════════════════════════════════════════ -->
 <div id="lightbox" class="lightbox" onclick="lbBgClick(event)">
   <span class="lb-prev" onclick="lbNav(-1)">&#10094;</span>
   <div class="lightbox-content">
@@ -395,7 +488,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   <span class="lb-next" onclick="lbNav(1)">&#10095;</span>
 </div>
 
-<!-- HEADER / NAV -->
+<!-- ═══════════════════════════════════════════
+     HEADER / NAV
+     ═══════════════════════════════════════════ -->
 <header>
   <div class="nav">
     <div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo" width="120" height="40"></div>
@@ -413,26 +508,29 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </header>
 
-<!-- HERO SLIDESHOW -->
+<!-- ═══════════════════════════════════════════
+     HERO SLIDESHOW
+     Space always reserved — no layout jump
+     ═══════════════════════════════════════════ -->
 <section class="hero">
   <div class="slide active">
     <div class="img-wrap">
-      <img src="slide-1.jpg" alt="KEKE Events" fetchpriority="high" onload="imgLoaded(this)" onerror="imgError(this)">
+      <img src="slide-1.jpg" alt="KEKE Events" fetchpriority="high" onload="imgLoaded(this)">
     </div>
   </div>
   <div class="slide">
     <div class="img-wrap">
-      <img src="slide-2.jpg" alt="KEKE Events Performance" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+      <img src="slide-2.jpg" alt="KEKE Events Performance" loading="lazy" onload="imgLoaded(this)">
     </div>
   </div>
   <div class="slide">
     <div class="img-wrap">
-      <img src="slide-3.jpg" alt="KEKE Events Show" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+      <img src="slide-3.jpg" alt="KEKE Events Show" loading="lazy" onload="imgLoaded(this)">
     </div>
   </div>
   <div class="slide">
     <div class="img-wrap">
-      <img src="tent-1.jpg" alt="KEKE Events Tents" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+      <img src="tent-1.jpg" alt="KEKE Events Tents" loading="lazy" onload="imgLoaded(this)">
     </div>
   </div>
   <div class="hero-overlay">
@@ -447,11 +545,13 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ═══════════════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════════════ -->
 <section id="services">
   <div class="container">
 
-    <!-- MC SERVICES -->
+    <!-- ── MC SERVICES ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">PROFESSIONAL MC SERVICES</h3>
       <p class="service-desc">
@@ -461,19 +561,19 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow portrait" id="svc-mc">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc1.jpg"   alt="MC hosting with comedy and entertainment"  loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc-3.jpg"  alt="MC live music performance"                 loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc4.jpg"   alt="MC engaging the audience"                  loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc5.jpg"   alt="MC crowd interaction"                      loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc6.jpg"   alt="MC stage performance"                      loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc7.jpg"   alt="MC dancing with guests"                    loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc8.jpg"  alt="Professional MC at live event"             loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc9.jpg"  alt="MC hyping the crowd"                       loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc10.jpg" alt="MC leading entertainment session"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc11.jpg"  alt="MC on stage with microphone"               loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc2.jpg"  alt="MC fundraising and harambee facilitation"  loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof3.jpg"     alt="MC crowd control and coordination"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof4.jpg"     alt="MC live entertainment performance"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc1.jpg"   alt="MC hosting with comedy and entertainment"  loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc-3.jpg"  alt="MC live music performance"                 loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc4.jpg"   alt="MC engaging the audience"                  loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc5.jpg"   alt="MC crowd interaction"                      loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc6.jpg"   alt="MC stage performance"                      loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc7.jpg"   alt="MC dancing with guests"                    loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc8.jpg"  alt="Professional MC at live event"             loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc9.jpg"  alt="MC hyping the crowd"                       loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc10.jpg" alt="MC leading entertainment session"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="pro-mc11.jpg"  alt="MC on stage with microphone"               loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof-mc2.jpg"  alt="MC fundraising and harambee facilitation"  loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof3.jpg"     alt="MC crowd control and coordination"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-portrait"><img src="prof4.jpg"     alt="MC live entertainment performance"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-mc',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-mc',1)">&#10095;</button>
@@ -488,7 +588,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- PHOTOGRAPHY -->
+    <!-- ── PHOTOGRAPHY ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">PHOTOGRAPHY</h3>
       <p class="service-desc">
@@ -497,37 +597,37 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-photo">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="1.jpg"      alt="Professional Photography"    loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="2.jpg"      alt="Event Coverage"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="3.jpeg"     alt="Candid Moments"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="4.jpeg"     alt="Wedding Photography"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="5.jpeg"     alt="Cinematic Videos"            loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="6.jpeg"     alt="Memorable Moments"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="7.jpeg"     alt="Event Highlights"            loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="8.jpeg"     alt="Creative Shots"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="9.jpeg"     alt="Photography Details"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="10.jpeg"    alt="Professional Videography"    loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="11.jpeg"    alt="Event Photography"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="12.jpeg"    alt="Wedding Highlights"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="13.jpeg"    alt="Ceremony Coverage"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="14.jpeg"    alt="Reception Moments"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="15.jpeg"    alt="Bridal Photography"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="16.jpeg"    alt="Couple Portraits"            loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="17.jpeg"    alt="Outdoor Photography"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="18.jpeg"    alt="Indoor Photography"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="19.jpeg"    alt="Creative Event Shots"        loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="20.jpeg"    alt="Professional Camera Work"    loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="21.jpeg"    alt="Live Event Coverage"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="22.jpeg"    alt="Storytelling Photography"    loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="23.jpeg"    alt="Artistic Photography"        loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="24.jpeg"    alt="Event Videography"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="25.jpeg"    alt="Premium Photography"         loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo1.jpg" alt="Professional Photoshoot"     loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo2.jpg" alt="Event Coverage"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pho3.jpg"   alt="Cinematic Video Capture"     loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo4.jpg" alt="Memorable Moments"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo5.jpeg" alt="High-End Videography"       loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo6.jpg" alt="Creative Direction"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="1.jpg"      alt="Professional Photography"    loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="2.jpg"      alt="Event Coverage"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="3.jpeg"     alt="Candid Moments"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="4.jpeg"     alt="Wedding Photography"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="5.jpeg"     alt="Cinematic Videos"            loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="6.jpeg"     alt="Memorable Moments"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="7.jpeg"     alt="Event Highlights"            loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="8.jpeg"     alt="Creative Shots"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="9.jpeg"     alt="Photography Details"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="10.jpeg"    alt="Professional Videography"    loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="11.jpeg"    alt="Event Photography"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="12.jpeg"    alt="Wedding Highlights"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="13.jpeg"    alt="Ceremony Coverage"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="14.jpeg"    alt="Reception Moments"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="15.jpeg"    alt="Bridal Photography"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="16.jpeg"    alt="Couple Portraits"            loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="17.jpeg"    alt="Outdoor Photography"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="18.jpeg"    alt="Indoor Photography"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="19.jpeg"    alt="Creative Event Shots"        loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="20.jpeg"    alt="Professional Camera Work"    loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="21.jpeg"    alt="Live Event Coverage"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="22.jpeg"    alt="Storytelling Photography"    loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="23.jpeg"    alt="Artistic Photography"        loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="24.jpeg"    alt="Event Videography"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="25.jpeg"    alt="Premium Photography"         loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo1.jpg" alt="Professional Photoshoot"     loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo2.jpg" alt="Event Coverage"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pho3.jpg"   alt="Cinematic Video Capture"     loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo4.jpg" alt="Memorable Moments"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo5.jpeg" alt="High-End Videography"       loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="photo6.jpg" alt="Creative Direction"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-photo',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-photo',1)">&#10095;</button>
@@ -548,35 +648,35 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- VIDEOGRAPHY -->
+    <!-- ── VIDEOGRAPHY ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">VIDEOGRAPHY</h3>
       <p></p>
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="0Yy8IsOfxtg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" alt="Music 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" alt="Music 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=0Yy8IsOfxtg" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="4jtsqg2LoSU" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/4jtsqg2LoSU?si=KEJMpGLB6C1BJUDB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="GTWFKGVAOZM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/GTWFKGVAOZM?si=YhnLU3BeetNvfHzV" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="NuxkRkXo3Is" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" alt="Harambees 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" alt="Harambees 4" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/NuxkRkXo3Is?si=m5Bmye0y7xGXnIBH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -584,7 +684,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- PA SYSTEM -->
+    <!-- ── PA SYSTEM ── -->
     <div class="service-section">
       <div class="pa-header">
         <h3 style="text-decoration:underline;">PROFESSIONAL P/A SOUND SYSTEMS</h3>
@@ -595,13 +695,13 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
       <div class="svc-slideshow product" id="svc-pa">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa1.jpeg" alt="Professional PA system setup"       loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa2.jpeg" alt="Event sound equipment"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa7.jpeg" alt="Large venue sound system"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa6.jpeg" alt="Professional PA speakers"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa5.jpg"  alt="Event audio equipment"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa3.jpeg" alt="Complete audio setup"               loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa4.jpeg" alt="Professional sound reinforcement"   loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa1.jpeg" alt="Professional PA system setup"       loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa2.jpeg" alt="Event sound equipment"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa7.jpeg" alt="Large venue sound system"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa6.jpeg" alt="Professional PA speakers"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa5.jpg"  alt="Event audio equipment"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa3.jpeg" alt="Complete audio setup"               loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="pa4.jpeg" alt="Professional sound reinforcement"   loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-pa',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-pa',1)">&#10095;</button>
@@ -620,7 +720,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- TENTS & DECORATIONS -->
+    <!-- ── TENTS & DECORATIONS ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">TENTS &amp; Decorations</h3>
       <p class="service-desc">
@@ -629,19 +729,19 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-tents">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="event.jpg"   alt="Wedding tent setup"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-2.jpg"  alt="Event tent"                  loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-3.jpg"  alt="Large event tent"            loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-4.jpg"  alt="Outdoor canopy"              loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco1.jpeg"  alt="Tent decoration setup"       loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco2.jpeg"  alt="Canopy decoration"           loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco3.jpeg"  alt="Event tent décor"            loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco4.jpeg"  alt="Wedding canopy décor"        loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco5.jpeg"  alt="Outdoor tent décor"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco6.jpeg"  alt="Premium tent decoration"     loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco7.jpeg"  alt="Elegant canopy décor"        loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco8.jpeg"  alt="Event décor canopy"          loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco9.jpeg"  alt="Luxury tent decoration"      loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="event.jpg"   alt="Wedding tent setup"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-2.jpg"  alt="Event tent"                  loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-3.jpg"  alt="Large event tent"            loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="tent-4.jpg"  alt="Outdoor canopy"              loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco1.jpeg"  alt="Tent decoration setup"       loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco2.jpeg"  alt="Canopy decoration"           loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco3.jpeg"  alt="Event tent décor"            loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco4.jpeg"  alt="Wedding canopy décor"        loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco5.jpeg"  alt="Outdoor tent décor"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco6.jpeg"  alt="Premium tent decoration"     loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco7.jpeg"  alt="Elegant canopy décor"        loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco8.jpeg"  alt="Event décor canopy"          loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="deco9.jpeg"  alt="Luxury tent decoration"      loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-tents',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-tents',1)">&#10095;</button>
@@ -656,7 +756,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- DRONE -->
+    <!-- ── DRONE ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">DRONE SERVICES</h3>
       <p class="service-desc">
@@ -665,15 +765,15 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-drone">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone1.jpg"  alt="Aerial Drone Shot 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone2.jpg"  alt="Aerial Drone Shot 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone3.jpg"  alt="Aerial Drone Shot 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone5.jpg"  alt="Aerial Drone Shot 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone6.jpg"  alt="Aerial Drone Shot 5" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone7.jpg"  alt="Aerial Drone Shot 6" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone9.jpg"  alt="Aerial Drone Shot 7" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone10.jpg" alt="Aerial Drone Shot 8" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone4.jpg"  alt="Aerial Drone Shot 9" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone1.jpg"  alt="Aerial Drone Shot 1" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone2.jpg"  alt="Aerial Drone Shot 2" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone3.jpg"  alt="Aerial Drone Shot 3" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone5.jpg"  alt="Aerial Drone Shot 4" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone6.jpg"  alt="Aerial Drone Shot 5" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone7.jpg"  alt="Aerial Drone Shot 6" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone9.jpg"  alt="Aerial Drone Shot 7" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone10.jpg" alt="Aerial Drone Shot 8" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-16-9"><img src="drone4.jpg"  alt="Aerial Drone Shot 9" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-drone',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-drone',1)">&#10095;</button>
@@ -686,16 +786,16 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- CATERING -->
+    <!-- ── CATERING ── -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">PROFESSIONAL CATERING SERVICES</h3>
       <p class="service-desc">Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.</p>
       <div class="svc-slideshow landscape" id="svc-catering">
         <div class="svc-slides">
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-1.jpg" alt="Catering Sample 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-2.jpg" alt="Catering Sample 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-1.jpg" alt="Catering Sample 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
-          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-2.jpg" alt="Catering Sample 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-1.jpg" alt="Catering Sample 1" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-2.jpg" alt="Catering Sample 2" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-1.jpg" alt="Catering Sample 3" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
+          <div class="svc-slide"><div class="img-wrap ratio-4-3"><img src="food-2.jpg" alt="Catering Sample 4" loading="lazy" onload="imgLoaded(this)" onclick="svcImgOpen(this)"></div></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-catering',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-catering',1)">&#10095;</button>
@@ -710,7 +810,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- PORTFOLIO -->
+<!-- ═══════════════════════════════════════════
+     PORTFOLIO
+     ═══════════════════════════════════════════ -->
 <section id="portfolio">
   <div class="container">
     <h2>EVENT CAPABILITIES</h2>
@@ -722,28 +824,28 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="5zlledzedJY" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" alt="Comedy 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" alt="Comedy 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/5zlledzedJY?si=VQ_kqj3Wy5s1YTMj" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="cmXrF-Z19rg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" alt="Comedy 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" alt="Comedy 4" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/cmXrF-Z19rg?si=Sw1uL5hEBb_os9nl" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -758,21 +860,21 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="g1Z1VZgdFRQ" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/g1Z1VZgdFRQ?si=jPBOyklWxRqUkpFB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -787,28 +889,28 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="gclBcI5NDiA" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" alt="Dance 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" alt="Dance 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/gclBcI5NDiA?si=uqtUSZ3iYeGbEI3l" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -819,7 +921,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- EVENTS WE TRANSFORM -->
+<!-- ═══════════════════════════════════════════
+     EVENTS WE TRANSFORM
+     ═══════════════════════════════════════════ -->
 <section class="events" id="events">
   <div class="container">
     <h2>EVENTS WE TRANSFORM</h2>
@@ -840,7 +944,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- ═══════════════════════════════════════════
+     GALLERY
+     ═══════════════════════════════════════════ -->
 <section class="gallery" id="gallery">
   <div class="container">
     <h2>EVENT GALLERY</h2>
@@ -852,14 +958,14 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -867,22 +973,22 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
         <div class="video-card wedo-slide-card">
           <div class="wedo-slideshow" id="wedo-gallery" style="min-height:220px;">
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo4.jpg" alt="Wedding Photo 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo4.jpg" alt="Wedding Photo 1" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo3.jpg" alt="Wedding Photo 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo3.jpg" alt="Wedding Photo 2" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo7.jpg" alt="Wedding Photo 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo7.jpg" alt="Wedding Photo 3" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo4.jpg" alt="Wedding Photo 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo4.jpg" alt="Wedding Photo 4" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo5.jpg" alt="Wedding Photo 5" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo5.jpg" alt="Wedding Photo 5" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <div class="wedo-slide">
-              <div class="img-wrap ratio-4-3"><img src="wedo6.jpg" alt="Wedding Photo 6" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="wedoImgOpen(this)"></div>
+              <div class="img-wrap ratio-4-3"><img src="wedo6.jpg" alt="Wedding Photo 6" loading="lazy" onload="imgLoaded(this)" onclick="wedoImgOpen(this)"></div>
             </div>
             <button class="wedo-prev" onclick="wedoNav(-1)">&#10094;</button>
             <button class="wedo-next" onclick="wedoNav(1)">&#10095;</button>
@@ -901,16 +1007,16 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>BIRTHDAY CELEBRATIONS</h3>
       <div class="bday-slideshow" id="bday-gallery">
         <div class="bday-slide">
-          <div class="img-wrap ratio-1-1"><img src="birth-cel2.jpeg" alt="Birthday 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="bdayImgOpen(this)"></div>
+          <div class="img-wrap ratio-1-1"><img src="birth-cel2.jpeg" alt="Birthday 1" loading="lazy" onload="imgLoaded(this)" onclick="bdayImgOpen(this)"></div>
         </div>
         <div class="bday-slide">
-          <div class="img-wrap ratio-1-1"><img src="cake1.jpg" alt="Birthday 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="bdayImgOpen(this)"></div>
+          <div class="img-wrap ratio-1-1"><img src="cake1.jpg" alt="Birthday 2" loading="lazy" onload="imgLoaded(this)" onclick="bdayImgOpen(this)"></div>
         </div>
         <div class="bday-slide">
-          <div class="img-wrap ratio-1-1"><img src="cake2.jpg" alt="Birthday 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="bdayImgOpen(this)"></div>
+          <div class="img-wrap ratio-1-1"><img src="cake2.jpg" alt="Birthday 3" loading="lazy" onload="imgLoaded(this)" onclick="bdayImgOpen(this)"></div>
         </div>
         <div class="bday-slide">
-          <div class="img-wrap ratio-1-1"><img src="cake3.png" alt="Birthday 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)" onclick="bdayImgOpen(this)"></div>
+          <div class="img-wrap ratio-1-1"><img src="cake3.png" alt="Birthday 4" loading="lazy" onload="imgLoaded(this)" onclick="bdayImgOpen(this)"></div>
         </div>
         <button class="bday-prev" onclick="bdayNav(-1)">&#10094;</button>
         <button class="bday-next" onclick="bdayNav(1)">&#10095;</button>
@@ -927,28 +1033,28 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -962,21 +1068,21 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -990,28 +1096,28 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -1026,21 +1132,21 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="zmZOU9VPJZc" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" alt="Live Stream 1" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" alt="Live Stream 1" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/live/zmZOU9VPJZc?si=U1sQixG3bNIX0CBP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="VxD0bQOyp-U" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" alt="Live Stream 2" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" alt="Live Stream 2" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/live/VxD0bQOyp-U?si=ocW8WaNP_0Iyhec5" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="2hxrcoL7WGc" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" alt="Live Stream 3" loading="lazy" onload="imgLoaded(this)" onerror="imgError(this)">
+            <img src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" alt="Live Stream 3" loading="lazy" onload="imgLoaded(this)">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/live/2hxrcoL7WGc?si=ZATKiZPFH60eInpA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -1051,7 +1157,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- STATS -->
+<!-- ═══════════════════════════════════════════
+     STATS
+     ═══════════════════════════════════════════ -->
 <section class="stats">
   <div class="stats-grid">
     <div class="stat-item"><span class="stat-label">Events Hosted</span><span class="stat-number">500+</span></div>
@@ -1061,7 +1169,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+     ═══════════════════════════════════════════ -->
 <section class="testimonials" id="testimonials">
   <div class="container">
     <h2>Client Testimonials</h2>
@@ -1087,7 +1197,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- CONTACT / BOOKING -->
+<!-- ═══════════════════════════════════════════
+     CONTACT / BOOKING
+     ═══════════════════════════════════════════ -->
 <section class="contact" id="contact">
   <div class="container">
     <h2>Book KEKE EVENTS</h2>
@@ -1151,7 +1263,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
@@ -1187,49 +1301,36 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   <div class="footer-bottom">&copy; 2026 KEKE EVENTS | Complete Event Solutions | All Rights Reserved</div>
 </footer>
 
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════ -->
 <script>
-/* ── PAGE READY — no invisible flash ── */
+/* ────────────────────────────────────────────
+   PREVENT SCROLL-JUMP ON PAGE LOAD
+   Body stays invisible until page is ready,
+   then fades in at the top — no jump.
+   ──────────────────────────────────────────── */
 window.addEventListener('DOMContentLoaded', function () {
+  // Force scroll to top before revealing
   window.scrollTo(0, 0);
-  document.body.classList.add('page-ready');
+  // Small delay ensures layout is fully painted
+  setTimeout(function () {
+    document.body.classList.add('page-ready');
+  }, 50);
 });
 
-/* ── SHIMMER: mark wrapper loaded when image fires onload ── */
+/* ────────────────────────────────────────────
+   SHIMMER — mark wrapper as loaded when
+   its img fires onload
+   ──────────────────────────────────────────── */
 function imgLoaded(img) {
   var wrap = img.closest('.img-wrap, .yt-wrap');
   if (wrap) wrap.classList.add('loaded');
 }
 
-/* ── SHIMMER: mark wrapper loaded even on broken images ── */
-function imgError(img) {
-  var wrap = img.closest('.img-wrap, .yt-wrap');
-  if (wrap) wrap.classList.add('loaded');
-  img.style.opacity = '0'; /* hide broken icon, keep layout space */
-}
-
-/* ── CATCH ALREADY-CACHED IMAGES that fire before JS runs ── */
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.img-wrap img, .yt-wrap img').forEach(function (img) {
-    if (img.complete) {
-      if (img.naturalWidth > 0) {
-        imgLoaded(img);
-      } else {
-        imgError(img);
-      }
-    }
-  });
-});
-
-/* ── SAFETY NET: remove ALL shimmers after 5 seconds max ── */
-window.addEventListener('load', function () {
-  setTimeout(function () {
-    document.querySelectorAll('.img-wrap, .yt-wrap').forEach(function (w) {
-      w.classList.add('loaded');
-    });
-  }, 5000);
-});
-
-/* ── HERO SLIDESHOW ── */
+/* ────────────────────────────────────────────
+   HERO SLIDESHOW
+   ──────────────────────────────────────────── */
 (function () {
   var slides = document.querySelectorAll('.hero .slide'), cur = 0;
   setInterval(function () {
@@ -1239,7 +1340,9 @@ window.addEventListener('load', function () {
   }, 4000);
 })();
 
-/* ── SERVICE SLIDESHOWS ── */
+/* ────────────────────────────────────────────
+   SERVICE SLIDESHOWS
+   ──────────────────────────────────────────── */
 var svcState = {};
 
 function svcInit(id) {
@@ -1286,7 +1389,9 @@ function svcNav(e, id, dir) {
   })(id, i * 600);
 });
 
-/* ── MOBILE MENU ── */
+/* ────────────────────────────────────────────
+   MOBILE MENU
+   ──────────────────────────────────────────── */
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('active');
   document.getElementById('menuToggle').classList.toggle('active');
@@ -1298,7 +1403,9 @@ document.querySelectorAll('#navLinks a').forEach(function (a) {
   });
 });
 
-/* ── SMOOTH SCROLL ── */
+/* ────────────────────────────────────────────
+   SMOOTH SCROLL
+   ──────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (e) {
     var t = document.querySelector(this.getAttribute('href'));
@@ -1306,7 +1413,9 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   });
 });
 
-/* ── EVENT CARDS → scroll to gallery section ── */
+/* ────────────────────────────────────────────
+   EVENT CARDS → scroll to gallery section
+   ──────────────────────────────────────────── */
 document.querySelectorAll('.event-card').forEach(function (c) {
   c.addEventListener('click', function () {
     var t = document.getElementById(this.dataset.target);
@@ -1314,7 +1423,9 @@ document.querySelectorAll('.event-card').forEach(function (c) {
   });
 });
 
-/* ── YOUTUBE CLICK TO PLAY ── */
+/* ────────────────────────────────────────────
+   YOUTUBE CLICK TO PLAY
+   ──────────────────────────────────────────── */
 function ytLoad(wrap) {
   var id = wrap.dataset.id;
   var f = document.createElement('iframe');
@@ -1327,7 +1438,9 @@ function ytLoad(wrap) {
   wrap.onclick = null;
 }
 
-/* ── LIGHTBOX ── */
+/* ────────────────────────────────────────────
+   LIGHTBOX
+   ──────────────────────────────────────────── */
 var lbImgs = [], lbIdx = 0;
 function lbOpen(el) {
   var img = el.querySelector('img');
@@ -1353,7 +1466,9 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') lbNav(1);
 });
 
-/* ── IMAGE MODAL ── */
+/* ────────────────────────────────────────────
+   IMAGE MODAL
+   ──────────────────────────────────────────── */
 var imgModalImgs = [], imgModalIdx = 0;
 
 function svcImgOpen(img) {
@@ -1396,7 +1511,9 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') imgModalNav(1);
 });
 
-/* ── WEDDING PHOTO SLIDESHOW ── */
+/* ────────────────────────────────────────────
+   WEDDING PHOTO SLIDESHOW
+   ──────────────────────────────────────────── */
 (function () {
   var slides = document.querySelectorAll('#wedo-gallery .wedo-slide');
   var dots = document.querySelectorAll('#wedo-dots .wedo-dot');
@@ -1429,7 +1546,9 @@ document.addEventListener('keydown', function (e) {
   };
 })();
 
-/* ── BIRTHDAY SLIDESHOW ── */
+/* ────────────────────────────────────────────
+   BIRTHDAY SLIDESHOW
+   ──────────────────────────────────────────── */
 (function () {
   var slides = document.querySelectorAll('#bday-gallery .bday-slide');
   var dots = document.querySelectorAll('#bday-dots .bday-dot');
@@ -1462,7 +1581,9 @@ document.addEventListener('keydown', function (e) {
   };
 })();
 
-/* ── WHATSAPP BOOKING FORM ── */
+/* ────────────────────────────────────────────
+   WHATSAPP BOOKING FORM
+   ──────────────────────────────────────────── */
 document.getElementById('bookingForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var f = new FormData(e.target);
@@ -1480,7 +1601,9 @@ document.getElementById('bookingForm').addEventListener('submit', function (e) {
   window.open('https://wa.me/254728990478?text=' + encodeURIComponent(msg), '_blank');
 });
 
-/* ── AUTO-ADAPT VIDEO/GALLERY GRID COLUMNS ── */
+/* ────────────────────────────────────────────
+   AUTO-ADAPT VIDEO/GALLERY GRID COLUMNS
+   ──────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.video-grid,.gallery-grid').forEach(function (grid) {
     var count = grid.children.length;
