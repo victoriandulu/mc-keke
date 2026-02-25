@@ -143,7 +143,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
   background: linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 40%, #e0e0e0 60%, #e8e8e8 100%);
   background-size: 800px 100%;
   animation: shimmer 1.6s infinite linear;
-  z-index: 0;
+  z-index: 5;
   transition: opacity .4s;
   pointer-events: none;
 }
@@ -166,7 +166,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 
 .svc-slideshow.portrait { max-width: 560px; }
 
-.svc-prev, .svc-next { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; background: rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; cursor: pointer; z-index: 10; transition: background .25s; user-select: none; }
+.svc-prev, .svc-next { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; background: rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.1rem; cursor: pointer; z-index: 20; transition: background .25s; user-select: none; }
 .svc-prev { left: 12px; }
 .svc-next { right: 12px; }
 .svc-prev:hover, .svc-next:hover { background: var(--orange); border-color: var(--orange); }
@@ -236,7 +236,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 }
 .yt-wrap.loaded::before { opacity: 0; pointer-events: none; }
 
-.yt-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; z-index: 2; }
+.yt-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s; z-index: 0; }
 .yt-wrap:hover img { transform: scale(1.04); }
 .yt-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 62px; height: 44px; background: #f00; border-radius: 10px; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 3; transition: background .2s; }
 .yt-wrap:hover .yt-btn { background: #c00; }
@@ -269,7 +269,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
   box-shadow: 0 4px 15px rgba(0,0,0,.1);
   cursor: pointer;
   transition: all .3s;
-  background: #bbb;
+  background: #bbb; /* fallback while image loads */
   aspect-ratio: 4/3;
 }
 /* Shimmer for gallery items */
@@ -406,7 +406,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 
 .wedo-slide { display: none; width: 100%; }
 .wedo-slide img { width: 100%; height: auto; display: block; cursor: pointer; }
-.wedo-prev, .wedo-next { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: rgba(0,0,0,.55); border: none; border-radius: 50%; color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background .2s; }
+.wedo-prev, .wedo-next { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; background: rgba(0,0,0,.55); border: none; border-radius: 50%; color: #fff; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 20; transition: background .2s; }
 .wedo-prev { left: 8px; }
 .wedo-next { right: 8px; }
 .wedo-prev:hover, .wedo-next:hover { background: var(--orange); }
@@ -446,7 +446,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 
 .bday-slide { display: none; width: 100%; }
 .bday-slide img { width: 100%; height: auto; display: block; cursor: pointer; }
-.bday-prev, .bday-next { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,.5); border: none; border-radius: 50%; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background .2s; }
+.bday-prev, .bday-next { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(0,0,0,.5); border: none; border-radius: 50%; color: #fff; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 20; transition: background .2s; }
 .bday-prev { left: 10px; }
 .bday-next { right: 10px; }
 .bday-prev:hover, .bday-next:hover { background: var(--orange); }
@@ -678,28 +678,28 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="0Yy8IsOfxtg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" alt="Music 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')">
+            <img src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" alt="Music 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=0Yy8IsOfxtg" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="4jtsqg2LoSU" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')">
+            <img src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/4jtsqg2LoSU?si=KEJMpGLB6C1BJUDB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="GTWFKGVAOZM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')">
+            <img src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/GTWFKGVAOZM?si=YhnLU3BeetNvfHzV" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="NuxkRkXo3Is" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" alt="Harambees 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')">
+            <img src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" alt="Harambees 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/NuxkRkXo3Is?si=m5Bmye0y7xGXnIBH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -842,10 +842,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>MC KEKE COMEDY &amp; ENTERTAINMENT <span class="category-badge">Most Popular</span></h3>
       <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="5zlledzedJY" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" alt="Comedy 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/5zlledzedJY?si=VQ_kqj3Wy5s1YTMj" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="cmXrF-Z19rg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" alt="Comedy 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/cmXrF-Z19rg?si=Sw1uL5hEBb_os9nl" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="5zlledzedJY" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" alt="Comedy 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/5zlledzedJY?si=VQ_kqj3Wy5s1YTMj" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="cmXrF-Z19rg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" alt="Comedy 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/cmXrF-Z19rg?si=Sw1uL5hEBb_os9nl" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -853,9 +853,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>FUNDRAISING EXCELLENCE AND CONTRIBUTIONS <span class="category-badge">Highest Returns</span></h3>
       <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and exceeding targets.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="g1Z1VZgdFRQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/g1Z1VZgdFRQ?si=jPBOyklWxRqUkpFB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="g1Z1VZgdFRQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/g1Z1VZgdFRQ?si=jPBOyklWxRqUkpFB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -863,10 +863,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>EVENT DANCE MOVES &amp; CROWD CONTROL <span class="category-badge">Event Vibes</span></h3>
       <p>Expert crowd management through dance and interactive activities. Transforming shy audiences into energized participants.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="gclBcI5NDiA" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" alt="Dance 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gclBcI5NDiA?si=uqtUSZ3iYeGbEI3l" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="gclBcI5NDiA" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" alt="Dance 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gclBcI5NDiA?si=uqtUSZ3iYeGbEI3l" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -904,8 +904,8 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-weddings">
       <h3>WEDDINGS</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card wedo-slide-card">
           <div class="wedo-slideshow" id="wedo-gallery">
             <div class="wedo-slide"><img src="wedo4.jpg" alt="Wedding Photo 1" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
@@ -947,10 +947,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-dowry">
       <h3>DOWRY/TRADITIONAL WEDDING CEREMONIES</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -958,9 +958,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-thanksgiving">
       <h3>PARENTAL THANKSGIVING CEREMONIES</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -968,10 +968,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-launches">
       <h3>BUSINESS PROMOTIONS</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -980,9 +980,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>EVENTS LIVE STREAMING</h3>
       <p></p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="zmZOU9VPJZc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" alt="Live Stream 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/zmZOU9VPJZc?si=U1sQixG3bNIX0CBP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="VxD0bQOyp-U" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" alt="Live Stream 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/VxD0bQOyp-U?si=ocW8WaNP_0Iyhec5" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="2hxrcoL7WGc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" alt="Live Stream 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/2hxrcoL7WGc?si=ZATKiZPFH60eInpA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="zmZOU9VPJZc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" alt="Live Stream 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/zmZOU9VPJZc?si=U1sQixG3bNIX0CBP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="VxD0bQOyp-U" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" alt="Live Stream 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/VxD0bQOyp-U?si=ocW8WaNP_0Iyhec5" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="2hxrcoL7WGc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" alt="Live Stream 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/2hxrcoL7WGc?si=ZATKiZPFH60eInpA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -1126,113 +1126,128 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 </footer>
 
 <script>
-/* ── PAGE READY — show body once layout is painted ── */
-window.addEventListener('DOMContentLoaded', function () {
+/* ── ALL INITIALIZATION INSIDE DOMContentLoaded ── */
+document.addEventListener('DOMContentLoaded', function () {
+  // Show body
   window.scrollTo(0, 0);
   setTimeout(function () { document.body.classList.add('page-ready'); }, 40);
-});
 
-/* ── HERO SLIDESHOW ── */
-(function () {
-  var slides = document.querySelectorAll('.hero .slide'), cur = 0;
-  setInterval(function () {
-    slides[cur].classList.remove('active');
-    cur = (cur + 1) % slides.length;
-    slides[cur].classList.add('active');
-  }, 4000);
-})();
+  // Hero slideshow
+  (function () {
+    var slides = document.querySelectorAll('.hero .slide'), cur = 0;
+    setInterval(function () {
+      slides[cur].classList.remove('active');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('active');
+    }, 4000);
+  })();
 
-/* ── SERVICE SLIDESHOWS ── */
-var svcState = {};
+  // SERVICE SLIDESHOWS
+  var svcState = {};
 
-function svcInit(id) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  var slides = el.querySelectorAll('.svc-slide');
-  var dots   = document.querySelectorAll('#dots-' + id + ' .svc-dot');
-  slides.forEach(function (s) { s.style.display = 'none'; });
-  if (slides[0]) {
-    slides[0].style.display = 'block';
-    /* Mark slideshow loaded once first image loads */
-    var firstImg = slides[0].querySelector('img');
-    if (firstImg) {
-      if (firstImg.complete) { el.classList.add('loaded'); }
-      else { firstImg.addEventListener('load', function () { el.classList.add('loaded'); }, { once: true }); }
+  function svcInit(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var slides = el.querySelectorAll('.svc-slide');
+    var dots   = document.querySelectorAll('#dots-' + id + ' .svc-dot');
+    slides.forEach(function (s) { s.style.display = 'none'; });
+    if (slides[0]) {
+      slides[0].style.display = 'block';
+      // Mark slideshow loaded once first image loads OR fails
+      var firstImg = slides[0].querySelector('img');
+      if (firstImg) {
+        var markLoaded = function () { el.classList.add('loaded'); };
+        if (firstImg.complete) markLoaded();
+        else {
+          firstImg.addEventListener('load', markLoaded, { once: true });
+          firstImg.addEventListener('error', markLoaded, { once: true }); // hide shimmer even if broken
+        }
+      }
     }
+    svcState[id] = { slides: slides, dots: dots, cur: 0, total: slides.length };
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function (e) { e.stopPropagation(); svcGoTo(id, i); });
+    });
   }
-  svcState[id] = { slides: slides, dots: dots, cur: 0, total: slides.length };
-  dots.forEach(function (dot, i) {
-    dot.addEventListener('click', function (e) { e.stopPropagation(); svcGoTo(id, i); });
+
+  function svcGoTo(id, idx) {
+    var s = svcState[id];
+    if (!s) return;
+    s.slides[s.cur].style.display = 'none';
+    if (s.dots[s.cur]) s.dots[s.cur].classList.remove('active');
+    s.cur = (idx + s.total) % s.total;
+    s.slides[s.cur].style.display = 'block';
+    if (s.dots[s.cur]) s.dots[s.cur].classList.add('active');
+  }
+
+  window.svcNav = function (e, id, dir) {
+    e.preventDefault(); e.stopPropagation();
+    var s = svcState[id];
+    if (s) svcGoTo(id, s.cur + dir);
+  };
+
+  ['svc-mc', 'svc-photo', 'svc-pa', 'svc-tents', 'svc-drone', 'svc-catering'].forEach(function (id, i) {
+    svcInit(id);
+    (function (sid, offset) {
+      setTimeout(function () {
+        setInterval(function () {
+          var s = svcState[sid];
+          if (s) svcGoTo(sid, s.cur + 1);
+        }, 3500);
+      }, offset);
+    })(id, i * 600);
   });
-}
 
-function svcGoTo(id, idx) {
-  var s = svcState[id];
-  if (!s) return;
-  s.slides[s.cur].style.display = 'none';
-  if (s.dots[s.cur]) s.dots[s.cur].classList.remove('active');
-  s.cur = (idx + s.total) % s.total;
-  s.slides[s.cur].style.display = 'block';
-  if (s.dots[s.cur]) s.dots[s.cur].classList.add('active');
-}
-
-function svcNav(e, id, dir) {
-  e.preventDefault(); e.stopPropagation();
-  var s = svcState[id];
-  if (s) svcGoTo(id, s.cur + dir);
-}
-
-['svc-mc', 'svc-photo', 'svc-pa', 'svc-tents', 'svc-drone', 'svc-catering'].forEach(function (id, i) {
-  svcInit(id);
-  (function (sid, offset) {
-    setTimeout(function () {
-      setInterval(function () {
-        var s = svcState[sid];
-        if (s) svcGoTo(sid, s.cur + 1);
-      }, 3500);
-    }, offset);
-  })(id, i * 600);
-});
-
-/* ── GALLERY ITEMS SHIMMER (loaded class) ── */
-function initGalleryShimmer() {
+  // GALLERY ITEMS SHIMMER
   document.querySelectorAll('.gallery-item').forEach(function (item) {
     var img = item.querySelector('img');
     if (!img) return;
-    if (img.complete) {
-      item.classList.add('loaded');
-    } else {
-      img.addEventListener('load', function () { item.classList.add('loaded'); });
-      img.addEventListener('error', function () { item.classList.add('loaded'); }); // hide shimmer on error as well
+    var markLoaded = function () { item.classList.add('loaded'); };
+    if (img.complete) markLoaded();
+    else {
+      img.addEventListener('load', markLoaded);
+      img.addEventListener('error', markLoaded);
     }
   });
-}
 
-/* ── WEDDING SLIDESHOW SHIMMER ── */
-function initWeddingSlideshow() {
+  // WEDDING SLIDESHOW SHIMMER
   var wedo = document.getElementById('wedo-gallery');
   if (wedo) {
     var firstWedoImg = wedo.querySelector('.wedo-slide img');
     if (firstWedoImg) {
-      if (firstWedoImg.complete) { wedo.classList.add('loaded'); }
-      else { firstWedoImg.addEventListener('load', function () { wedo.classList.add('loaded'); }, { once: true }); }
+      var markWedoLoaded = function () { wedo.classList.add('loaded'); };
+      if (firstWedoImg.complete) markWedoLoaded();
+      else {
+        firstWedoImg.addEventListener('load', markWedoLoaded, { once: true });
+        firstWedoImg.addEventListener('error', markWedoLoaded, { once: true });
+      }
     }
   }
-}
 
-/* ── BIRTHDAY SLIDESHOW SHIMMER ── */
-function initBirthdaySlideshow() {
+  // BIRTHDAY SLIDESHOW SHIMMER
   var bday = document.getElementById('bday-gallery');
   if (bday) {
     var firstBdayImg = bday.querySelector('.bday-slide img');
     if (firstBdayImg) {
-      if (firstBdayImg.complete) { bday.classList.add('loaded'); }
-      else { firstBdayImg.addEventListener('load', function () { bday.classList.add('loaded'); }, { once: true }); }
+      var markBdayLoaded = function () { bday.classList.add('loaded'); };
+      if (firstBdayImg.complete) markBdayLoaded();
+      else {
+        firstBdayImg.addEventListener('load', markBdayLoaded, { once: true });
+        firstBdayImg.addEventListener('error', markBdayLoaded, { once: true });
+      }
     }
   }
-}
 
-/* ── MOBILE MENU ── */
+  // AUTO-ADAPT VIDEO/GALLERY GRID COLUMNS
+  document.querySelectorAll('.video-grid,.gallery-grid').forEach(function (grid) {
+    var count = grid.children.length;
+    grid.classList.remove('items-3', 'items-4');
+    if (count === 3) grid.classList.add('items-3');
+    else if (count === 4) grid.classList.add('items-4');
+  });
+});
+
+// MOBILE MENU
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('active');
   document.getElementById('menuToggle').classList.toggle('active');
@@ -1244,7 +1259,7 @@ document.querySelectorAll('#navLinks a').forEach(function (a) {
   });
 });
 
-/* ── SMOOTH SCROLL ── */
+// SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   a.addEventListener('click', function (e) {
     var t = document.querySelector(this.getAttribute('href'));
@@ -1252,7 +1267,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
   });
 });
 
-/* ── EVENT CARDS ── */
+// EVENT CARDS
 document.querySelectorAll('.event-card').forEach(function (c) {
   c.addEventListener('click', function () {
     var t = document.getElementById(this.dataset.target);
@@ -1260,8 +1275,8 @@ document.querySelectorAll('.event-card').forEach(function (c) {
   });
 });
 
-/* ── YOUTUBE CLICK TO PLAY ── */
-function ytLoad(wrap) {
+// YOUTUBE CLICK TO PLAY
+window.ytLoad = function (wrap) {
   var id = wrap.dataset.id;
   var f  = document.createElement('iframe');
   f.src  = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
@@ -1271,11 +1286,11 @@ function ytLoad(wrap) {
   wrap.innerHTML = '';
   wrap.appendChild(f);
   wrap.onclick = null;
-}
+};
 
-/* ── LIGHTBOX ── */
+// LIGHTBOX
 var lbImgs = [], lbIdx = 0;
-function lbOpen(el) {
+window.lbOpen = function (el) {
   var img = el.querySelector('img');
   var sec = el.closest('.category,.service-section');
   lbImgs  = Array.from(sec.querySelectorAll('.media-item img,.gallery-item img'));
@@ -1283,32 +1298,32 @@ function lbOpen(el) {
   document.getElementById('lb-img').src = img.src;
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
-}
-function lbClose() {
+};
+window.lbClose = function () {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
-}
-function lbNav(d) {
+};
+window.lbNav = function (d) {
   lbIdx = (lbIdx + d + lbImgs.length) % lbImgs.length;
   document.getElementById('lb-img').src = lbImgs[lbIdx].src;
-}
-function lbBgClick(e) { if (e.target === document.getElementById('lightbox')) lbClose(); }
+};
+window.lbBgClick = function (e) { if (e.target === document.getElementById('lightbox')) lbClose(); };
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') lbClose();
   if (e.key === 'ArrowLeft') lbNav(-1);
   if (e.key === 'ArrowRight') lbNav(1);
 });
 
-/* ── IMAGE MODAL ── */
+// IMAGE MODAL
 var imgModalImgs = [], imgModalIdx = 0;
 
-function svcImgOpen(img) {
+window.svcImgOpen = function (img) {
   var slideshow = img.closest('.svc-slideshow');
   var allImgs   = Array.from(slideshow.querySelectorAll('.svc-slide img'));
   imgModalImgs  = allImgs.map(function (i) { return i.src; });
   imgModalIdx   = allImgs.indexOf(img);
   imgModalShow();
-}
+};
 
 function imgModalShow() {
   var modal   = document.getElementById('img-modal');
@@ -1320,19 +1335,19 @@ function imgModalShow() {
   document.body.style.overflow = 'hidden';
 }
 
-function imgModalClose() {
+window.imgModalClose = function () {
   document.getElementById('img-modal').classList.remove('open');
   document.body.style.overflow = '';
-}
+};
 
-function imgModalNav(dir) {
+window.imgModalNav = function (dir) {
   imgModalIdx = (imgModalIdx + dir + imgModalImgs.length) % imgModalImgs.length;
   imgModalShow();
-}
+};
 
-function imgModalBgClick(e) {
+window.imgModalBgClick = function (e) {
   if (e.target === document.getElementById('img-modal')) imgModalClose();
-}
+};
 
 document.addEventListener('keydown', function (e) {
   var modal = document.getElementById('img-modal');
@@ -1342,7 +1357,7 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'ArrowRight') imgModalNav(1);
 });
 
-/* ── WEDDING PHOTO SLIDESHOW ── */
+// WEDDING PHOTO SLIDESHOW
 (function () {
   var slides = document.querySelectorAll('#wedo-gallery .wedo-slide');
   var dots   = document.querySelectorAll('#wedo-dots .wedo-dot');
@@ -1375,7 +1390,7 @@ document.addEventListener('keydown', function (e) {
   };
 })();
 
-/* ── BIRTHDAY SLIDESHOW ── */
+// BIRTHDAY SLIDESHOW
 (function () {
   var slides = document.querySelectorAll('#bday-gallery .bday-slide');
   var dots   = document.querySelectorAll('#bday-dots .bday-dot');
@@ -1408,7 +1423,7 @@ document.addEventListener('keydown', function (e) {
   };
 })();
 
-/* ── WHATSAPP BOOKING FORM ── */
+// WHATSAPP BOOKING FORM
 document.getElementById('bookingForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var f   = new FormData(e.target);
@@ -1424,21 +1439,6 @@ document.getElementById('bookingForm').addEventListener('submit', function (e) {
     + 'Guests: '       + (f.get('guests')   || 'Not specified') + '\n\n'
     + '💬 *Additional Info:*\n' + (f.get('message') || 'None');
   window.open('https://wa.me/254728990478?text=' + encodeURIComponent(msg), '_blank');
-});
-
-/* ── AUTO-ADAPT VIDEO/GALLERY GRID COLUMNS ── */
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.video-grid,.gallery-grid').forEach(function (grid) {
-    var count = grid.children.length;
-    grid.classList.remove('items-3', 'items-4');
-    if (count === 3) grid.classList.add('items-3');
-    else if (count === 4) grid.classList.add('items-4');
-  });
-
-  /* Initialize all shimmer additions */
-  initGalleryShimmer();
-  initWeddingSlideshow();
-  initBirthdaySlideshow();
 });
 </script>
 </body>
