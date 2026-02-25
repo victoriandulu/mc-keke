@@ -23,6 +23,11 @@
 <link rel="icon" type="image/png" href="KEKE-MC-LOGO (2).png">
 <link rel="apple-touch-icon" href="KEKE-MC-LOGO (2).png">
 <meta name="theme-color" content="#233B8B">
+
+<!-- Preload critical above-fold images -->
+<link rel="preload" as="image" href="slide-1.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="pro-mc1.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,7 +115,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0,0,0,.18);
-  background: #f0f0f0;  /* light background while loading */
+  background: #f0f0f0;
 }
 .svc-slideshow::after {
   content: '';
@@ -146,7 +151,7 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .svc-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;  /* show full image, no crop */
+  object-fit: contain;
   display: block;
   cursor: pointer;
   decoding: async;
@@ -205,8 +210,8 @@ h2 { text-align: center; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--orang
 .yt-wrap {
   position: relative;
   width: 100%;
-  padding-top: 75%; /* 4:3 aspect */
-  background: #f0f0f0;  /* light placeholder */
+  padding-top: 75%;
+  background: #f0f0f0;
   cursor: pointer;
   overflow: hidden;
 }
@@ -387,7 +392,7 @@ textarea { resize: vertical; min-height: 110px; }
 .wedo-slideshow {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;   /* fixed aspect */
+  aspect-ratio: 16 / 9;
   background: #f0f0f0;
   overflow: hidden;
   border-radius: 12px;
@@ -586,7 +591,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 </head>
 <body>
 
-<!-- IMAGE MODAL (same structure) -->
+<!-- IMAGE MODAL -->
 <div id="img-modal" onclick="imgModalBgClick(event)">
   <button class="img-modal-close" onclick="imgModalClose()">&#10005;</button>
   <div class="img-modal-inner"><img id="img-modal-img" src="" alt=""></div>
@@ -605,7 +610,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   <span class="lb-next" onclick="lbNav(1)">&#10095;</span>
 </div>
 
-<!-- HEADER / NAV (unchanged) -->
+<!-- HEADER / NAV -->
 <header>
   <div class="nav">
     <div class="logo"><img src="KEKE-MC-LOGO (2).png" alt="KEKE Events Logo" width="120" height="40"></div>
@@ -623,12 +628,12 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </header>
 
-<!-- HERO SLIDESHOW (unchanged) -->
+<!-- HERO SLIDESHOW -->
 <section class="hero">
-  <div class="slide active"><img src="slide-1.jpg" alt="KEKE Events" fetchpriority="high" decoding="sync"></div>
-  <div class="slide"><img src="slide-2.jpg" alt="KEKE Events Performance" loading="lazy" decoding="async"></div>
-  <div class="slide"><img src="slide-3.jpg" alt="KEKE Events Show" loading="lazy" decoding="async"></div>
-  <div class="slide"><img src="tent-1.jpg" alt="KEKE Events Tents" loading="lazy" decoding="async"></div>
+  <div class="slide active"><img src="slide-1.jpg" alt="KEKE Events" fetchpriority="high" decoding="sync" width="1920" height="1080"></div>
+  <div class="slide"><img src="slide-2.jpg" alt="KEKE Events Performance" loading="lazy" decoding="async" width="1920" height="1080"></div>
+  <div class="slide"><img src="slide-3.jpg" alt="KEKE Events Show" loading="lazy" decoding="async" width="1920" height="1080"></div>
+  <div class="slide"><img src="tent-1.jpg" alt="KEKE Events Tents" loading="lazy" decoding="async" width="1920" height="1080"></div>
   <div class="hero-overlay">
     <div>
       <h1>KEKE EVENTS</h1>
@@ -641,7 +646,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- SERVICES SECTION (all images exactly as originally, now with fixed aspect containers) -->
+<!-- SERVICES SECTION -->
 <section id="services">
   <div class="container">
 
@@ -655,19 +660,19 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow portrait" id="svc-mc">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="pro-mc1.jpg"   alt="MC hosting with comedy and entertainment"  loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc-3.jpg"  alt="MC live music performance"                 loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc4.jpg"   alt="MC engaging the audience"                  loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc5.jpg"   alt="MC crowd interaction"                      loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc6.jpg"   alt="MC stage performance"                      loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc7.jpg"   alt="MC dancing with guests"                    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof-mc8.jpg"  alt="Professional MC at live event"             loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof-mc9.jpg"  alt="MC hyping the crowd"                       loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof-mc10.jpg" alt="MC leading entertainment session"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pro-mc11.jpg"  alt="MC on stage with microphone"               loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof-mc2.jpg"  alt="MC fundraising and harambee facilitation"  loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof3.jpg"     alt="MC crowd control and coordination"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="prof4.jpg"     alt="MC live entertainment performance"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="pro-mc1.jpg"   alt="MC hosting with comedy and entertainment"  fetchpriority="high" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc-3.jpg"  alt="MC live music performance"                 loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc4.jpg"   alt="MC engaging the audience"                  loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc5.jpg"   alt="MC crowd interaction"                      loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc6.jpg"   alt="MC stage performance"                      loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc7.jpg"   alt="MC dancing with guests"                    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof-mc8.jpg"  alt="Professional MC at live event"             loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof-mc9.jpg"  alt="MC hyping the crowd"                       loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof-mc10.jpg" alt="MC leading entertainment session"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pro-mc11.jpg"  alt="MC on stage with microphone"               loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof-mc2.jpg"  alt="MC fundraising and harambee facilitation"  loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof3.jpg"     alt="MC crowd control and coordination"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="prof4.jpg"     alt="MC live entertainment performance"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-mc',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-mc',1)">&#10095;</button>
@@ -691,37 +696,37 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-photo">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="1.jpg"       alt="Professional Photography"    loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="2.jpg"       alt="Event Coverage"              loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="3.jpeg"      alt="Candid Moments"              loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="4.jpeg"      alt="Wedding Photography"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="5.jpeg"      alt="Cinematic Videos"            loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="6.jpeg"      alt="Memorable Moments"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="7.jpeg"      alt="Event Highlights"            loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="8.jpeg"      alt="Creative Shots"              loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="9.jpeg"      alt="Photography Details"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="10.jpeg"     alt="Professional Videography"    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="11.jpeg"     alt="Event Photography"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="12.jpeg"     alt="Wedding Highlights"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="13.jpeg"     alt="Ceremony Coverage"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="14.jpeg"     alt="Reception Moments"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="15.jpeg"     alt="Bridal Photography"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="16.jpeg"     alt="Couple Portraits"            loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="17.jpeg"     alt="Outdoor Photography"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="18.jpeg"     alt="Indoor Photography"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="19.jpeg"     alt="Creative Event Shots"        loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="20.jpeg"     alt="Professional Camera Work"    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="21.jpeg"     alt="Live Event Coverage"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="22.jpeg"     alt="Storytelling Photography"    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="23.jpeg"     alt="Artistic Photography"        loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="24.jpeg"     alt="Event Videography"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="25.jpeg"     alt="Premium Photography"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="photo1.jpg"  alt="Professional Photoshoot"     loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="photo2.jpg"  alt="Event Coverage"              loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pho3.jpg"    alt="Cinematic Video Capture"     loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="photo4.jpg"  alt="Memorable Moments"           loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="photo5.jpeg" alt="High-End Videography"        loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="photo6.jpg"  alt="Creative Direction"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="1.jpg"       alt="Professional Photography"    fetchpriority="high" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="2.jpg"       alt="Event Coverage"              loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="3.jpeg"      alt="Candid Moments"              loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="4.jpeg"      alt="Wedding Photography"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="5.jpeg"      alt="Cinematic Videos"            loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="6.jpeg"      alt="Memorable Moments"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="7.jpeg"      alt="Event Highlights"            loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="8.jpeg"      alt="Creative Shots"              loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="9.jpeg"      alt="Photography Details"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="10.jpeg"     alt="Professional Videography"    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="11.jpeg"     alt="Event Photography"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="12.jpeg"     alt="Wedding Highlights"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="13.jpeg"     alt="Ceremony Coverage"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="14.jpeg"     alt="Reception Moments"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="15.jpeg"     alt="Bridal Photography"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="16.jpeg"     alt="Couple Portraits"            loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="17.jpeg"     alt="Outdoor Photography"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="18.jpeg"     alt="Indoor Photography"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="19.jpeg"     alt="Creative Event Shots"        loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="20.jpeg"     alt="Professional Camera Work"    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="21.jpeg"     alt="Live Event Coverage"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="22.jpeg"     alt="Storytelling Photography"    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="23.jpeg"     alt="Artistic Photography"        loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="24.jpeg"     alt="Event Videography"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="25.jpeg"     alt="Premium Photography"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo1.jpg"  alt="Professional Photoshoot"     loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo2.jpg"  alt="Event Coverage"              loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pho3.jpg"    alt="Cinematic Video Capture"     loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo4.jpg"  alt="Memorable Moments"           loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo5.jpeg" alt="High-End Videography"        loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo6.jpg"  alt="Creative Direction"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-photo',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-photo',1)">&#10095;</button>
@@ -742,35 +747,35 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
     </div>
 
-    <!-- VIDEOGRAPHY (YouTube cards unchanged) -->
+    <!-- VIDEOGRAPHY -->
     <div class="service-section">
       <h3 style="text-decoration:underline;">VIDEOGRAPHY</h3>
       <p></p>
       <div class="video-grid">
         <div class="video-card">
           <div class="yt-wrap" data-id="0Yy8IsOfxtg" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" alt="Music 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
+            <img data-src="https://i.ytimg.com/vi/0Yy8IsOfxtg/hqdefault.jpg" src="" alt="Music 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://www.youtube.com/watch?v=0Yy8IsOfxtg" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="4jtsqg2LoSU" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
+            <img data-src="https://i.ytimg.com/vi/4jtsqg2LoSU/hqdefault.jpg" src="" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/4jtsqg2LoSU?si=KEJMpGLB6C1BJUDB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="GTWFKGVAOZM" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
+            <img data-src="https://i.ytimg.com/vi/GTWFKGVAOZM/hqdefault.jpg" src="" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/GTWFKGVAOZM?si=YhnLU3BeetNvfHzV" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
         </div>
         <div class="video-card">
           <div class="yt-wrap" data-id="NuxkRkXo3Is" onclick="ytLoad(this)">
-            <img src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" alt="Harambees 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
+            <img data-src="https://i.ytimg.com/vi/NuxkRkXo3Is/hqdefault.jpg" src="" alt="Harambees 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')">
             <div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
           <a class="video-link" href="https://youtu.be/NuxkRkXo3Is?si=m5Bmye0y7xGXnIBH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a>
@@ -789,13 +794,13 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </div>
       <div class="svc-slideshow product" id="svc-pa">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="pa1.jpeg" alt="Professional PA system setup"     loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa2.jpeg" alt="Event sound equipment"            loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa7.jpeg" alt="Large venue sound system"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa6.jpeg" alt="Professional PA speakers"         loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa5.jpg"  alt="Event audio equipment"            loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa3.jpeg" alt="Complete audio setup"             loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="pa4.jpeg" alt="Professional sound reinforcement" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="pa1.jpeg" alt="Professional PA system setup"     fetchpriority="high" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa2.jpeg" alt="Event sound equipment"            loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa7.jpeg" alt="Large venue sound system"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa6.jpeg" alt="Professional PA speakers"         loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa5.jpg"  alt="Event audio equipment"            loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa3.jpeg" alt="Complete audio setup"             loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa4.jpeg" alt="Professional sound reinforcement" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-pa',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-pa',1)">&#10095;</button>
@@ -823,19 +828,19 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-tents">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="event.jpg"  alt="Wedding tent setup"      loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="tent-2.jpg" alt="Event tent"              loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="tent-3.jpg" alt="Large event tent"        loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="tent-4.jpg" alt="Outdoor canopy"          loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco1.jpeg" alt="Tent decoration setup"   loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco2.jpeg" alt="Canopy decoration"       loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco3.jpeg" alt="Event tent décor"        loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco4.jpeg" alt="Wedding canopy décor"    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco5.jpeg" alt="Outdoor tent décor"      loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco6.jpeg" alt="Premium tent decoration" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco7.jpeg" alt="Elegant canopy décor"    loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco8.jpeg" alt="Event décor canopy"      loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="deco9.jpeg" alt="Luxury tent decoration"  loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="event.jpg"  alt="Wedding tent setup"      loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-2.jpg" alt="Event tent"              loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-3.jpg" alt="Large event tent"        loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-4.jpg" alt="Outdoor canopy"          loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco1.jpeg" alt="Tent decoration setup"   loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco2.jpeg" alt="Canopy decoration"       loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco3.jpeg" alt="Event tent décor"        loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco4.jpeg" alt="Wedding canopy décor"    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco5.jpeg" alt="Outdoor tent décor"      loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco6.jpeg" alt="Premium tent decoration" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco7.jpeg" alt="Elegant canopy décor"    loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco8.jpeg" alt="Event décor canopy"      loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco9.jpeg" alt="Luxury tent decoration"  loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-tents',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-tents',1)">&#10095;</button>
@@ -859,15 +864,15 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       </p>
       <div class="svc-slideshow landscape" id="svc-drone">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="drone1.jpg"  alt="Aerial Drone Shot 1" loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone2.jpg"  alt="Aerial Drone Shot 2" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone3.jpg"  alt="Aerial Drone Shot 3" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone5.jpg"  alt="Aerial Drone Shot 4" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone6.jpg"  alt="Aerial Drone Shot 5" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone7.jpg"  alt="Aerial Drone Shot 6" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone9.jpg"  alt="Aerial Drone Shot 7" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone10.jpg" alt="Aerial Drone Shot 8" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="drone4.jpg"  alt="Aerial Drone Shot 9" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="drone1.jpg"  alt="Aerial Drone Shot 1" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone2.jpg"  alt="Aerial Drone Shot 2" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone3.jpg"  alt="Aerial Drone Shot 3" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone5.jpg"  alt="Aerial Drone Shot 4" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone6.jpg"  alt="Aerial Drone Shot 5" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone7.jpg"  alt="Aerial Drone Shot 6" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone9.jpg"  alt="Aerial Drone Shot 7" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone10.jpg" alt="Aerial Drone Shot 8" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone4.jpg"  alt="Aerial Drone Shot 9" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-drone',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-drone',1)">&#10095;</button>
@@ -886,10 +891,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <p class="service-desc">Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.</p>
       <div class="svc-slideshow landscape" id="svc-catering">
         <div class="svc-slides">
-          <div class="svc-slide"><img src="food-1.jpg" alt="Catering Sample 1" loading="eager" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="food-2.jpg" alt="Catering Sample 2" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="food-1.jpg" alt="Catering Sample 3" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img src="food-2.jpg" alt="Catering Sample 4" loading="lazy"  decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img src="food-1.jpg" alt="Catering Sample 1" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-2.jpg" alt="Catering Sample 2" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-1.jpg" alt="Catering Sample 3" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-2.jpg" alt="Catering Sample 4" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-catering',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-catering',1)">&#10095;</button>
@@ -904,7 +909,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- PORTFOLIO (unchanged) -->
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="container">
     <h2>EVENT CAPABILITIES</h2>
@@ -913,10 +918,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>MC KEKE COMEDY &amp; ENTERTAINMENT <span class="category-badge">Most Popular</span></h3>
       <p>Professional comedy that resonates with Kenyan audiences. Clean humor, cultural references, and interactive crowd work.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" alt="Comedy 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" alt="Comedy 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="5zlledzedJY" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" alt="Comedy 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/5zlledzedJY?si=VQ_kqj3Wy5s1YTMj" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="cmXrF-Z19rg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" alt="Comedy 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/cmXrF-Z19rg?si=Sw1uL5hEBb_os9nl" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="KcpOA_QZ_So" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/KcpOA_QZ_So/hqdefault.jpg" src="" alt="Comedy 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/KcpOA_QZ_So?si=_agnjBWuARQF44Dd" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="tYp6TTxJ9Fo" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/tYp6TTxJ9Fo/hqdefault.jpg" src="" alt="Comedy 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/tYp6TTxJ9Fo?si=FRk3fx2LcsWL78wT" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="5zlledzedJY" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/5zlledzedJY/hqdefault.jpg" src="" alt="Comedy 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/5zlledzedJY?si=VQ_kqj3Wy5s1YTMj" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="cmXrF-Z19rg" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/cmXrF-Z19rg/hqdefault.jpg" src="" alt="Comedy 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/cmXrF-Z19rg?si=Sw1uL5hEBb_os9nl" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -924,9 +929,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>FUNDRAISING EXCELLENCE AND CONTRIBUTIONS <span class="category-badge">Highest Returns</span></h3>
       <p>Strategic fundraising techniques that maximize contributions. Expert at creating excitement and exceeding targets.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" alt="Harambees 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="g1Z1VZgdFRQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/g1Z1VZgdFRQ?si=jPBOyklWxRqUkpFB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="NGqPi5vNAro" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/NGqPi5vNAro/hqdefault.jpg" src="" alt="Harambees 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NGqPi5vNAro?si=4cza3HW2NbyLvIxI" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="LuRITuyWYM0" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/LuRITuyWYM0/hqdefault.jpg" src="" alt="Harambees 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/LuRITuyWYM0?si=gqzWZrmdcAfZhgZU" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="g1Z1VZgdFRQ" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/g1Z1VZgdFRQ/hqdefault.jpg" src="" alt="Harambees 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/g1Z1VZgdFRQ?si=jPBOyklWxRqUkpFB" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -934,17 +939,17 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>EVENT DANCE MOVES &amp; CROWD CONTROL <span class="category-badge">Event Vibes</span></h3>
       <p>Expert crowd management through dance and interactive activities. Transforming shy audiences into energized participants.</p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" alt="Dance 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" alt="Dance 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="gclBcI5NDiA" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" alt="Dance 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gclBcI5NDiA?si=uqtUSZ3iYeGbEI3l" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" alt="Dance 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="92xD30RB0nk" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/92xD30RB0nk/hqdefault.jpg" src="" alt="Dance 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=92xD30RB0nk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="TBl-DhnlK68" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/TBl-DhnlK68/hqdefault.jpg" src="" alt="Dance 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=TBl-DhnlK68" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="gclBcI5NDiA" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/gclBcI5NDiA/hqdefault.jpg" src="" alt="Dance 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gclBcI5NDiA?si=uqtUSZ3iYeGbEI3l" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="JIbH8p34sQk" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/JIbH8p34sQk/hqdefault.jpg" src="" alt="Dance 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/watch?v=JIbH8p34sQk" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- EVENTS WE TRANSFORM (unchanged) -->
+<!-- EVENTS WE TRANSFORM -->
 <section class="events" id="events">
   <div class="container">
     <h2>EVENTS WE TRANSFORM</h2>
@@ -965,7 +970,7 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
   </div>
 </section>
 
-<!-- GALLERY (unchanged except for added .wedo-slides and .bday-slides wrappers) -->
+<!-- GALLERY -->
 <section class="gallery" id="gallery">
   <div class="container">
     <h2>EVENT GALLERY</h2>
@@ -975,17 +980,17 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-weddings">
       <h3>WEDDINGS</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" alt="Wedding Ceremony" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="ujKbEqrWK3M" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/ujKbEqrWK3M/hqdefault.jpg" src="" alt="Wedding Ceremony" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ujKbEqrWK3M?si=lBYRKAlwmZrB3zUm" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" src="" alt="Wedding Ceremony 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card wedo-slide-card">
           <div class="wedo-slideshow" id="wedo-gallery">
             <div class="wedo-slides">
               <div class="wedo-slide"><img src="wedo4.jpg" alt="Wedding Photo 1" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
-              <div class="wedo-slide"><img src="wedo3.jpg" alt="Wedding Photo 2" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
-              <div class="wedo-slide"><img src="wedo7.jpg" alt="Wedding Photo 3" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
-              <div class="wedo-slide"><img src="wedo4.jpg" alt="Wedding Photo 4" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
-              <div class="wedo-slide"><img src="wedo5.jpg" alt="Wedding Photo 5" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
-              <div class="wedo-slide"><img src="wedo6.jpg" alt="Wedding Photo 6" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+              <div class="wedo-slide"><img data-src="wedo3.jpg" alt="Wedding Photo 2" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+              <div class="wedo-slide"><img data-src="wedo7.jpg" alt="Wedding Photo 3" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+              <div class="wedo-slide"><img data-src="wedo4.jpg" alt="Wedding Photo 4" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+              <div class="wedo-slide"><img data-src="wedo5.jpg" alt="Wedding Photo 5" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+              <div class="wedo-slide"><img data-src="wedo6.jpg" alt="Wedding Photo 6" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
             </div>
             <button class="wedo-prev" onclick="wedoNav(-1)">&#10094;</button>
             <button class="wedo-next" onclick="wedoNav(1)">&#10095;</button>
@@ -1005,9 +1010,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <div class="bday-slideshow" id="bday-gallery">
         <div class="bday-slides">
           <div class="bday-slide"><img src="birth-cel2.jpeg" alt="Birthday 1" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
-          <div class="bday-slide"><img src="cake1.jpg"       alt="Birthday 2" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
-          <div class="bday-slide"><img src="cake2.jpg"       alt="Birthday 3" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
-          <div class="bday-slide"><img src="cake3.png"       alt="Birthday 4" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
+          <div class="bday-slide"><img data-src="cake1.jpg"       alt="Birthday 2" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
+          <div class="bday-slide"><img data-src="cake2.jpg"       alt="Birthday 3" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
+          <div class="bday-slide"><img data-src="cake3.png"       alt="Birthday 4" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
         </div>
         <button class="bday-prev" onclick="bdayNav(-1)">&#10094;</button>
         <button class="bday-next" onclick="bdayNav(1)">&#10095;</button>
@@ -1022,10 +1027,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-dowry">
       <h3>DOWRY/TRADITIONAL WEDDING CEREMONIES</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" alt="Dowry 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" alt="Dowry 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" alt="Dowry 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" alt="Dowry 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="vPYBMY9kl1Q" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/vPYBMY9kl1Q/hqdefault.jpg" src="" alt="Dowry 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/vPYBMY9kl1Q?si=_M5ogGQ90-GpJGR2" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="p5aFkLjmaeM" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/p5aFkLjmaeM/hqdefault.jpg" src="" alt="Dowry 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/p5aFkLjmaeM?si=isW3yWRwLmufOUhx" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="gIm4R0UGlXc" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/gIm4R0UGlXc/hqdefault.jpg" src="" alt="Dowry 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/gIm4R0UGlXc?si=JJWpljffRAW6f3y8" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="SR8gUIpifMQ" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/SR8gUIpifMQ/hqdefault.jpg" src="" alt="Dowry 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/SR8gUIpifMQ?si=hD0PEFHFyjht1UgP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -1033,9 +1038,9 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-thanksgiving">
       <h3>PARENTAL THANKSGIVING CEREMONIES</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" alt="Thanksgiving 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" alt="Thanksgiving 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" alt="Thanksgiving 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="V0FxiwY9mn0" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/V0FxiwY9mn0/hqdefault.jpg" src="" alt="Thanksgiving 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/V0FxiwY9mn0?si=HgjDxcL1M5v4DJgH" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hLIkj20Lrq0" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/hLIkj20Lrq0/hqdefault.jpg" src="" alt="Thanksgiving 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/hLIkj20Lrq0?si=z1954wfTYRfkmpe-" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="ind5aaQz4hM" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/ind5aaQz4hM/hqdefault.jpg" src="" alt="Thanksgiving 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/ind5aaQz4hM?si=xURr71Xu-XHfpQp3" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -1043,10 +1048,10 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
     <div class="category" id="gallery-launches">
       <h3>BUSINESS PROMOTIONS</h3>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" alt="Launch 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" alt="Launch 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" alt="Launch 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" alt="Launch 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="NCI6JcoIp90" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/NCI6JcoIp90/hqdefault.jpg" src="" alt="Launch 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/NCI6JcoIp90?si=6Pe_1V8Gn2eSf9Tw" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="hVLuVo7QDmw" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/hVLuVo7QDmw/hqdefault.jpg" src="" alt="Launch 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/hVLuVo7QDmw?si=s1EPWvmY4BbXUYmX" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="R_dxU--OGRg" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/R_dxU--OGRg/hqdefault.jpg" src="" alt="Launch 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/R_dxU--OGRg?si=zqquX0lO75rBlMno" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="wO_twYAT-bI" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/wO_twYAT-bI/hqdefault.jpg" src="" alt="Launch 4" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtube.com/shorts/wO_twYAT-bI?si=oaFd_fJ6u3PT126P" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
@@ -1055,16 +1060,16 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
       <h3>EVENTS LIVE STREAMING</h3>
       <p></p>
       <div class="video-grid">
-        <div class="video-card"><div class="yt-wrap" data-id="zmZOU9VPJZc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" alt="Live Stream 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/zmZOU9VPJZc?si=U1sQixG3bNIX0CBP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="VxD0bQOyp-U" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" alt="Live Stream 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/VxD0bQOyp-U?si=ocW8WaNP_0Iyhec5" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
-        <div class="video-card"><div class="yt-wrap" data-id="2hxrcoL7WGc" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" alt="Live Stream 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/2hxrcoL7WGc?si=ZATKiZPFH60eInpA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="zmZOU9VPJZc" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/zmZOU9VPJZc/hqdefault.jpg" src="" alt="Live Stream 1" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/zmZOU9VPJZc?si=U1sQixG3bNIX0CBP" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="VxD0bQOyp-U" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/VxD0bQOyp-U/hqdefault.jpg" src="" alt="Live Stream 2" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/VxD0bQOyp-U?si=ocW8WaNP_0Iyhec5" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
+        <div class="video-card"><div class="yt-wrap" data-id="2hxrcoL7WGc" onclick="ytLoad(this)"><img data-src="https://i.ytimg.com/vi/2hxrcoL7WGc/hqdefault.jpg" src="" alt="Live Stream 3" loading="lazy" onload="this.closest('.yt-wrap').classList.add('loaded')" onerror="this.closest('.yt-wrap').classList.add('loaded')"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://www.youtube.com/live/2hxrcoL7WGc?si=ZATKiZPFH60eInpA" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- STATS, TESTIMONIALS, CONTACT, FOOTER (all unchanged) -->
+<!-- STATS -->
 <section class="stats">
   <div class="stats-grid">
     <div class="stat-item"><span class="stat-label">Events Hosted</span><span class="stat-number">500+</span></div>
@@ -1198,7 +1203,39 @@ footer { background: var(--blue); color: var(--white); padding: 3rem 2rem 1.5rem
 </footer>
 
 <script>
-/* ── ALL INITIALIZATION INSIDE DOMContentLoaded ── */
+/* =====================================================
+   INTERSECTION OBSERVER — lazy-load data-src images
+   only when their container scrolls near the viewport
+   ===================================================== */
+(function () {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: just set all data-src → src immediately
+    document.querySelectorAll('img[data-src]').forEach(function (img) {
+      img.src = img.dataset.src;
+    });
+    return;
+  }
+
+  var imgObs = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var img = entry.target;
+      if (img.dataset.src) {
+        img.src = img.dataset.src;
+        delete img.dataset.src;
+      }
+      obs.unobserve(img);
+    });
+  }, { rootMargin: '400px 0px' }); // start loading 400px before entering viewport
+
+  document.querySelectorAll('img[data-src]').forEach(function (img) {
+    imgObs.observe(img);
+  });
+})();
+
+/* =====================================================
+   ALL INITIALIZATION INSIDE DOMContentLoaded
+   ===================================================== */
 document.addEventListener('DOMContentLoaded', function () {
   // Show body
   window.scrollTo(0, 0);
@@ -1225,14 +1262,13 @@ document.addEventListener('DOMContentLoaded', function () {
     slides.forEach(function (s) { s.style.display = 'none'; });
     if (slides[0]) {
       slides[0].style.display = 'block';
-      // Mark slideshow loaded once first image loads OR fails
       var firstImg = slides[0].querySelector('img');
       if (firstImg) {
         var markLoaded = function () { el.classList.add('loaded'); };
-        if (firstImg.complete) markLoaded();
+        if (firstImg.complete && firstImg.naturalWidth) markLoaded();
         else {
-          firstImg.addEventListener('load', markLoaded, { once: true });
-          firstImg.addEventListener('error', markLoaded, { once: true }); // hide shimmer even if broken
+          firstImg.addEventListener('load',  markLoaded, { once: true });
+          firstImg.addEventListener('error', markLoaded, { once: true });
         }
       }
     }
@@ -1250,6 +1286,20 @@ document.addEventListener('DOMContentLoaded', function () {
     s.cur = (idx + s.total) % s.total;
     s.slides[s.cur].style.display = 'block';
     if (s.dots[s.cur]) s.dots[s.cur].classList.add('active');
+
+    // Eagerly pre-load the next slide image
+    var nextIdx = (s.cur + 1) % s.total;
+    var nextImg = s.slides[nextIdx].querySelector('img');
+    if (nextImg && nextImg.dataset.src) {
+      nextImg.src = nextImg.dataset.src;
+      delete nextImg.dataset.src;
+    }
+    // Also load the current slide image if somehow not loaded yet
+    var curImg = s.slides[s.cur].querySelector('img');
+    if (curImg && curImg.dataset.src) {
+      curImg.src = curImg.dataset.src;
+      delete curImg.dataset.src;
+    }
   }
 
   window.svcNav = function (e, id, dir) {
@@ -1258,17 +1308,45 @@ document.addEventListener('DOMContentLoaded', function () {
     if (s) svcGoTo(id, s.cur + dir);
   };
 
-  ['svc-mc', 'svc-photo', 'svc-pa', 'svc-tents', 'svc-drone', 'svc-catering'].forEach(function (id, i) {
-    svcInit(id);
-    (function (sid, offset) {
-      setTimeout(function () {
-        setInterval(function () {
-          var s = svcState[sid];
-          if (s) svcGoTo(sid, s.cur + 1);
-        }, 3500);
-      }, offset);
-    })(id, i * 600);
-  });
+  // Use IntersectionObserver to init slideshows only when they come into view
+  // This defers heavy DOM work + image loads for off-screen slideshows
+  var svcIds = ['svc-mc', 'svc-photo', 'svc-pa', 'svc-tents', 'svc-drone', 'svc-catering'];
+
+  if ('IntersectionObserver' in window) {
+    var svcObs = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry, i) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        var offset = svcIds.indexOf(id) * 200;
+        setTimeout(function () {
+          svcInit(id);
+          setInterval(function () {
+            var s = svcState[id];
+            if (s) svcGoTo(id, s.cur + 1);
+          }, 3500);
+        }, offset);
+        obs.unobserve(entry.target);
+      });
+    }, { rootMargin: '200px 0px' });
+
+    svcIds.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) svcObs.observe(el);
+    });
+  } else {
+    // Fallback: init all immediately
+    svcIds.forEach(function (id, i) {
+      svcInit(id);
+      (function (sid, offset) {
+        setTimeout(function () {
+          setInterval(function () {
+            var s = svcState[sid];
+            if (s) svcGoTo(sid, s.cur + 1);
+          }, 3500);
+        }, offset);
+      })(id, i * 600);
+    });
+  }
 
   // GALLERY ITEMS SHIMMER
   document.querySelectorAll('.gallery-item').forEach(function (item) {
@@ -1290,7 +1368,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var markWedoLoaded = function () { wedo.classList.add('loaded'); };
       if (firstWedoImg.complete) markWedoLoaded();
       else {
-        firstWedoImg.addEventListener('load', markWedoLoaded, { once: true });
+        firstWedoImg.addEventListener('load',  markWedoLoaded, { once: true });
         firstWedoImg.addEventListener('error', markWedoLoaded, { once: true });
       }
     }
@@ -1304,7 +1382,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var markBdayLoaded = function () { bday.classList.add('loaded'); };
       if (firstBdayImg.complete) markBdayLoaded();
       else {
-        firstBdayImg.addEventListener('load', markBdayLoaded, { once: true });
+        firstBdayImg.addEventListener('load',  markBdayLoaded, { once: true });
         firstBdayImg.addEventListener('error', markBdayLoaded, { once: true });
       }
     }
@@ -1392,7 +1470,7 @@ var imgModalImgs = [], imgModalIdx = 0;
 window.svcImgOpen = function (img) {
   var slideshow = img.closest('.svc-slideshow');
   var allImgs   = Array.from(slideshow.querySelectorAll('.svc-slide img'));
-  imgModalImgs  = allImgs.map(function (i) { return i.src; });
+  imgModalImgs  = allImgs.map(function (i) { return i.src || i.dataset.src || ''; });
   imgModalIdx   = allImgs.indexOf(img);
   imgModalShow();
 };
@@ -1449,6 +1527,11 @@ document.addEventListener('keydown', function (e) {
     cur = (idx + slides.length) % slides.length;
     slides[cur].style.display = 'block';
     if (dots[cur]) dots[cur].classList.add('active');
+    // Pre-load next
+    var nextImg = slides[(cur + 1) % slides.length].querySelector('img');
+    if (nextImg && nextImg.dataset.src) { nextImg.src = nextImg.dataset.src; delete nextImg.dataset.src; }
+    var curImg = slides[cur].querySelector('img');
+    if (curImg && curImg.dataset.src) { curImg.src = curImg.dataset.src; delete curImg.dataset.src; }
   }
 
   window.wedoNav = function (dir) { wedoGoTo(cur + dir); };
@@ -1456,7 +1539,7 @@ document.addEventListener('keydown', function (e) {
 
   window.wedoImgOpen = function (img) {
     var allImgs  = Array.from(document.querySelectorAll('#wedo-gallery .wedo-slide img'));
-    imgModalImgs = allImgs.map(function (i) { return i.src; });
+    imgModalImgs = allImgs.map(function (i) { return i.src || i.dataset.src || ''; });
     imgModalIdx  = allImgs.indexOf(img);
     imgModalShow();
   };
@@ -1478,6 +1561,11 @@ document.addEventListener('keydown', function (e) {
     cur = (idx + slides.length) % slides.length;
     slides[cur].style.display = 'block';
     if (dots[cur]) dots[cur].classList.add('active');
+    // Pre-load next
+    var nextImg = slides[(cur + 1) % slides.length].querySelector('img');
+    if (nextImg && nextImg.dataset.src) { nextImg.src = nextImg.dataset.src; delete nextImg.dataset.src; }
+    var curImg = slides[cur].querySelector('img');
+    if (curImg && curImg.dataset.src) { curImg.src = curImg.dataset.src; delete curImg.dataset.src; }
   }
 
   dots.forEach(function (dot, i) {
@@ -1489,7 +1577,7 @@ document.addEventListener('keydown', function (e) {
 
   window.bdayImgOpen = function (img) {
     var allImgs  = Array.from(document.querySelectorAll('#bday-gallery .bday-slide img'));
-    imgModalImgs = allImgs.map(function (i) { return i.src; });
+    imgModalImgs = allImgs.map(function (i) { return i.src || i.dataset.src || ''; });
     imgModalIdx  = allImgs.indexOf(img);
     imgModalShow();
   };
