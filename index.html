@@ -338,6 +338,95 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   .gallery-grid.items-3,.gallery-grid.items-4{grid-template-columns:repeat(2,1fr)}
 }
 
+/* ASPECT RATIO BASED FIXED CONTAINERS */
+.svc-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9; /* Landscape by default */
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.svc-slideshow.portrait {
+  aspect-ratio: 3/4; /* Portrait for MC section */
+}
+
+.svc-slideshow.product {
+  aspect-ratio: 4/3; /* For product shots */
+}
+
+.svc-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.svc-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.svc-slide.active {
+  display: block;
+}
+
+.svc-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  object-position: center;
+  background-color: #f0f0f0; 
+  cursor: pointer;
+}
+
+/* Birthday slideshow */
+.bday-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4; /* Portrait for birthday photos */
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Wedding slideshow */
+.wedo-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3; /* For wedding gallery */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.bday-slide,
+.wedo-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.bday-slide.active,
+.wedo-slide.active {
+  display: block;
+}
+
+.bday-slide img,
+.wedo-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background-color: #f0f0f0;
+}
+
 /* MOBILE */
 @media(max-width:768px){
   :root{--nav-h:56px}
@@ -580,7 +669,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slide"><img src="10.jpeg" alt="Professional Videography" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="11.jpeg" alt="Event Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="12.jpeg" alt="Wedding Highlights" loading="lazy" onclick="svcImgOpen(this)"></div>
-      <div class="svc-slide"><img src="13.jpeg" alt="Ceremony Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <!-- <div class="svc-slide"><img src="13.jpeg" alt="Ceremony Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="14.jpeg" alt="Reception Moments" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="15.jpeg" alt="Bridal Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="16.jpeg" alt="Couple Portraits" loading="lazy" onclick="svcImgOpen(this)"></div>
@@ -591,7 +680,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slide"><img src="21.jpeg" alt="Live Event Coverage" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="22.jpeg" alt="Storytelling Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
       <div class="svc-slide"><img src="23.jpeg" alt="Artistic Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
-      <div class="svc-slide"><img src="24.jpeg" alt="Event Videography" loading="lazy" onclick="svcImgOpen(this)"></div>
+      <div class="svc-slide"><img src="24.jpeg" alt="Event Videography" loading="lazy" onclick="svcImgOpen(this)"></div> -->
       <div class="svc-slide"><img src="25.jpeg" alt="Premium Photography" loading="lazy" onclick="svcImgOpen(this)"></div>
 
       <div class="svc-slide"><img src="photo1.jpg" alt="Professional Photoshoot" loading="lazy" onclick="svcImgOpen(this)"></div>
@@ -618,6 +707,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
+  <!-- <button class="svc-dot"></button>
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
@@ -628,8 +718,7 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
-  <button class="svc-dot"></button>
-  <button class="svc-dot"></button>
+  <button class="svc-dot"></button> -->
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
   <button class="svc-dot"></button>
