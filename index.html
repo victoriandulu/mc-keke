@@ -1373,7 +1373,7 @@ function svcNav(e,id,dir){
       setInterval(function(){
         var s=svcState[sid];
         if(s)svcGoTo(sid,s.cur+1);
-      },6000);
+      },4000);
     },offset);
   })(id,i*600);
 });
@@ -1517,7 +1517,7 @@ document.addEventListener('keydown',function(e){
   window.wedoNav=function(dir){wedoGoTo(cur+dir);};
 
   // auto-advance every 5s
-  setInterval(function(){wedoGoTo(cur+1);},6000);
+  setInterval(function(){wedoGoTo(cur+1);},4000);
 
   // modal open for wedo images
   window.wedoImgOpen=function(img){
@@ -1553,7 +1553,7 @@ document.addEventListener('keydown',function(e){
 
   window.bdayNav=function(dir){bdayGoTo(cur+dir);};
 
-  setInterval(function(){bdayGoTo(cur+1);},6000);
+  setInterval(function(){bdayGoTo(cur+1);},4000);
 
   window.bdayImgOpen=function(img){
     var allImgs=Array.from(document.querySelectorAll('#bday-gallery .bday-slide img'));
