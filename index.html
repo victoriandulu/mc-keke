@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="dns-prefetch" href="https://www.youtube.com">
 
-<!-- ══ PERFORMANCE: Preload only the first hero image ══ -->
+<!-- ══ PERFORMANCE: Preload above-the-fold images ══ -->
 <link rel="preload" as="image" href="slide-1.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="KEKE-MC-LOGO (2).png">
 
@@ -347,12 +347,11 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
 </header>
 
 <!-- HERO -->
-<!-- Only slide-1.jpg has a real src. All others use data-src and load just before display. -->
 <section class="hero">
   <div class="slide active"><img src="slide-1.jpg" alt="KEKE Events" fetchpriority="high" decoding="sync" width="1400" height="800"></div>
-  <div class="slide"><img data-src="slide-2.jpg" src="" alt="KEKE Events Performance" decoding="async" width="1400" height="800"></div>
-  <div class="slide"><img data-src="slide-3.jpg" src="" alt="KEKE Events Show" decoding="async" width="1400" height="800"></div>
-  <div class="slide"><img data-src="event.jpg" src="" alt="KEKE Events Tents" decoding="async" width="1400" height="800"></div>
+  <div class="slide"><img data-src="slide-2.jpg" src="" alt="KEKE Events Performance" loading="lazy" decoding="async" width="1400" height="800"></div>
+  <div class="slide"><img data-src="slide-3.jpg" src="" alt="KEKE Events Show" loading="lazy" decoding="async" width="1400" height="800"></div>
+  <div class="slide"><img data-src="event.jpg" src="" alt="KEKE Events Tents" loading="lazy" decoding="async" width="1400" height="800"></div>
   <div class="hero-overlay">
     <div>
       <h1>KEKE EVENTS</h1>
@@ -370,7 +369,6 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   <div class="container">
 
     <!-- MC SERVICES -->
-    <!-- Only first slide has real src. Rest use data-src loaded on demand by svcGoTo(). -->
     <div class="service-section">
       <h3 style="text-decoration: underline;">PROFESSIONAL MC SERVICES</h3>
       <p class="service-desc">
@@ -381,16 +379,16 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slideshow portrait" id="svc-mc">
         <div class="svc-slides">
           <div class="svc-slide active">
-            <img data-src="pro-mc-3.jpg" src="" alt="MC live music performance" decoding="async" onclick="svcImgOpen(this)">
+            <img src="pro-mc-3.jpg" alt="MC live music performance" decoding="async" fetchpriority="high" onclick="svcImgOpen(this)">
           </div>
           <div class="svc-slide">
-            <img data-src="pro-mc4.jpg" src="" alt="MC engaging the audience" decoding="async" onclick="svcImgOpen(this)">
+            <img data-src="pro-mc4.jpg" src="" alt="MC engaging the audience" loading="lazy" decoding="async" onclick="svcImgOpen(this)">
           </div>
           <div class="svc-slide">
-            <img data-src="pro-mc11.jpg" src="" alt="MC on stage with microphone" decoding="async" onclick="svcImgOpen(this)">
+            <img data-src="pro-mc11.jpg" src="" alt="MC on stage with microphone" loading="lazy" decoding="async" onclick="svcImgOpen(this)">
           </div>
           <div class="svc-slide">
-            <img data-src="prof-mc2.jpg" src="" alt="MC fundraising and harambee facilitation" decoding="async" onclick="svcImgOpen(this)">
+            <img data-src="prof-mc2.jpg" src="" alt="MC fundraising and harambee facilitation" loading="lazy" decoding="async" onclick="svcImgOpen(this)">
           </div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-mc',-1)">&#10094;</button>
@@ -415,15 +413,15 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slideshow landscape" id="svc-photo">
         <div class="svc-slides">
           <div class="svc-slide active">
-            <img data-src="1.jpg" src="" alt="Professional Photography" decoding="async" onclick="svcImgOpen(this)">
+            <img src="1.jpg" alt="Professional Photography" decoding="async" fetchpriority="low" onclick="svcImgOpen(this)">
           </div>
-          <div class="svc-slide"><img data-src="2.jpg" src="" alt="Event Coverage" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="11.jpg" src="" alt="Event Photography" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="23.jpg" src="" alt="Artistic Photography" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="25.jpg" src="" alt="Premium Photography" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="photo1.jpg" src="" alt="Professional Photoshoot" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="photo4.jpg" src="" alt="Memorable Moments" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="photo5.jpg" src="" alt="High-End Videography" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="2.jpg" src="" alt="Event Coverage" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="11.jpg" src="" alt="Event Photography" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="23.jpg" src="" alt="Artistic Photography" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="25.jpg" src="" alt="Premium Photography" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo1.jpg" src="" alt="Professional Photoshoot" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo4.jpg" src="" alt="Memorable Moments" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="photo5.jpg" src="" alt="High-End Videography" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-photo',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-photo',1)">&#10095;</button>
@@ -465,14 +463,14 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slideshow product" id="svc-pa">
         <div class="svc-slides">
           <div class="svc-slide active">
-            <img data-src="pa1.jpg" src="" alt="Professional PA system setup" decoding="async" onclick="svcImgOpen(this)">
+            <img src="pa1.jpg" alt="Professional PA system setup" decoding="async" fetchpriority="low" onclick="svcImgOpen(this)">
           </div>
-          <div class="svc-slide"><img data-src="pa2.jpg" src="" alt="Event sound equipment" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="pa7.jpg" src="" alt="Large venue sound system" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="pa6.jpg" src="" alt="Professional PA speakers" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="pa5.jpg" src="" alt="Event audio equipment" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="pa3.jpg" src="" alt="Complete audio setup" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="pa4.jpg" src="" alt="Professional sound reinforcement" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa2.jpg" src="" alt="Event sound equipment" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa7.jpg" src="" alt="Large venue sound system" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa6.jpg" src="" alt="Professional PA speakers" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa5.jpg" src="" alt="Event audio equipment" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa3.jpg" src="" alt="Complete audio setup" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="pa4.jpg" src="" alt="Professional sound reinforcement" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-pa',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-pa',1)">&#10095;</button>
@@ -505,15 +503,15 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slideshow landscape" id="svc-tents">
         <div class="svc-slides">
           <div class="svc-slide active">
-            <img data-src="event.jpg" src="" alt="Wedding tent setup" decoding="async" onclick="svcImgOpen(this)">
+            <img src="event.jpg" alt="Wedding tent setup" decoding="async" fetchpriority="low" onclick="svcImgOpen(this)">
           </div>
-          <div class="svc-slide"><img data-src="tent-2.jpg" src="" alt="Event tent" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="tent-3.jpg" src="" alt="Large event tent" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="tent-4.jpg" src="" alt="Outdoor canopy" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="deco1.jpg" src="" alt="Tent decoration setup" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="deco2.jpg" src="" alt="Canopy decoration" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="deco3.jpg" src="" alt="Event tent décor" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="deco4.jpg" src="" alt="Wedding canopy décor" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-2.jpg" src="" alt="Event tent" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-3.jpg" src="" alt="Large event tent" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="tent-4.jpg" src="" alt="Outdoor canopy" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco1.jpg" src="" alt="Tent decoration setup" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco2.jpg" src="" alt="Canopy decoration" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco3.jpg" src="" alt="Event tent décor" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="deco4.jpg" src="" alt="Wedding canopy décor" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-tents',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-tents',1)">&#10095;</button>
@@ -541,16 +539,16 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <div class="svc-slideshow landscape" id="svc-drone">
         <div class="svc-slides">
           <div class="svc-slide active">
-            <img data-src="drone1.jpg" src="" alt="Aerial Drone Shot 1" decoding="async" onclick="svcImgOpen(this)">
+            <img src="drone1.jpg" alt="Aerial Drone Shot 1" decoding="async" fetchpriority="low" onclick="svcImgOpen(this)">
           </div>
-          <div class="svc-slide"><img data-src="drone2.jpg" src="" alt="Aerial Drone Shot 2" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone3.jpg" src="" alt="Aerial Drone Shot 3" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone5.jpg" src="" alt="Aerial Drone Shot 4" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone6.jpg" src="" alt="Aerial Drone Shot 5" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone7.jpg" src="" alt="Aerial Drone Shot 6" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone9.jpg" src="" alt="Aerial Drone Shot 7" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone10.jpg" src="" alt="Aerial Drone Shot 8" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="drone4.jpg" src="" alt="Aerial Drone Shot 9" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone2.jpg" src="" alt="Aerial Drone Shot 2" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone3.jpg" src="" alt="Aerial Drone Shot 3" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone5.jpg" src="" alt="Aerial Drone Shot 4" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone6.jpg" src="" alt="Aerial Drone Shot 5" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone7.jpg" src="" alt="Aerial Drone Shot 6" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone9.jpg" src="" alt="Aerial Drone Shot 7" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone10.jpg" src="" alt="Aerial Drone Shot 8" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="drone4.jpg" src="" alt="Aerial Drone Shot 9" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-drone',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-drone',1)">&#10095;</button>
@@ -575,10 +573,10 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
       <p class="service-desc">Delicious food that delights your guests. From traditional Kenyan cuisine to international dishes, our professional catering ensures everyone is well-fed and satisfied.</p>
       <div class="svc-slideshow landscape" id="svc-catering">
         <div class="svc-slides">
-          <div class="svc-slide active"><img data-src="food-1.jpg" src="" alt="Catering Sample 1" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="food-2.jpg" src="" alt="Catering Sample 2" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="food-1.jpg" src="" alt="Catering Sample 3" decoding="async" onclick="svcImgOpen(this)"></div>
-          <div class="svc-slide"><img data-src="food-2.jpg" src="" alt="Catering Sample 4" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide active"><img src="food-1.jpg" alt="Catering Sample 1" decoding="async" fetchpriority="low" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-2.jpg" src="" alt="Catering Sample 2" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-1.jpg" src="" alt="Catering Sample 3" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
+          <div class="svc-slide"><img data-src="food-2.jpg" src="" alt="Catering Sample 4" loading="lazy" decoding="async" onclick="svcImgOpen(this)"></div>
         </div>
         <button class="svc-prev" onclick="svcNav(event,'svc-catering',-1)">&#10094;</button>
         <button class="svc-next" onclick="svcNav(event,'svc-catering',1)">&#10095;</button>
@@ -669,12 +667,12 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
         <div class="video-card"><div class="yt-wrap" data-id="XgVzyWMRCQE" onclick="ytLoad(this)"><img src="https://i.ytimg.com/vi/XgVzyWMRCQE/hqdefault.jpg" alt="Wedding Ceremony 2" loading="lazy" decoding="async" width="480" height="360"><div class="yt-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><a class="video-link" href="https://youtu.be/XgVzyWMRCQE?si=a2mEJgvWdzaqM8rJ" target="_blank" rel="noopener">&#9654; Watch on YouTube</a></div>
         <div class="video-card wedo-slide-card">
           <div class="wedo-slideshow" id="wedo-gallery">
-            <div class="wedo-slide active"><img data-src="wedo4.jpg" src="" alt="Wedding Photo 1" decoding="async" onclick="wedoImgOpen(this)"></div>
-            <div class="wedo-slide"><img data-src="wedo3.jpg" src="" alt="Wedding Photo 2" decoding="async" onclick="wedoImgOpen(this)"></div>
-            <div class="wedo-slide"><img data-src="wedo7.jpg" src="" alt="Wedding Photo 3" decoding="async" onclick="wedoImgOpen(this)"></div>
-            <div class="wedo-slide"><img data-src="wedo4.jpg" src="" alt="Wedding Photo 4" decoding="async" onclick="wedoImgOpen(this)"></div>
-            <div class="wedo-slide"><img data-src="wedo5.jpg" src="" alt="Wedding Photo 5" decoding="async" onclick="wedoImgOpen(this)"></div>
-            <div class="wedo-slide"><img data-src="wedo6.jpg" src="" alt="Wedding Photo 6" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide active"><img src="wedo4.jpg" alt="Wedding Photo 1" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide"><img data-src="wedo3.jpg" src="" alt="Wedding Photo 2" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide"><img data-src="wedo7.jpg" src="" alt="Wedding Photo 3" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide"><img data-src="wedo4.jpg" src="" alt="Wedding Photo 4" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide"><img data-src="wedo5.jpg" src="" alt="Wedding Photo 5" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
+            <div class="wedo-slide"><img data-src="wedo6.jpg" src="" alt="Wedding Photo 6" loading="lazy" decoding="async" onclick="wedoImgOpen(this)"></div>
             <button class="wedo-prev" onclick="wedoNav(-1)">&#10094;</button>
             <button class="wedo-next" onclick="wedoNav(1)">&#10095;</button>
             <div class="wedo-dots" id="wedo-dots">
@@ -694,9 +692,9 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
     <div class="category" id="gallery-birthday">
       <h3>BIRTHDAY CELEBRATIONS</h3>
       <div class="bday-slideshow" id="bday-gallery">
-        <div class="bday-slide active"><img data-src="cake1.jpg" src="" alt="Birthday 1" decoding="async" onclick="bdayImgOpen(this)"></div>
-        <div class="bday-slide"><img data-src="cake2.jpg" src="" alt="Birthday 2" decoding="async" onclick="bdayImgOpen(this)"></div>
-        <div class="bday-slide"><img data-src="cake3.png" src="" alt="Birthday 3" decoding="async" onclick="bdayImgOpen(this)"></div>
+        <div class="bday-slide active"><img src="cake1.jpg" alt="Birthday 1" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
+        <div class="bday-slide"><img data-src="cake2.jpg" src="" alt="Birthday 2" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
+        <div class="bday-slide"><img data-src="cake3.png" src="" alt="Birthday 3" loading="lazy" decoding="async" onclick="bdayImgOpen(this)"></div>
         <button class="bday-prev" onclick="bdayNav(-1)">&#10094;</button>
         <button class="bday-next" onclick="bdayNav(1)">&#10095;</button>
         <div class="bday-dots" id="bday-dots">
@@ -886,70 +884,53 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
 
 <script>
 /* ══════════════════════════════════════════════
-   CORE: Load a single image from data-src
-   Called just before a slide becomes visible.
+   LAZY LOAD: Load data-src images on demand
    ══════════════════════════════════════════════ */
 function loadImg(img) {
-  if (img && img.dataset.src) {
+  if (img && img.dataset.src && !img.src) {
     img.src = img.dataset.src;
-    delete img.dataset.src;
   }
 }
 
-/* ══════════════════════════════════════════════
-   INTERSECTION OBSERVER
-   Watches every slideshow container. When one
-   scrolls into view we load its CURRENT slide's
-   image (index 0 at page load, whatever cur is
-   later). Non-visible slideshows stay unloaded.
-   ══════════════════════════════════════════════ */
-var slideshowObserver;
+// IntersectionObserver for off-screen images
+var lazyObserver;
 if ('IntersectionObserver' in window) {
-  slideshowObserver = new IntersectionObserver(function(entries) {
+  lazyObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      var id = el.id;
-      // Load whichever slide is currently active
-      var activeImg = el.querySelector('.svc-slide.active img, .wedo-slide.active img, .bday-slide.active img');
-      if (activeImg) loadImg(activeImg);
-      // Mark as observed so we don't re-trigger unnecessarily
-      el.dataset.observed = '1';
-      // Keep observing so future active slides load when re-entering viewport
+      if (entry.isIntersecting) {
+        loadImg(entry.target);
+        lazyObserver.unobserve(entry.target);
+      }
     });
-  }, { rootMargin: '100px' });
-
-  // Observe all slideshows
-  document.querySelectorAll('.svc-slideshow, #wedo-gallery, #bday-gallery').forEach(function(el) {
-    slideshowObserver.observe(el);
+  }, { rootMargin: '200px' });
+  document.querySelectorAll('img[data-src]').forEach(function(img) {
+    lazyObserver.observe(img);
   });
 }
 
 /* ══════════════════════════════════════════════
    HERO SLIDESHOW
-   Loads slide images one-at-a-time just before
-   they become active. No bulk pre-loading.
    ══════════════════════════════════════════════ */
 (function(){
   var slides = document.querySelectorAll('.hero .slide');
   var cur = 0;
-
-  // Load the first hero image immediately (it's above the fold)
-  loadImg(slides[0].querySelector('img'));
-
+  // preload slide 2 immediately after page load
+  window.addEventListener('load', function() {
+    var s2 = document.querySelector('.hero .slide:nth-child(2) img');
+    if (s2 && s2.dataset.src) s2.src = s2.dataset.src;
+  });
   setInterval(function(){
     slides[cur].classList.remove('active');
     cur = (cur + 1) % slides.length;
-    // Load next slide image right before showing it
-    loadImg(slides[cur].querySelector('img'));
+    // load next slide image on demand
+    var nextImg = slides[cur].querySelector('img');
+    if (nextImg && nextImg.dataset.src) nextImg.src = nextImg.dataset.src;
     slides[cur].classList.add('active');
   }, 3000);
 })();
 
 /* ══════════════════════════════════════════════
    SERVICE SLIDESHOWS
-   svcGoTo() loads the target slide image on
-   demand — never before the slide is displayed.
    ══════════════════════════════════════════════ */
 var svcState = {};
 
@@ -959,16 +940,12 @@ function svcInit(id) {
   var slides = el.querySelectorAll('.svc-slide');
   var dots = document.querySelectorAll('#dots-' + id + ' .svc-dot');
   var cap = document.getElementById('cap-' + id);
-
-  // Hide all slides; show only the first
+  // show first, hide rest
   slides.forEach(function(s, i) {
     s.style.display = i === 0 ? 'block' : 'none';
     s.classList.toggle('active', i === 0);
   });
-  // Do NOT load the first slide image here — the IntersectionObserver handles it
-
   svcState[id] = { slides: slides, dots: dots, cap: cap, cur: 0, total: slides.length };
-
   dots.forEach(function(dot, i) {
     dot.addEventListener('click', function(e) { e.stopPropagation(); svcGoTo(id, i); });
   });
@@ -977,15 +954,13 @@ function svcInit(id) {
 function svcGoTo(id, idx) {
   var s = svcState[id];
   if (!s) return;
-  // Hide current
   s.slides[s.cur].classList.remove('active');
   s.slides[s.cur].style.display = 'none';
   if (s.dots[s.cur]) s.dots[s.cur].classList.remove('active');
-  // Advance index
   s.cur = (idx + s.total) % s.total;
-  // Load the target image NOW (just before showing it)
-  loadImg(s.slides[s.cur].querySelector('img'));
-  // Show new slide
+  // load image if not yet loaded
+  var img = s.slides[s.cur].querySelector('img');
+  if (img && img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
   s.slides[s.cur].classList.add('active');
   s.slides[s.cur].style.display = 'block';
   if (s.dots[s.cur]) s.dots[s.cur].classList.add('active');
@@ -997,7 +972,6 @@ function svcNav(e, id, dir) {
   if (s) svcGoTo(id, s.cur + dir);
 }
 
-// Init all service slideshows with staggered auto-advance
 ['svc-mc','svc-photo','svc-pa','svc-tents','svc-drone','svc-catering'].forEach(function(id, i) {
   svcInit(id);
   (function(sid, offset) {
@@ -1117,12 +1091,7 @@ function imgModalClose() {
 
 function imgModalNav(dir) {
   imgModalIdx = (imgModalIdx + dir + imgModalImgs.length) % imgModalImgs.length;
-  // Make sure modal navigation also loads images on demand
-  var currentSrc = imgModalImgs[imgModalIdx];
-  document.getElementById('img-modal-img').src = currentSrc;
-  document.getElementById('img-modal-counter').textContent = (imgModalIdx + 1) + ' / ' + imgModalImgs.length;
-  document.getElementById('img-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  imgModalShow();
 }
 
 function imgModalBgClick(e) {
@@ -1139,7 +1108,6 @@ document.addEventListener('keydown', function(e) {
 
 /* ══════════════════════════════════════════════
    WEDDING SLIDESHOW
-   Loads current slide image on demand via goTo.
    ══════════════════════════════════════════════ */
 (function(){
   var slides = document.querySelectorAll('#wedo-gallery .wedo-slide');
@@ -1147,20 +1115,20 @@ document.addEventListener('keydown', function(e) {
   var cur = 0;
   if (!slides.length) return;
 
-  // Hide all; show first (IntersectionObserver loads its image)
-  slides.forEach(function(s, i) { s.style.display = i === 0 ? 'block' : 'none'; });
-
   function wedoGoTo(idx) {
     slides[cur].classList.remove('active');
     slides[cur].style.display = 'none';
     dots[cur].classList.remove('active');
     cur = (idx + slides.length) % slides.length;
-    // Load image just before showing
-    loadImg(slides[cur].querySelector('img'));
+    var img = slides[cur].querySelector('img');
+    if (img && img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
     slides[cur].classList.add('active');
     slides[cur].style.display = 'block';
     dots[cur].classList.add('active');
   }
+
+  // init
+  slides.forEach(function(s, i) { s.style.display = i === 0 ? 'block' : 'none'; });
 
   dots.forEach(function(dot, i) {
     dot.addEventListener('click', function() { wedoGoTo(i); });
@@ -1179,7 +1147,6 @@ document.addEventListener('keydown', function(e) {
 
 /* ══════════════════════════════════════════════
    BIRTHDAY SLIDESHOW
-   Loads current slide image on demand via goTo.
    ══════════════════════════════════════════════ */
 (function(){
   var slides = document.querySelectorAll('#bday-gallery .bday-slide');
@@ -1187,7 +1154,7 @@ document.addEventListener('keydown', function(e) {
   var cur = 0;
   if (!slides.length) return;
 
-  // Hide all; show first (IntersectionObserver loads its image)
+  // init
   slides.forEach(function(s, i) { s.style.display = i === 0 ? 'block' : 'none'; });
 
   function bdayGoTo(idx) {
@@ -1195,8 +1162,8 @@ document.addEventListener('keydown', function(e) {
     slides[cur].style.display = 'none';
     dots[cur].classList.remove('active');
     cur = (idx + slides.length) % slides.length;
-    // Load image just before showing
-    loadImg(slides[cur].querySelector('img'));
+    var img = slides[cur].querySelector('img');
+    if (img && img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
     slides[cur].classList.add('active');
     slides[cur].style.display = 'block';
     dots[cur].classList.add('active');
