@@ -10,14 +10,11 @@
 <meta name="keywords" content="best MC in Kenya, MC KEKE, event MC Kenya, wedding MC Kenya, harambee MC Kenya, fundraising MC Kenya, MC Machakos, MC Nairobi, MC Mombasa, event planner Kenya, wedding photography Kenya, event photography Kenya, PA system hire Kenya, PA system Nairobi, event tents Kenya, catering Kenya, event videography Kenya, drone photography Kenya, aerial photography Kenya, live streaming events Kenya, wedding planner Kenya, corporate event MC Kenya, birthday MC Kenya, graduation MC Kenya, KEKE Events, event solutions Kenya, MC services Machakos, MC services Nairobi, professional MC Kenya, wedding services Kenya, complete event solutions Kenya, harambee fundraising MC, crowd control MC Kenya, comedy MC Kenya, event sound system Kenya, wedding sound system Kenya, tent hire Kenya, wedding tent Kenya, Kenyan cuisine catering, event catering Machakos, team building MC Kenya, political event MC Kenya">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<meta name="author" content="KEKE Events">
+<meta name="author" content="Victoria Ndulu">
 <meta name="copyright" content="KEKE Events 2026">
 <meta name="language" content="English">
 <meta name="revisit-after" content="7 days">
-<meta name="geo.region" content="KE-300">
-<meta name="geo.placename" content="Machakos, Kenya">
-<meta name="geo.position" content="-1.5167;37.2667">
-<meta name="ICBM" content="-1.5167, 37.2667">
+
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="KEKE Events | Best MC in Kenya | Complete Event Solutions">
@@ -303,6 +300,13 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
   footer{padding:2rem 1rem 1.2rem}
   .footer-grid{grid-template-columns:1fr;gap:1.5rem}
 }
+
+.checkbox-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.6rem;margin-top:.5rem}
+.checkbox-item{display:flex;align-items:center;gap:.6rem;background:#f7f7f7;border:2px solid #e0e0e0;border-radius:10px;padding:.6rem 1rem;cursor:pointer;transition:all .3s}
+.checkbox-item:hover{border-color:var(--orange);background:rgba(247,147,30,.08)}
+.checkbox-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--orange);cursor:pointer;flex-shrink:0}
+.checkbox-item label{cursor:pointer;font-size:.95rem;font-weight:500}
+.checkbox-item.checked{border-color:var(--orange);background:rgba(247,147,30,.12)}
 </style>
 </head>
 <body>
@@ -824,22 +828,24 @@ footer{background:var(--blue);color:var(--white);padding:3rem 2rem 1.5rem;width:
           </select>
         </div>
         <div class="form-group">
-          <label>Services Needed *</label>
-          <select name="services" required>
-            <option value="">Select services you need</option>
-            <option>Event Live Streaming</option>
-            <option>MC Services Only</option>
-            <option>Photography &amp; Videography Only</option>
-            <option>P/A Sound System Only</option>
-            <option>Tents Only</option>
-            <option>Catering Only</option>
-            <option>MC + Photography</option>
-            <option>MC + P/A System</option>
-            <option>MC + Tents + P/A</option>
-            <option>Complete Package (All Services)</option>
-            <option>Custom Package (I'll specify below)</option>
-          </select>
-        </div>
+  <label>Services Needed * (Select all that apply)</label>
+  <div class="checkbox-group" id="servicesGroup">
+    <div class="checkbox-item"><input type="checkbox" id="svc1" value="MC Services"><label for="svc1">🎤 MC Services</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc2" value="Photography"><label for="svc2">📸 Photography</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc3" value="Videography"><label for="svc3">🎥 Videography</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc4" value="Event Live Streaming"><label for="svc4">📡 Event Live Streaming</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc5" value="P/A Sound System"><label for="svc5">🔈 P/A Sound System</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc6" value="Tents & Decorations"><label for="svc6">⛺ Tents & Decorations</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc7" value="Drone Services"><label for="svc7">🚁 Drone Services</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc8" value="Catering"><label for="svc8">🍽️ Catering</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc9" value="MC + Photography"><label for="svc9">🎤📸 MC + Photography</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc10" value="MC + P/A System"><label for="svc10">🎤🔈 MC + P/A System</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc11" value="MC + Tents + P/A"><label for="svc11">🎤⛺🔈 MC + Tents + P/A</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc12" value="Photography & Videography"><label for="svc12">📸🎥 Photography & Videography</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc13" value="Complete Package (All Services)"><label for="svc13">⭐ Complete Package (All Services)</label></div>
+    <div class="checkbox-item"><input type="checkbox" id="svc14" value="Custom Package"><label for="svc14">✏️ Custom Package (I'll specify below)</label></div>
+  </div>
+</div>
         <div class="form-group"><label>Event Date</label><input name="date" type="date"></div>
         <div class="form-group"><label>Event Location</label><input name="location" placeholder="City or venue name"></div>
         <div class="form-group"><label>Expected Number of Guests</label><input name="guests" type="number" placeholder="Approximate attendance"></div>
@@ -1202,7 +1208,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
     + '📧 *Email:* ' + (f.get('email') || 'Not provided') + '\n\n'
     + '🎊 *Event Details:*\n'
     + 'Type: ' + f.get('event') + '\n'
-    + 'Services: ' + f.get('services') + '\n'
+    + 'Services: ' + Array.from(document.querySelectorAll('#servicesGroup input:checked')).map(function(c){return c.value}).join(', ') + '\n'
     + 'Date: ' + (f.get('date') || 'TBC') + '\n'
     + 'Location: ' + (f.get('location') || 'TBC') + '\n'
     + 'Guests: ' + (f.get('guests') || 'Not specified') + '\n\n'
@@ -1220,6 +1226,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (count === 3) grid.classList.add('items-3');
     else if (count === 4) grid.classList.add('items-4');
   });
+
+  document.querySelectorAll('.checkbox-item').forEach(function(item){
+  item.addEventListener('click',function(e){
+    if(e.target.tagName!=='INPUT'){
+      var cb=this.querySelector('input');
+      cb.checked=!cb.checked;
+    }
+    this.classList.toggle('checked',this.querySelector('input').checked);
+  });
+});
 });
 </script>
 </body>
